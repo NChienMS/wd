@@ -20,6 +20,11 @@
         .hinhanh img:hover {
             transform: scale(1.05);
         }
+ @media (max-width: 450px) {
+  .hinhanh {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+  }
+}
         .slider-overlay {
             display: none;
             position: fixed;
