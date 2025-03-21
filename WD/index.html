@@ -942,56 +942,69 @@
 </body>
 <!-- js nhập tên người dùng -->
 <script>
-   // Thay đổi tên người đăng nhập bằng lệnh  div.innerHTML = 'Demo thay đổi nội dung thẻ div bằng Javascript tại Freetuts'; khi nhấn oki
+    // Thay đổi tên người đăng nhập trong các thẻ div
     var div = document.getElementById('namene');
     var div2 = document.getElementById('namene2');
     var div3 = document.getElementById('namene3');
     var div4 = document.getElementById('namene4');
 
-    
-  
-      // Sau khi load trang sẽ yêu cầu nhập mật khẩu
-  function nhappass() {
-                 
-                  swal({
-                  title: "Oh chúng ta lại gặp nhau rồi!",
-                  text: "Chẳng hay cao danh quý tánh của Vị đây là gì?",
-                  type: "input",
-                  showCancelButton: false, // Có hiển thị nút cancel không(true = có)
-                  closeOnConfirm: false, // Có thể tắt popup khi nhấp Ok không (true = có)
-                  showLoaderOnConfirm: true, // Hiển thị loading khi nhấp vào nút Ok
-                  animation: "slide-from-top", // Như tên của nó, popup sẽ slide from top
-                  inputPlaceholder: "Ta đây là..."
-
-              },
-
-
+    // Sau khi load trang sẽ yêu cầu nhập tên
+    function nhappass() {
+        swal({
+            title: "Oh chúng ta lại gặp nhau rồi!",
+            text: "Chẳng hay cao danh quý tánh của Vị đây là gì?",
+            type: "input",
+            showCancelButton: false,
+            closeOnConfirm: false,
+            showLoaderOnConfirm: true,
+            animation: "slide-from-top",
+            inputPlaceholder: "Ta đây là..."
+        },
         function (inputValue) {
-                   //alert(inputValue);
-                    if (inputValue == ""){ 
-                      var ttname = "Xin chào 'Ai đó'"; 
-                      var ttname2 = "'Ai đó' ơi, Mình sẽ liên hệ sớm nhất có thể\n 'Ai đó' có thể để lại thông tin liên hệ ở phần gửi lời nhắn để mình biết bạn đã ghé qua nhé ạ!";
-                      var aido = "Ai đó";
-                    } else {
-                    var ttname = "Xin chào " + inputValue;
-                    var ttname2 = inputValue +" ơi, Mình sẽ liên hệ sớm nhất có thể\n "+ inputValue+ " có thể để lại thông tin liên hệ ở phần gửi lời nhắn để mình biết bạn đã ghé qua nhé ạ!";
-                    var aido = inputValue;
-                    }
-                    div.innerHTML = aido;
-                    div2.innerHTML = aido;
-                    div3.innerHTML = aido;
-                    div4.innerHTML = aido;
-                    //alert(ttname);
-                    setTimeout(function() {
-                    swal(ttname, ttname2, "success");}, 500);
-              
-              });      
+            let aido, ttname, ttname2;
 
-      };
+            if (inputValue === "" || inputValue === false) {
+                ttname = "Xin chào 'Ai đó'";
+                ttname2 = "'Ai đó' ơi, Mình sẽ liên hệ sớm nhất có thể\n 'Ai đó' có thể để lại thông tin liên hệ ở phần gửi lời nhắn để mình biết bạn đã ghé qua nhé ạ!";
+                aido = "Ai đó";
+            } else {
+                ttname = "Xin chào " + inputValue;
+                ttname2 = inputValue + " ơi, Mình sẽ liên hệ sớm nhất có thể\n " + inputValue + " có thể để lại thông tin liên hệ ở phần gửi lời nhắn để mình biết bạn đã ghé qua nhé ạ!";
+                aido = inputValue;
+            }
 
+            // Cập nhật nội dung các thẻ div
+            div.innerHTML = aido;
+            div2.innerHTML = aido;
+            div3.innerHTML = aido;
+            div4.innerHTML = aido;
 
+            // Điền dữ liệu vào form và gửi
+            document.getElementById('hoten').value = aido; // Điền tên vào trường name-pa
+            document.getElementById('Reason').value = "";  // Để trống số điện thoại
+            document.getElementById('Reason2').value = ""; // Để trống ghi chú
 
-   </script>
+            // Tự động submit form nhưng không mở popup
+            setTimeout(function() {
+                document.getElementById('ss-form').submit(); // Gửi form
+                // Bỏ gọi popupOpen() để không hiển thị popup-inner
+                swal(ttname, ttname2, "success"); // Hiển thị thông báo SweetAlert
+            }, 500);
+        });
+    };
+
+    // Hàm mở popup (giữ lại để dùng ở nơi khác nếu cần)
+    function popupOpen() {
+        document.getElementById('overlay2').style.display = 'block';
+        document.getElementById('popup').style.display = 'block';
+    }
+
+    // Hàm đóng popup (giữ lại để dùng ở nơi khác nếu cần)
+    function popupClose() {
+        document.getElementById('overlay2').style.display = 'none';
+        document.getElementById('popup').style.display = 'none';
+    }
+</script>
 
 <!-- Mirrored from irsfoundation.com/tf/templates/wedding/lovely-wedding/lovely-wedding/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 May 2018 09:09:09 GMT -->
 </html>
