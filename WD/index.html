@@ -671,12 +671,13 @@
     <button id="seeMoreBtn" onclick="toggleImages()">Xem thêm</button>
     </div>
     <div class="slider-overlay" id="sliderOverlay">
-        <span class="close-btn" onclick="closeSlider()">&times;</span>
+        <span class="close-btn" onclick="closeSlider()">×</span>
         <div class="swiper main-slider">
             <div class="swiper-wrapper" id="swiperWrapper"></div>
             <div class="swiper-button-next"></div>
             <div class="swiper-button-prev"></div>
         </div>
+        <div class="image-counter" id="imageCounter"></div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper/swiper-bundle.min.js"></script>
@@ -731,7 +732,16 @@
         });
 
         let sliderOverlay = document.getElementById("sliderOverlay");
+        let imageCounter = document.getElementById("imageCounter");
         let swiper;
+
+        function updateImageCounter() {
+            if (swiper) {
+                const currentIndex = swiper.realIndex + 1; // realIndex bắt đầu từ 0
+                const totalImages = images.length;
+                imageCounter.textContent = `${currentIndex}/${totalImages}`;
+            }
+        }
 
         function openSlider(index) {
             sliderOverlay.style.display = "flex";
@@ -741,9 +751,13 @@
                         nextEl: ".swiper-button-next",
                         prevEl: ".swiper-button-prev",
                     },
+                    on: {
+                        slideChange: updateImageCounter
+                    }
                 });
             }
             swiper.slideTo(index, 0);
+            updateImageCounter(); // Cập nhật ngay khi mở slider
         }
 
         function closeSlider() {
