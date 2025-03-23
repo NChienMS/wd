@@ -1378,7 +1378,7 @@ a:focus {
     outline: none;
     position: absolute;
     left: -18px;
-    top: 10px;
+    bottom: 20px;
     z-index: 20;
   }
   .site-header #navbar > ul > li {
