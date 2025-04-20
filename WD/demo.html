@@ -159,7 +159,8 @@
     <p class="giua bold sizestore">Phiếu Thanh Toán <br>
         <span class="size" id="soPhieu">Số phiếu: Chưa khởi tạo</span>
     </p>
-    <p class="size cantrai" id="dateCreated">Ngày tạo: Chưa khởi tạo</p>
+  
+    <button class="size cantrai" id="dateCreated" onclick="printDate()" style="background: none; border: none; padding: 0; margin: 0;">Ngày tạo: ấn vào đây để lấy ngày</button>
     <table id="itemsTable">
         <thead>
             <tr style="text-align: center;">
@@ -335,7 +336,7 @@
             const formattedDate = `${day}/${month}/${year} ${hours}:${minutes}`;
             const soPhieu = `${day}${month}${hours}${minutes}`;
             document.getElementById('print-btn').style = 'display:block; ';
-            document.getElementById('dateCreated').s = `Ngày tạo: ${formattedDate}`;
+            document.getElementById('dateCreated').textContent = `Ngày tạo: ${formattedDate}`;
             document.getElementById('soPhieu').textContent = `Số phiếu: ${soPhieu}`;
         }
     </script>
