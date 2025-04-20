@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Phiếu Thanh Toán</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 20px;
+        }
+        .ticket {
+            width: 400px;
+            margin: 0 auto;
+            border: 1px solid #000;
+            padding: 20px;
+            text-align: left;
+        }
+        .ticket h1, .ticket h2 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #000;
+            padding: 5px;
+            text-align: center;
+        }
+        th:nth-child(1), td:nth-child(1) { /* Cột STT */
+            width: 10%;
+            cursor: pointer;
+        }
+        th:nth-child(2), td:nth-child(2) { /* Cột Tên */
+            width: 40%;
+            text-align: left;
+        }
+        th:nth-child(3), td:nth-child(3) { /* Cột SL */
+            width: 15%;
+        }
+        th:nth-child(4), td:nth-child(4) { /* Cột Giá */
+            width: 20%;
+        }
+        th:nth-child(5), td:nth-child(5) { /* Cột Tổng */
+            width: 15%;
+        }
+        td[contenteditable="true"] {
+            outline: none;
+        }
+        .item-name {
+            white-space: normal;
+            word-wrap: break-word;
+        }
+        .total {
+            font-weight: bold;
+            text-align: right;
+        }
+        .btn-container {
+            margin-top: 20px;
+        }
+        .print-btn, .add-btn {
+            padding: 10px 20px;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .print-btn {
+            background-color: #4CAF50;
+        }
+        .print-btn:hover {
+            background-color: #45a049;
+        }
+        .add-btn {
+            background-color: #008CBA;
+            margin-left: 10px;
+        }
+        .add-btn:hover {
+            background-color: #007bb5;
+        }
+    </style>
+</head>
+<body>
+    <div class="ticket" id="ticket">
+        <h1>The ADN</h1>
+        <p>174 đường Láng<br>+84337260123</p>
+        <h2>PHIẾU THANH TOÁN</h2>
+        <p>Số phiếu: CH00001</p>
+        <p>Ngày tạo: 04-20-2025 17:09<br>T.Ngân: The ADN<br>Tại quầy</p>
+        <table id="itemsTable">
+            <thead>
+                <tr>
+                    <th>STT</th>
+                    <th>Tên</th>
+                    <th>SL</th>
+                    <th>Giá</th>
+                    <th>Tổng</th>
+                </tr>
+            </thead>
+            <tbody id="itemsBody">
+                <tr>
+                    <td class="stt">1</td>
+                    <td class="item-name" contenteditable="true"></td>
+                    <td contenteditable="true" oninput="updateRow(this)"></td>
+                    <td contenteditable="true" oninput="updateRow(this)"></td>
+                    <td class="total-amount"></td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Tổng SL món: <span id="totalItems">0</span></p>
+        <p class="total">Thành tiền: <span id="totalPrice">0</span></p>
+        <p class="total">Tổng thanh toán: <span id="finalTotal">0</span></p>
+    </div>
+    <div class="btn-container">
+        <button class="print-btn" onclick="printTicket()">In Phiếu</button>
+        <button class="add-btn" onclick="addRow()">Thêm Món</button>
+    </div>
+
+    <script>
+        function formatNumber(num) {
+            return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
+        }
+
+        function parseNumber(str) {
+            return parseFloat(str.replace(/\./g, "")) || 0;
+        }
+
+        function moveCursorToEnd(element) {
+            const range = document.createRange();
+            const selection = window.getSelection();
+            range.selectNodeContents(element);
+            range.collapse(false);
+            selection.removeAllRanges();
+            selection.addRange(range);
+        }
+
+        function updateRow(element) {
+            const row = element.parentElement;
+            const cell = element;
+
+            // Lấy giá trị gốc, bỏ dấu chấm phân cách
+            let rawValue = parseNumber(cell.textContent);
+            
+            // Định dạng lại giá trị với dấu chấm phân cách
+            cell.textContent = formatNumber(rawValue);
+
+            // Di chuyển con trỏ về cuối ô nhập liệu
+            moveCursorToEnd(cell);
+
+            // Tính toán cột Tổng
+            const quantity = parseNumber(row.cells[2].textContent);
+            const price = parseNumber(row.cells[3].textContent);
+            const total = quantity * price;
+            row.cells[4].textContent = formatNumber(total);
+
+            updateTotals();
+        }
+
+        function updateTotals() {
+            const rows = document.querySelectorAll("#itemsBody tr");
+            let totalItems = 0;
+            let totalPrice = 0;
+
+            rows.forEach(row => {
+                const quantity = parseNumber(row.cells[2].textContent);
+                const total = parseNumber(row.cells[4].textContent);
+                totalItems += quantity;
+                totalPrice += total;
+            });
+
+            document.getElementById("totalItems").textContent = formatNumber(totalItems);
+            document.getElementById("totalPrice").textContent = formatNumber(totalPrice);
+            document.getElementById("finalTotal").textContent = formatNumber(totalPrice);
+        }
+
+        function addRow() {
+            const tbody = document.getElementById("itemsBody");
+            const rowCount = tbody.rows.length + 1;
+            const row = document.createElement("tr");
+            row.innerHTML = `
+                <td class="stt">${rowCount}</td>
+                <td class="item-name" contenteditable="true"></td>
+                <td contenteditable="true" oninput="updateRow(this)"></td>
+                <td contenteditable="true" oninput="updateRow(this)"></td>
+                <td class="total-amount"></td>
+            `;
+            tbody.appendChild(row);
+            updateRowNumbers();
+        }
+
+        function updateRowNumbers() {
+            const rows = document.querySelectorAll("#itemsBody tr");
+            rows.forEach((row, index) => {
+                row.cells[0].textContent = index + 1;
+            });
+        }
+
+        document.getElementById("itemsBody").addEventListener("click", function(e) {
+            if (e.target.classList.contains("stt")) {
+                const row = e.target.parentElement;
+                row.remove();
+                updateRowNumbers();
+                updateTotals();
+            }
+        });
+
+        function printTicket() {
+            const ticket = document.getElementById("ticket").innerHTML;
+            const originalContent = document.body.innerHTML;
+            document.body.innerHTML = ticket;
+            window.print();
+            document.body.innerHTML = originalContent;
+        }
+    </script>
+</body>
+</html>
