@@ -118,26 +118,37 @@
     </style>
 </head>
 <body>
+
+    <div class="btn-container giua" style="margin-bottom: 10px;">
+    <label for="storeSelect" class="size">Chọn cửa hàng:</label>
+    <select id="storeSelect" onchange="changeStore()" style="padding: 5px; font-size: 12px;">
+        <option value="adn">The ADN</option>
+        <option value="sunny">Sunny Coffee</option>
+        <option value="homefood">HomeFood</option>
+        <option value="store3">store3</option>
+    </select>
+</div>
+
+    
     <div class="ticket" id="ticket">
-        <a href="https://ariesvn8.wordpress.com/wp-content/uploads/2021/07/add.png" target="_blank">
-            <img src="https://ariesvn8.wordpress.com/wp-content/uploads/2021/07/add.png" alt="Logo" class="logo">
-        </a>
-        <p class="giua bold sizestore">The ADN</p>
-        <p class="giua size">174 đường Láng<br>+84337260123</p>
-        <p class="giua bold sizestore">Phiếu Thanh Toán <br>
-            <span class="size"id="soPhieu"> Số phiếu: Chưa khởi tạo</span>
-        </p>
-        <p class="size" id="dateCreated">Ngày tạo: Chưa khởi tạo</p>
-        <table id="itemsTable">
-            <thead>
-                <tr style="text-align: center;">
-                    <th>TT</th>
-                    <th style="text-align:center;">Tên món</th>
-                    <th style="text-align:center;">SL</th>
-                    <th style="text-align:center;">Đ.Giá</th>
-                    <th style="text-align:center;">T.Tiền</th>
-                </tr>
-            </thead>
+        
+           <img style="width: 60px;" src="https://ariesvn8.wordpress.com/wp-content/uploads/2021/07/add.png" alt="Logo" class="logo">
+    <p class="giua bold sizestore namestore">The ADN</p>
+    <p class="giua size diachi">174 đường Láng<br>+84337260123</p>
+    <p class="giua bold sizestore">Phiếu Thanh Toán <br>
+        <span class="size" id="soPhieu">Số phiếu: Chưa khởi tạo</span>
+    </p>
+    <p class="size" id="dateCreated">Ngày tạo: Chưa khởi tạo</p>
+    <table id="itemsTable">
+        <thead>
+            <tr style="text-align: center;">
+                <th>TT</th>
+                <th style="text-align:center;">Tên món</th>
+                <th style="text-align:center;">SL</th>
+                <th style="text-align:center;">Đ.Giá</th>
+                <th style="text-align:center;">T.Tiền</th>
+            </tr>
+        </thead>
             <tbody id="itemsBody">
                 <tr>
                     <td class="stt">1</td>
@@ -153,6 +164,8 @@
         <p class=" size total">Tổng thanh toán: <span id="finalTotal">0</span></p>
         <p class=" size thank-you">Cảm ơn quý khách!</p>
     </div>
+
+
     <div class="btn-container giua " style="display: flex; flex-direction: column; justify-content: center; align-items: center; width: 100%; height: 100v; ">
          <button  class="add-btn" onclick="addRow()">Thêm Món</button><br>
            <button  class="add-btn" onclick="printDate()">Lấy ngày</button><br>
@@ -160,6 +173,46 @@
     </div>
 
     <script>
+            const stores = {
+        adn: {
+            logo: "https://ariesvn8.wordpress.com/wp-content/uploads/2021/07/add.png",
+            name: "The ADN",
+            address: "174 đường Láng",
+            phone: "+84337260123"
+        },
+        sunny: {
+            logo: "https://upload.wikimedia.org/wikipedia/commons/thumb/a/ac/No_image_available.svg/480px-No_image_available.svg.png",
+            name: "Sunny Coffee",
+            address: "123 Nguyễn Huệ, Hà Nội",
+            phone: "+84987654321"
+        },
+        homefood: {
+            logo: "https://cdn-icons-png.flaticon.com/512/3595/3595455.png",
+            name: "HomeFood",
+            address: "99 Trần Phú, Hà Nội",
+            phone: "+84881234567"
+        },
+        store3: {
+            logo: "https://cdn-icons-png.flaticon.com/512/3595/3595455.png",
+            name: "HomeFood",
+            address: "Mai Sơn, Yên Mô",
+            phone: "+033333333"
+        }
+    };
+
+    function changeStore() {
+        const storeKey = document.getElementById("storeSelect").value;
+        const store = stores[storeKey];
+        document.querySelector(".logo").src = store.logo;
+        document.querySelector(".namestore").textContent = store.name;
+        document.querySelectorAll(".diachi")[0].innerHTML = `${store.address}<br>${store.phone}`;
+    }
+
+
+
+
+
+
         function formatNumber(num) {
             return num.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
         }
