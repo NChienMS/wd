@@ -53,6 +53,48 @@
     <!-- Swiper JS slider ảnh-->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
+<!-- Icon loa -->
+<div id="music-player" style="
+  background-color: #df4758;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+     position: fixed;
+      bottom: 20px;
+      left: 20px;
+      cursor: pointer;
+      color: #333;
+      z-index: 9999;
+">
+  <i id="music-icon" style="font-size: 20px; color:white;" class="fa-solid fa-volume-xmark"></i>
+</div>
+
+<!-- Âm thanh -->
+<audio id="background-music" loop>
+  <source src="music/dunglamtraitimanhdau.mp3" type="audio/mpeg">
+
+</audio>
+
+<script>
+  const musicIcon = document.getElementById("music-icon");
+  const music = document.getElementById("background-music");
+
+  let isPlaying = false;
+
+  document.getElementById("music-player").addEventListener("click", () => {
+    if (isPlaying) {
+      music.pause();
+      musicIcon.className = "fa-solid fa-volume-xmark";
+    } else {
+      music.play();
+      musicIcon.className = "fa-solid fa-volume-low";
+    }
+    isPlaying = !isPlaying;
+  });
+</script>
 
    
 <body id="home" onload="nhappass()" >
