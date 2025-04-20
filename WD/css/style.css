@@ -4166,7 +4166,9 @@ a:focus {
             border-right: 1px solid #df4758;
             border-bottom: 1px solid #df4758;
             border-left: 1px solid #df4758;
-            border-radius: 5px;
+            
+            border-bottom-left-radius: 5px;
+            border-bottom-right-radius: 5px;
         }
         #messages { 
             text-align: left; 
