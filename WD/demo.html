@@ -115,21 +115,42 @@
         #print-btn{
             display: none;
         }
+        .store-select {
+    padding: 6px 12px;
+    font-size: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #f8f8f8;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.store-select:hover {
+    background-color: #f0f0f0;
+}
+
+.store-select:focus {
+    border-color: #4CAF50;
+    outline: none;
+    background-color: #fff;
+}
+
     </style>
 </head>
 <body>
 
-    <div class="btn-container giua" style="margin-bottom: 10px;">
-    <label for="storeSelect" class="size">Chọn cửa hàng:</label>
-    <select id="storeSelect" onchange="changeStore()" style="padding: 5px; font-size: 12px;">
+<div class="btn-container giua" style="margin-bottom: 15px;">
+    <label for="storeSelect" class="size bold" style="margin-right: 8px;">🛒 Cửa hàng:</label>
+    <select id="storeSelect" onchange="changeStore()" class="store-select">
         <option value="adn">The ADN</option>
         <option value="sunny">Sunny Coffee</option>
         <option value="homefood">HomeFood</option>
-        <option value="store3">store3</option>
+        <option value="store3">Store 3</option>
     </select>
 </div>
 
-    
+
+
     <div class="ticket" id="ticket">
         
            <img style="width: 60px;" src="https://ariesvn8.wordpress.com/wp-content/uploads/2021/07/add.png" alt="Logo" class="logo">
