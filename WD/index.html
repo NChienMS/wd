@@ -530,8 +530,16 @@
                         <div style="width: 100%; background-color: rgba(255, 255, 255, 0.8); padding: 10px; 
                         border-top-left-radius: 10px;
                          border-top-right-radius: 10px; ">
-                            <div style="font-size: 25px; color: black">Thanh xuân như một tách trà, niềm vui sướng nhất chính là được  <span style="font-size: 25px;" id="namene3">'Ai Đó'</span> yêu mến ^^</div>
+                            <div style="font-size: 20px;display: none; color: black"><span style="font-size: 20px;" id="namene3">'Ai Đó'</span> gửi lời chúc tới cặp đôi</div>
                             <img src="images/blog/img-1.jpg" style="width: 100%">
+
+                            <div style="width: 100%;  text-align:left;">
+                                <i class="fa-solid fa-heart" style="color: #df4758;margin-left: 10px;">&ensp;<strong style="font-size:12px; color: black;"> 163 k</strong></i>
+                                <i class="fa-regular fa-comment" style=" margin-left: 16px;">&ensp;<span id="messageCounter" style="font-size:12px;color: black;"></span></i>
+
+                                
+                            </div>
+
                             <div id="messages" class="messages">Đang tải...</div>
                         <script type="text/javascript">var submitted=false;</script>
                         <iframe id="hidden_iframe" name="hidden_iframe" onload="if(submitted){ }" style="display: none;"></iframe>
@@ -564,10 +572,9 @@
                                                           height: 45px;
                                                           line-height: 45px;
                                                           font-size: 16px;
-                                                          font-size: 0.88889rem;
                                                           font-weight: 600;
                                                           color: #fff;
-                                                          padding: 0 15px;
+                                                          padding: 0 10px;
                                                           border: 0;
                                                           outline: 0;
                                                           text-transform: uppercase;
@@ -596,7 +603,7 @@
 
         <!-- story -->
         <section class="story-section section-padding"  id="story.">
-            <div class="counterId">
+            <div class="messageCounter">
 
                 chỗ này hiển thị gì đó
             </div> <!-- end container -->
@@ -638,7 +645,7 @@
                 <div class="row content">
                     <div class="col col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                         <p style="text-align: center; font-size: 24px;">Cảm ơn <span id="namene4">'Ai Đó'</span> đã dành thời gian quan tâm!</p>
-
+                       
                     </div>
                 </div> <!-- end row -->
             </div> <!-- end container -->
@@ -669,6 +676,7 @@
                 <div class="row">
                     <div class="col col-xs-12">
                         <h2>Mãi Mãi và Yêu thương</h2>
+
                         <span>- N. Chiến (The groom)</span>
                     </div>
                 </div> <!-- end row -->
@@ -728,19 +736,19 @@
             let messageCount = data.length;
             // Hiển thị số lượng tin nhắn
             let counterDiv = document.getElementById("messageCounter");
-            
+
             if (!counterDiv) {
                 counterDiv = document.createElement("div");
                 counterDiv.id = "messageCounter";
                 messagesDiv.parentNode.insertBefore(counterDiv, messagesDiv);
             }
 
-            counterDiv.innerHTML = `<strong>Số lượng tin nhắn: ${messageCount}</strong>`;
+            counterDiv.innerHTML = `<strong>${messageCount}</strong>`;
 
                     data.forEach(item => {
                         let div = document.createElement("div");
                         div.className = "message";
-                        div.innerHTML = `<strong style="font-size:22px;">${item.name}</strong> </br> ${item.message}`;
+                        div.innerHTML = `<strong style="font-size:20px;">${item.name}</strong> </br> ${item.message}`;
                         messagesDiv.appendChild(div);
                     });
                 });
