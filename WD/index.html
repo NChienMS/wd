@@ -644,14 +644,7 @@
 
 
         <!-- story -->
-        <section class="story-section section-padding"  id="story.">
-            <div class="messageCounter">
-
-                chỗ này hiển thị gì đó
-            </div> <!-- end container -->
-
-        </section>
-
+ 
 
 
         <!-- start events-section -->
@@ -687,7 +680,7 @@
                 <div class="row content">
                     <div class="col col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
                         <p style="text-align: center; font-size: 24px;">Cảm ơn <span id="namene4">'Ai Đó'</span> đã dành thời gian quan tâm!</p>
-                       
+                   
                     </div>
                 </div> <!-- end row -->
             </div> <!-- end container -->
@@ -803,50 +796,83 @@
 
 
 <!-- js nhập tên người dùng -->
+
 <script>
-   // Thay đổi tên người đăng nhập bằng lệnh  div.innerHTML = 'Demo thay đổi nội dung thẻ div bằng Javascript tại Freetuts'; khi nhấn oki
-    var div = document.getElementById('namene');
-    var div2 = document.getElementById('namene2');
-    var div3 = document.getElementById('namene3');
-    var div4 = document.getElementById('namene4');
-      // Sau khi load trang sẽ yêu cầu nhập mật khẩu
+  var div = document.getElementById('namene');
+  var div2 = document.getElementById('namene2');
+  var div3 = document.getElementById('namene3');
+  var div4 = document.getElementById('namene4');
+
+  // Hàm lấy tham số từ URL
+  function getQueryParam(param) {
+    const urlParams = new URLSearchParams(window.location.search);
+    return urlParams.get(param);
+  }
+
+  // Xử lý khi có hoặc không có tham số
+  window.onload = function () {
+    const guestName = getQueryParam('to');
+
+    if (guestName) {
+      // Nếu có tên trong URL, tự động hiển thị
+      const decodedName = decodeURIComponent(guestName.replace(/\+/g, ' '));
+      div.innerHTML = decodedName;
+      div2.innerHTML = decodedName;
+      div3.innerHTML = decodedName;
+      div4.innerHTML = decodedName;
+      document.getElementById("name").value = decodedName;
+
+      // Có thể hiển thị lời chào popup nhẹ (tuỳ chọn)
+      setTimeout(function () {
+        swal(
+          "Xin chào " + decodedName,
+         
+          "Cảm ơn vì sự ưu ái và quan tâm của " + decodedName + " ạ. Hy vọng được chào đón " + decodedName + " trong ngày vui này \n Chúc " + decodedName + " có những phút giây vui vẻ tại đây!"
+        );
+      }, 500);
+    } else {
+      // Nếu không có tên, chạy như cũ
+      nhappass();
+    }
+  };
+
   function nhappass() {
-                  swal({
-                  title: "Have a nice day ^^",
-                  text: "Thật vui khi dành được sự quan tâm của ...",
-                  type: "input",
-                  showCancelButton: false, // Có hiển thị nút cancel không(true = có)
-                  closeOnConfirm: false, // Có thể tắt popup khi nhấp Ok không (true = có)
-                  showLoaderOnConfirm: true, // Hiển thị loading khi nhấp vào nút Ok
-                  animation: "slide-from-top", // Như tên của nó, popup sẽ slide from top
-                  inputPlaceholder: "Tên tôi là..."
+    swal({
+        title: "Have a nice day ^^",
+        text: "Thật vui khi dành được sự quan tâm của ...",
+        type: "input",
+        showCancelButton: false,
+        closeOnConfirm: false,
+        showLoaderOnConfirm: true,
+        animation: "slide-from-top",
+        inputPlaceholder: "Tên tôi là..."
+      },
+      function (inputValue) {
+        var aido, ttname, ttname2;
+        if (inputValue == "") {
+          aido = "Ai đó";
+          ttname = "Xin chào 'Ai đó'";
+          ttname2 = "Cảm ơn vì sự ưu ái và quan tâm của 'Ai đó' \n Hy vọng được chào đón 'Ai đó' trong ngày vui này ạ \n Chúc 'Ai đó' có một ngày vui vẻ!";
+        } else {
+          aido = inputValue;
+          ttname = "Xin chào " + inputValue;
+          ttname2 = "Cảm ơn vì sự ưu ái và quan tâm của " + inputValue + " ạ \nHy vọng được chào đón " + inputValue + " trong ngày vui này ạ \n Chúc " + inputValue + " có những phút giây vui vẻ tại đây!";
+        }
 
-              },
-        function (inputValue) {
+        div.innerHTML = aido;
+        div2.innerHTML = aido;
+        div3.innerHTML = aido;
+        div4.innerHTML = aido;
+        document.getElementById("name").value = aido;
 
-                   //alert(inputValue);
-                    if (inputValue == ""){ 
-                      var ttname = "Xin chào 'Ai đó'"; 
-                      var ttname2 = "Cảm ơn vì sự ưu ái và quan tâm của 'Ai đó' \n Chúc 'Ai đó' có những phút giây vui vẻ tại đây!";
-                      var aido = "Ai đó";
-                    } else {
-                    var ttname = "Xin chào " + inputValue;
-                    var ttname2 = "Cảm ơn vì sự ưu ái và quan tâm của " + inputValue +" ạ \n Chúc "+ inputValue+ " có những phút giây vui vẻ tại đây!";
-                    var aido = inputValue;
-                    }
-                    div.innerHTML = aido;
-                    div2.innerHTML = aido;
-                    div3.innerHTML = aido;
-                    div4.innerHTML = aido;
-                    //alert(ttname);
-                    setTimeout(function() {
-                    swal(ttname, ttname2, "success");}, 500);
-                    // dòng dưới cho tên nhập ban đầu hiện luôn ở mục họ và tên
-                    document.getElementById("name").value =  aido;
-
-              });     
-      };
+        setTimeout(function () {
+          swal(ttname, ttname2, "success");
+        }, 500);
+      }
+    );
+  }
 </script>
+
 
 
     <script>
@@ -875,5 +901,7 @@
             transition: "classic" // Classic transition
         });
     </script>
+
+
 
 </html>
