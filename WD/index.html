@@ -677,9 +677,11 @@
 
                 <!-- start form gửi thông tin -->
 
-                <div class="row content">
+                <div class="row content" style="color:black !important;">
                     <div class="col col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                        <p style="text-align: center; font-size: 24px;">Cảm ơn <span id="namene4">'Ai Đó'</span> đã dành thời gian quan tâm!</p>
+                        <p style="color:black !important;">Từ tận đáy lòng, chúng Con/Cháu/Em xin gửi lời cảm ơn chân thành đến <span id="namene5">'Ai Đó'</span>  vì đã ghé thăm và dành thời gian cho thiệp cưới này.</p>
+                        <p style="color:black !important;">Kính chúc <span id="namene4">'Ai Đó'</span> một ngày vui vẻ, hạnh phúc. Đồng thời rất mong có được sự tham dự của <span id="namene6">'Ai Đó'</span>. </p>
+                        <p style="text-align:right;">- N. Chiến -</p>
                    
                     </div>
                 </div> <!-- end row -->
@@ -802,6 +804,8 @@
   var div2 = document.getElementById('namene2');
   var div3 = document.getElementById('namene3');
   var div4 = document.getElementById('namene4');
+  var div5 = document.getElementById('namene5');
+  var div6 = document.getElementById('namene6');
 
   // Hàm lấy tham số từ URL
   function getQueryParam(param) {
@@ -820,6 +824,8 @@
       div2.innerHTML = decodedName;
       div3.innerHTML = decodedName;
       div4.innerHTML = decodedName;
+      div5.innerHTML = decodedName;
+      div6.innerHTML = decodedName;
       document.getElementById("name").value = decodedName;
 
       // Có thể hiển thị lời chào popup nhẹ (tuỳ chọn)
