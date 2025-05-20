@@ -5,15 +5,13 @@
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
 
-          <!--SLIDER ẢNH -->
+    <!--SLIDER ẢNH -->
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
-    <!-- Swiper CSS -->
+    <!-- Swiper CSS khi mở ảnh-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper.css">
 
     <!-- Meta Tags -->
     <meta charset="utf-8">
-
-
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
    
@@ -32,7 +30,7 @@
     <!-- Icon fonts -->
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/flaticon.css" rel="stylesheet">
-<script src="https://kit.fontawesome.com/7e83b73089.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/7e83b73089.js" crossorigin="anonymous"></script>
 
     <!--css cho form nhập tên-->
     <link href="css/sweetalert.css" rel="stylesheet">
@@ -77,7 +75,6 @@
 <!-- Âm thanh -->
 <audio id="background-music" loop>
   <source src="music/dunglamtraitimanhdau.mp3" type="audio/mpeg">
-
 </audio>
 
 <script>
@@ -113,10 +110,10 @@
     <!-- #popup khi gửi thông tin -->
     <div class="popup" id="popup" style="display:none;">
         <div class="popup-inner">
-            <h3>Cảm ơn <span id="namene">'Ai Đó'</span> đã gửi lời lời chúc thân thương</h3>
+            <p>Cảm ơn <span id="namene">'Ai Đó'</span> đã gửi lời lời chúc!</p>
             
-            <p>Niềm vui nhân 10 lần khi <span id="namene2">'Ai Đó'</span> đến tham dự lễ thành hôm của chúng em ạ</p>
-           <input type="button" name="Close" class="popup-send" style=" background-color: #df4758;" onclick="popupClose();" value="Ồ Kế">   
+            <p>Chúc <span id="namene2">'Ai Đó'</span> một ngày vui vẻ, hạnh phúc</p>
+           <input type="button" name="Close" class="popup-send" style="margin-top: 50px;  background-color: #df4758;" onclick="popupClose();" value="Ồ Kế">   
         </div>
     </div>
 
@@ -590,7 +587,7 @@
                         <div style="color: #df4758;height: 60px; font-weight: bold; width: 100%; padding-top: 15px;">
 
 
-                        ------------------ LƯU BÚT TẠI ĐÂY ------------------</div>
+                        --------------- LƯU BÚT TẠI ĐÂY ---------------</div>
                         <form onsubmit="submitted=true;" id="chucForm" target="hidden_iframe" class="form validate-rsvp-form row">
                             <div class="form-detail">
                                 <div class="">
@@ -828,7 +825,7 @@
       div4.innerHTML = decodedName;
       div5.innerHTML = decodedName;
       div6.innerHTML = decodedName;
-      document.getElementById("name").value = decodedName;
+      // Trường nhập tên tự nhận theo tên trên ủrl document.getElementById("name").value = decodedName;
 
       // Có thể hiển thị lời chào popup nhẹ (tuỳ chọn)
       setTimeout(function () {
