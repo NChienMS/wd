@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Upload ảnh ẩn danh</title>
+  <style>
+    body { font-family: sans-serif; text-align: center; padding: 30px; }
+    input, button { margin-top: 15px; }
+    #status { margin-top: 20px; font-weight: bold; }
+  </style>
+</head>
+<body>
+  <h2>📤 Gửi ảnh ẩn danh</h2>
+  <input type="file" id="fileInput" accept="image/*"><br>
+  <button onclick="upload()">Tải ảnh lên</button>
+  <p id="status"></p>
+
+  <script>
+    async function upload() {
+      const file = document.getElementById('fileInput').files[0];
+      const status = document.getElementById('status');
+      if (!file) return alert("Vui lòng chọn ảnh.");
+
+      status.textContent = "⏳ Đang tải ảnh lên...";
+
+      const reader = new FileReader();
+      reader.onload = async function () {
+        const base64Data = reader.result.split(',')[1];
+        const form = new FormData();
+        form.append("filedata", base64Data);
+        form.append("filename", file.name);
+        form.append("mimetype", file.type);
+
+        try {
+          const response = await fetch("https://script.google.com/macros/s/AKfycby450Qn092USmsZG2I4lAial-A4YpMeNuNusKATzfwEFafyIJ3_i-_D9kms7ucOS4nW2w/exec", {
+            method: "POST",
+            body: form
+          });
+          const text = await response.text();
+          status.textContent = "✅ " + text;
+        } catch (err) {
+          status.textContent = "❌ Lỗi gửi ảnh: " + err.message;
+        }
+      };
+      reader.readAsDataURL(file);
+    }
+  </script>
+</body>
+</html>
