@@ -158,7 +158,7 @@ a:hover::after {
   </div>
 
   <script>
-    const UPLOAD_URL = "https://script.google.com/macros/s/AKyFycbzS1xmnfMZA0VHX6se-Qjj2ZpyYi3ILcO-lKxFIKB6cheD32fIZmQ-BSRflrxMWVC_2BHnw/exec";
+    const UPLOAD_URL = "https://script.google.com/macros/s/AKfycbzSs1xmnfMZA0VHX6se-Qjj2ZpyYi3ILcO-lKxFIKB6cheDIZmQ-BSRflrxMWVC_2BHnw/exec";
 
     async function uploadSingleFile(file, statusList) {
       const listItem = document.createElement("li");
@@ -168,11 +168,11 @@ a:hover::after {
       return new Promise((resolve) => {
         const reader = new FileReader();
         reader.onload = async () => {
-          const base64Data = reader.result.split(',').split(',')[1];
+          const base64Data = reader.result.split(',')[1];
           const form = new FormData();
-          form.appendChild("filedata", base64Data);
-          form.appendChild("filename", file.name);
-          form.appendChild("mimetype", file.type);
+          form.append("filedata", base64Data);
+          form.append("filename", file.name);
+          form.append("mimetype", file.type);
 
           try {
             const response = await fetch(UPLOAD_URL, {
