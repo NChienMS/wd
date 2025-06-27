@@ -32,6 +32,28 @@ URL:            http://themeforest.net/user/themexriver
 /*--------------------------------------------------------------
 #0.1    Theme Reset Style
 --------------------------------------------------------------*/
+.calendar table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .calendar th, .calendar td {
+        padding: 8px;
+        text-align: center;
+        font-size: 16px;
+    }
+    .calendar .lunar {
+        font-size: 9px;
+        display: block;
+        margin-top: -3px;
+    }
+    .calendar .active {
+        background-color: #df4758;
+        color: white;
+        border-radius: 50%;
+    }
+    .calendar .active .lunar {
+        color: white;
+    }
 html {
   font-size: 18px;
 }
@@ -4207,13 +4229,13 @@ lịch
 
         .calendar {
             border: 2px solid #df4758;
-            padding: 20px;
+            padding: 10px 20px 15px 20px;
             background: white;
             text-align: center;
             border-radius: 10px;
             width: 360px;
             height: 401px;
-            opacity: 0.7;
+            opacity: 0.9;
         }
         .calendar h2 {
             margin-bottom: 10px;
@@ -4242,6 +4264,9 @@ lịch
             background: #f5ccd6;
             border-radius: 50%;
             color: white;
+            font-weight: bold;
+            background-color: #df4758;
+
         }
 
  /* popup thông báo gửi tin tới excel */
