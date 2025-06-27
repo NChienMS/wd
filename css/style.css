@@ -1828,11 +1828,11 @@ a:focus {
 }
 
 .hero .wedding-announcement .save-the-date {
-  width: 350px;
-  height: 350px;
+  width: 400px;
+  height: 400px;
   position: absolute;
   left: 50%;
-  bottom: -350px;
+  bottom: -400px;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
   -o-transform: translateX(-50%);
@@ -1858,8 +1858,8 @@ a:focus {
 
 @media (max-width: 991px) {
   .hero .wedding-announcement .save-the-date {
-    width: 270px;
-    height: 270px;
+    width: 300px;
+    height: 300px;
   }
 }
 
@@ -1927,7 +1927,7 @@ a:focus {
 }
 
 .hero .wedding-announcement .save-the-date .date {
-  font-size: 20px;
+  font-size: 50px;
   font-size: 1.11111rem;
   color: #fff;
   text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.6);
@@ -1948,7 +1948,7 @@ a:focus {
 }
 
 .hero .wedding-announcement .popup-save-the-date {
-  bottom: -185px;
+  bottom: -220px;
   opacity: 1;
   z-index: 50;
 }
