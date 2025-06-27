@@ -2372,7 +2372,7 @@ a:focus {
 
 .count-down-section:before {
   content: "";
-  background-image: url('https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02156-1.jpg');
+  background-image: url('../images/slider/slide-2.jpg');
   filter: blur(2px);
   background-size: cover;
     background-position: center; /* Căn giữa hình nền */
