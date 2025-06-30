@@ -35,7 +35,7 @@
     <!--css cho form nhập tên-->
     <link href="css/sweetalert.css" rel="stylesheet">
 
-    <!-- Bootstrap core CSS thanh logo-->
+    <!-- Bootstrap core CSS: thanh logo-->
     <link href="css/bootstrap.min.css" rel="stylesheet">
 
     <!-- Plugins for this template -->
@@ -54,6 +54,23 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
 <!-- Icon loa -->
+
+
+
+
+   
+<body id="home" onload="nhappass()"  >
+
+    <!-- #Load khi nhấn gửi thông tin -->
+    <div class="overlay2" id="overlay2" style="display:none;"></div>
+    <div class="loader" id="loader" style="display:none;">
+            <div class="inner">
+                <span class="icon"><i class="fi flaticon-two"></i></span>
+            </div>
+    </div>
+
+
+  <!-- #Nhạc trên web -->
 <div id="music-player" style="
   background-color: #df4758;
   width: 40px;
@@ -94,29 +111,20 @@
     isPlaying = !isPlaying;
   });
 </script>
+  <!-- #Nhạc trên web  END-->
 
-   
-<body id="home" onload="nhappass()" >
-
-    <!-- #Load khi nhấn gửi thông tin -->
-    <div class="overlay2" id="overlay2" style="display:none;"></div>
-    <div class="loader" id="loader" style="display:none;">
-            <div class="inner">
-                <span class="icon"><i class="fi flaticon-two"></i></span>
-            </div>
-    </div>
+<!-- #popup khi gửi thông tin -->
 
 
-    <!-- #popup khi gửi thông tin -->
-    <div class="popup" id="popup" style="display:none;">
-        <div class="popup-inner">
-            <p>Cảm ơn <span id="namene">'Ai Đó'</span> đã gửi lời lời chúc!.  
-            
+<div class="popup" id="popup" style="display:none;">
+    <div class="popup-inner">
+        <h3 style="color:black;"> ❤️ Lời chúc đã được cập nhật! ❤️</h3>
+        <hr>
+        <p>Cảm ơn <span id="namene">'Ai Đó'</span> đã gửi lời lời chúc!.  <br>
             Chúc <span id="namene2">'Ai Đó'</span> một ngày vui vẻ, hạnh phúc</p>
-           <input type="button" name="Close" class="popup-send" style="margin-top: 50px;  background-color: #df4758;" onclick="popupClose();" value="OK">   
-        </div>
+        <input type="button" name="Close" class="popup-send" onclick="popupClose();" value="OK">   
     </div>
-
+</div>
 
     <!-- start page-wrapper -->
     <div class="page-wrapper">
@@ -254,7 +262,7 @@
                                     <span class="signature">Nguyễn Chiến</span>
                                     <p style="font-size: 14px;">Chú Rể</p>
                                     <p>
-                                        16/04/1998 <br>
+                                        16/04/1998 </br>
                                     Đứa con rơi của Xuân Diệu. Chịu khó, thông minh, lanh lợi là các đức tính không hề có ở chú rể nhưng bù lại anh lại có tính thích trọc chó. </br>
                                     Nhược điểm thì không có, Ưu điểm chính là không có nhược điểm ^^ 
                                    
@@ -600,7 +608,7 @@
 
                             <div id="messages" class="messages">Đang tải...</div>
                         <script type="text/javascript">var submitted=false;</script>
-                        <iframe id="hidden_iframe" name="hidden_iframe" onload="if(submitted){ }" style="display: none;"></iframe>
+  <!-- 30/06 <iframe id="hidden_iframe" name="hidden_iframe" onload="if(submitted){ }" style="display: none;"></iframe>-->
                         <div style="color: #df4758;height: 60px; font-weight: bold; width: 100%; padding-top: 15px;">
 
 
@@ -768,8 +776,6 @@
     <!-- end of page-wrapper -->
 
 
-<!-- partial -->
-
     <!-- All JavaScript files
     ================================================== -->
     <script src="js/jquery.min.js"></script>
@@ -780,8 +786,9 @@
     <!-- Custom script for this template -->
     <script src="js/script.js"></script>
 
-      <!-- guweri tin lên sheet tên file excel wd2025 -->
-    <script>
+
+<script>
+// Gửi trường thông tin trong mục gửi lời chúc  
         const sheetURL = "https://script.google.com/macros/s/AKfycbzgspeIDh_DxPeQp7qU7N55unmjM5UDmRkZbtD29gTp60fgeIs6unEYOSNffqYECKEG/exec";
         
         document.getElementById("chucForm").addEventListener("submit", function(event) {
@@ -804,7 +811,8 @@
                 loadMessages();
             });
         });
-        
+
+// Lấy thông tin lời chúc hiển thị lên web
         function loadMessages() {
             fetch(sheetURL + "?action=get")
                 .then(response => response.json())
@@ -835,14 +843,8 @@
         }
         
         loadMessages();
-    </script>
-</body>
 
-
-
-<!-- js nhập tên người dùng -->
-
-<script>
+// Quản lý tên khách mời
   var div = document.getElementById('namene');
   var div2 = document.getElementById('namene2');
   var div3 = document.getElementById('namene3');
@@ -850,13 +852,13 @@
   var div5 = document.getElementById('namene5');
   var div6 = document.getElementById('namene6');
 
-  // Hàm lấy tham số từ URL
+// Hàm lấy tham số từ URL (lấy tên khách trên địa chỉ nếu địa chỉ chứa ?to=...)
   function getQueryParam(param) {
     const urlParams = new URLSearchParams(window.location.search);
     return urlParams.get(param);
   }
 
-  // Xử lý khi có hoặc không có tham số
+// Xử lý khi có hoặc không có tham số
   window.onload = function () {
     const guestName = getQueryParam('to');
 
@@ -885,6 +887,7 @@
     }
   };
 
+// Nếu không có tên, chạy như cũ . chạy cho người dùng tự nhập tên
   function nhappass() {
     swal({
         title: "Have a nice day ^^",
@@ -920,13 +923,8 @@
       }
     );
   }
-</script>
 
-
-
-    <script>
-
-        // trình xem ảnh silder
+// trình xem ảnh silder
         const swiper = new Swiper('.swiper', {
             effect: 'coverflow',
             grabCursor: true,
@@ -942,15 +940,13 @@
             },
         });
 
-        // Khởi tạo Fancybox
+// Khởi tạo Fancybox
         Fancybox.bind("[data-fancybox]", {
             Thumbs: {
                 type: "modern" // Modern thumbnails
             },
             transition: "classic" // Classic transition
         });
-    </script>
-
-
-
+</script>
+</body>
 </html>
