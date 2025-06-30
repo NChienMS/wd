@@ -4306,11 +4306,11 @@ lịch
           }
               
           .popup .popup-inner {
-          position: relative;
-          padding: 20px 0;
+          padding: 20px;
           text-align: center;
           font-size: 18px;
           font-family:arial;
+
           }
               
           .popup .popup-inner input.s3-btn-close {
@@ -4406,9 +4406,9 @@ lịch
 .popup-send{
   background-color: #df4758;
   height: 45px;
+  width: 120px;
   line-height: 45px;
   font-size: 16px;
-  font-size: 0.88889rem;
   font-weight: 600;
   color: #fff;
   padding: 0 15px;
@@ -4420,11 +4420,11 @@ lịch
   -o-border-radius: 3px;
   -ms-border-radius: 3px;
   border-radius: 3px;
-  -webkit-transition: all 0.3s;
-  -moz-transition: all 0.3s;
-  -o-transition: all 0.3s;
-  -ms-transition: all 0.3s;
-  transition: all 0.3s;" onclick="popupClose();" value="Ồ Kế">   
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  cursor: pointer;  
 }
 
 
