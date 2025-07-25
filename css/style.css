@@ -32,28 +32,7 @@ URL:            http://themeforest.net/user/themexriver
 /*--------------------------------------------------------------
 #0.1    Theme Reset Style
 --------------------------------------------------------------*/
-.calendar table {
-        width: 100%;
-        border-collapse: collapse;
-    }
-    .calendar th, .calendar td {
-        padding: 8px;
-        text-align: center;
-        font-size: 16px;
-    }
-    .calendar .lunar {
-        font-size: 9px;
-        display: block;
-        margin-top: -3px;
-    }
-    .calendar .active {
-        background-color: #df4758;
-        color: white;
-        border-radius: 50%;
-    }
-    .calendar .active .lunar {
-        color: white;
-    }
+
 html {
   font-size: 18px;
 }
@@ -1957,6 +1936,10 @@ a:focus {
   position: relative;
 }
 
+.col-md-offset-1{
+  margin-left: 0 !important;
+  width: 100% !important;
+}
 
 .count-down-section:before {
   content: "";
@@ -2016,20 +1999,9 @@ a:focus {
 
 
 
-.count-down-section .count-down-clock {
-  margin-top: 13px;
-}
-
-@media (max-width: 991px) {
-  .count-down-section .count-down-clock {
-    margin-top: 35px;
-  }
-}
-
 .count-down-section #clock {
   color: #df4758;
   overflow: hidden;
-
 }
 
 .count-down-section #clock > div {
@@ -2047,54 +2019,48 @@ a:focus {
   border: 5px solid rgba(0, 0, 0, 0.1);
 }
 
-@media (max-width: 767px) {
-  .count-down-section #clock > div {
-  width: 100px;
-  height: 100px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -o-border-radius: 50%;
-  -ms-border-radius: 50%;
-  border-radius: 50%;
-  }
 
-}
 
+ 
 .count-down-section #clock > div + div {
-  margin-left: 2%;
-}
+  margin-left: 10px;
+}/*---làm cho các hình tròn cách đều nhau----*/
 
-@media (max-width: 346px) {
-  .count-down-section #clock > div + div {
-    margin: 0;
-  }
-    .count-down-section #clock {
-  width: 280px;
-  margin-left: 20%;
+#clock{
+  margin-top: 20px;
+  width: 430px;
+
 }
-.count-down-section h2 > span {
-    font-size: 20px;
-    font-size: 1.38889rem;
-  }
+.count-down-clock{
+  width: 100%;
+  display: flex;
+    justify-content: center; /* căn ngang */
+
 }
 @media (max-width: 458px) {
   .count-down-section #clock > div + div {
-    margin: 0;
+    margin: 0 auto;
   }
     .count-down-section #clock {
-  width: 280px;
-  margin-left: 20%;
+  width: 210px;
+
 }
+.count-down-clock{
+  display: flex;
+    justify-content: center; /* căn ngang */
+
+}
+
 .count-down-section h2 > span {
     font-size: 20px;
     font-size: 1.38889rem;
   }
-}
+}/*---làm cho các hình tròn xuống dòng khi màn hình nhỏ----*/
 
 .count-down-section #clock > div:nth-child(2),
 .count-down-section #clock > div:nth-child(4) {
   margin: 0 0 10px 10px;
-}
+}/*---làm cho các hình tròn xuống cách đều nhau khi xuống dòng----*/
 
 .count-down-section #clock .box > div {
   font-size: 40px;
@@ -2116,12 +2082,6 @@ a:focus {
     font-size: 1.66667rem;
     line-height: 1.3em;
   }
-}
-
-.count-down-section #clock .box span {
-  font-size: 14px;
-  font-size: 0.77778rem;
-  text-transform: uppercase;
 }
 
 /*--------------------------------------------------------------
@@ -3616,6 +3576,7 @@ a:focus {
             }
         }
         @media (max-width: 480px) {
+
             .swiper {
             }
             .swiper-slide img {
@@ -3674,51 +3635,7 @@ a:focus {
 
 
 
-/*!
-lịch
- */
 
-        .calendar {
-            border: 2px solid #df4758;
-            padding: 10px 20px 15px 20px;
-            background: white;
-            text-align: center;
-            border-radius: 10px;
-            width: 360px;
-            height: 401px;
-            opacity: 0.9;
-        }
-        .calendar h2 {
-            margin-bottom: 10px;
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        th{
-            border-top: 1px solid #f5ccd6 !important;
-            border-bottom: 1px solid #f5ccd6 !important;
-
-        }
-        th, td {
-            width: 14%;
-            height: 14%;
-            padding: 10px;
-            text-align: center;
-            border: none;
-        }
-        td{
-            width: 30px;
-            height: 30px;
-        }
-        td.active {
-            background: #f5ccd6;
-            border-radius: 50%;
-            color: white;
-            font-weight: bold;
-            background-color: #df4758;
-
-        }
 
  /* popup thông báo gửi tin tới excel */
               
@@ -3998,9 +3915,88 @@ lịch
   font-weight: 500;
 }
 
-/* ddijnh dajng icon map và đồng hồ ở sự kiện */
+/* định dạng icon map và đồng hồ ở sự kiện */
 .fa-story {
   color: #df4758;
   margin-right: 10px;
 }
+
+/* lịch */
+.calendar_full {
+  display: flex;
+  justify-content: center; /* Căn giữa ngang */
+  align-items: center;     /* Căn giữa dọc nếu cần */
+  width: 100%;
+  margin: 20px 0;
+  text-align: center;
+}
+
+
+
+.calendar table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .calendar th, .calendar td {
+        padding: 8px;
+        text-align: center;
+        font-size: 16px;
+    }
+    .calendar .lunar {
+        font-size: 9px;
+        display: block;
+        margin-top: -3px;
+    }
+    .calendar .active {
+        background-color: #df4758;
+        color: white;
+        border-radius: 50%;
+    }
+    .calendar .active .lunar {
+        color: white;
+    }
+
+        .calendar {
+            display: inline-block;
+  margin: 0 auto;
+            border: 2px solid #df4758;
+            padding: 10px 20px 15px 20px;
+            background: white;
+            text-align: center;
+            border-radius: 10px;
+            width: 360px;
+            height: 401px;
+            opacity: 0.9;
+        }
+        .calendar h2 {
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th{
+            border-top: 1px solid #f5ccd6 !important;
+            border-bottom: 1px solid #f5ccd6 !important;
+
+        }
+        th, td {
+            width: 14%;
+            height: 14%;
+            padding: 10px;
+            text-align: center;
+            border: none;
+        }
+        td{
+            width: 30px;
+            height: 30px;
+        }
+        td.active {
+            background: #f5ccd6;
+            border-radius: 50%;
+            color: white;
+            font-weight: bold;
+            background-color: #df4758;
+
+        }
 
