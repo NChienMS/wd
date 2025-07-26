@@ -243,6 +243,94 @@
 
         <!-- start wedding-couple-section -->
         <section class="wedding-couple-section section-padding" id="couple">
+
+
+
+
+    <!-- new start -->
+  <div class="herocapdoi">
+    <!-- Backgrounds -->
+    <div id="bg1" class="bg-layer active" style="background-image: url('https://ariesvn8.wordpress.com/wp-content/uploads/2025/07/img2.jpg');"></div>
+    <div id="bg2" class="bg-layer" style="background-image: url('https://ariesvn8.wordpress.com/wp-content/uploads/2025/07/img1.jpg');"></div>
+
+    <!-- Character Info -->
+    <div class="contenthero" id="contenthero">
+      <!-- Goku -->
+      <div class="character-info active" id="info-goku">
+        <div class="character-name-tt">Con Gà</div>
+        <div class="character-name">Goku</div>
+        <div class="character-desc">Goku là chiến binh Saiyan huyền thoại, luôn chiến đấu để bảo vệ Trái Đất.</div>
+        <div class="character-contact">
+            <a style="font-size:14px" href="tel:0337260123"> <i class="fa-solid fa-phone" style="color: #ffffff;" aria-hidden="true"></i></a>
+            <a style="font-size:14px" href="https://www.facebook.com/nchienms"> <i class="fa-brands fa-facebook-f" style="color: #ffffff;" aria-hidden="true"></i></a>
+        </div>
+      </div>
+
+      <!-- Vegeta -->
+      <div class="character-info" id="info-vegeta">
+        <div class="character-name-tt">Con Vịt</div>
+        <div class="character-name">Vegeta</div>
+        <div class="character-desc">Vegeta là hoàng tử Saiyan mạnh mẽ, luôn cố gắng vượt qua Goku trong mọi trận chiến.</div>
+        <div class="character-contact">
+          <a style="font-size:14px" href="tel:0337260123"> <i class="fa-solid fa-phone" style="color: #ffffff;" aria-hidden="true"></i></a>
+          <a style="font-size:14px" href="https://www.facebook.com/nchienms"> <i class="fa-brands fa-facebook-f" style="color: #ffffff;" aria-hidden="true"></i></a>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thumbnails -->
+    <div class="thumbnails">
+      <div id="thumb-goku" class="thumb active" style="background-image: url('https://ariesvn8.wordpress.com/wp-content/uploads/2025/07/img2.jpg')" onclick="changeCharacter('goku')">
+        Goku
+      </div>
+      <div id="thumb-vegeta" class="thumb" style="background-image: url('https://ariesvn8.wordpress.com/wp-content/uploads/2025/07/img1.jpg')" onclick="changeCharacter('vegeta')">
+        Vegeta
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let current = "goku";
+
+    function changeCharacter(character) {
+      if (character === current) return;
+
+      // Hide previous info & background
+      document.getElementById(`info-${current}`).classList.remove('active');
+      document.getElementById(`bg${current === 'goku' ? 1 : 2}`).classList.remove('active');
+      document.getElementById(`thumb-${current}`).classList.remove('active');
+
+      // Show new info & background
+      document.getElementById(`info-${character}`).classList.add('active');
+      document.getElementById(`bg${character === 'goku' ? 1 : 2}`).classList.add('active');
+      document.getElementById(`thumb-${character}`).classList.add('active');
+
+      current = character;
+    }
+  </script>
+
+
+
+
+      <!-- end new -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
             <div class="container">
                 <div class="row">
                     <div class="col col-xs-12">
