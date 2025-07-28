@@ -841,27 +841,38 @@
   updateCountdown();
 
 // load gif khi kéo tới
-    document.addEventListener("DOMContentLoaded", function () {
-    const lazyImages = document.querySelectorAll(".lazy-img");
+document.addEventListener("DOMContentLoaded", function () {
+  const lazyImages = document.querySelectorAll(".lazy-img");
 
-    const observer = new IntersectionObserver((entries, obs) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const img = entry.target;
-          img.src = img.dataset.src;
-          img.style.opacity = 1;
-          obs.unobserve(img); // Ngừng theo dõi sau khi đã tải
-        }
-      });
+  // Fallback: nếu không hỗ trợ hoặc đang chạy trên iOS
+  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+  const supportIO = 'IntersectionObserver' in window;
+
+  if (!supportIO || isIOS) {
+    lazyImages.forEach(img => {
+      img.src = img.dataset.src;
+      img.style.opacity = 1;
     });
+    return;
+  }
 
-    lazyImages.forEach(img => observer.observe(img));
+  // Với trình duyệt bình thường
+  const observer = new IntersectionObserver((entries, obs) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        const img = entry.target;
+        img.src = img.dataset.src;
+        img.style.opacity = 1;
+        obs.unobserve(img);
+      }
+    });
+  }, {
+    rootMargin: "100px",
+    threshold: 0.1
   });
-     const observer = new IntersectionObserver(callback, {
-  rootMargin: '200px 0px 200px 0px',
-  threshold: 0.1
-});
 
+  lazyImages.forEach(img => observer.observe(img));
+});
 
 // trang tự cuojn lên đàu khi tải xong
   if ('scrollRestoration' in history) {
