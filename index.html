@@ -3,8 +3,6 @@
 
 <!-- Mirrored from irsfoundation.com/tf/templates/wedding/lovely-wedding/lovely-wedding/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 May 2018 09:07:16 GMT -->
 <head>
-
-
  <!-- Thông tin chia sẻ-->
 <meta property="og:title" content="N Chiến ❤️ Thu Yến - Thiệp mời tham dự" />
 <meta property="og:description" content="Chỉ có hai nửa quả cam cắt từ một quả mới thật sự khớp với nhau. Cảm ơn vì đã là một phần của hành trình yêu thương này, và rất mong được đón bạn trong ngày trọng đại." />
@@ -18,56 +16,41 @@
      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.css">
     <!-- Swiper CSS khi mở ảnh-->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper.css">
-
     <!-- Meta Tags -->
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-   
-    
     <!-- js nhập tên lúc load xong-->
     <script src='js/sweetalert-dev.js'></script>
-
     <!-- Page Title -->
     <title>ChYến- Lovly Wedding </title>
-
     <!-- biểu tượng trang -->
     <link href="images/favicon/favicon.png" rel="shortcut icon" type="image/x-icon">
     <!-- ảnh chia sẻ (để ảnh dạng link http:// đê tích hợp trên zalo) -->
     <meta property="og:image"content="images/favicon/favicon.png">
-
     <!-- Icon fonts -->
     <link href="css/font-awesome.min.css" rel="stylesheet">
     <link href="css/flaticon.css" rel="stylesheet">
     <script src="https://kit.fontawesome.com/7e83b73089.js" crossorigin="anonymous"></script>
-
     <!--css cho form nhập tên-->
     <link href="css/sweetalert.css" rel="stylesheet">
-
     <!-- Bootstrap core CSS: thanh logo-->
     <link href="css/bootstrap.min.css" rel="stylesheet">
-
     <!-- Plugins for this template -->
     <link href="css/owl.theme.css" rel="stylesheet">
     <!-- chữ với slider trên -->
     <link href="css/slick.css" rel="stylesheet">
     <link href="css/slick-theme.css" rel="stylesheet">
-
-
     <!-- Custom styles for this template -->
     <link href="css/style.css" rel="stylesheet">
-
     <!-- Fancybox JS trình xem ảnh-->
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <!-- Swiper JS slider ảnh-->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
 </head>
-<!-- Icon loa -->
 
 
 
-
-   
 <body id="home" onload="nhappass()"  >
 
     <!-- #Load khi nhấn gửi thông tin -->
@@ -78,65 +61,47 @@
             </div>
     </div>
 
+    <!-- icon nhạc -->
+    <div id="music-player" class="music-playercss" >
+        <i id="music-icon" style="font-size: 20px; color:white;" class="fa-solid fa-volume-xmark"></i>
+    </div>
 
-  <!-- #Nhạc trên web -->
-<div id="music-player" style="
-  background-color: #df4758;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-     position: fixed;
-      bottom: 20px;
-      right: 20px;
-      cursor: pointer;
-      color: #333;
-      z-index: 9999;
-">
-  <i id="music-icon" style="font-size: 20px; color:white;" class="fa-solid fa-volume-xmark"></i>
-</div>
+    <!-- Âm thanh -->
+    <audio id="background-music" loop>
+      <source src="music/dunglamtraitimanhdau.mp3" type="audio/mpeg">
+    </audio>
 
-<!-- Âm thanh -->
-<audio id="background-music" loop>
-  <source src="music/dunglamtraitimanhdau.mp3" type="audio/mpeg">
-</audio>
+    <script>
+      const musicIcon = document.getElementById("music-icon");
+      const music = document.getElementById("background-music");
 
-<script>
-  const musicIcon = document.getElementById("music-icon");
-  const music = document.getElementById("background-music");
+      let isPlaying = false;
 
-  let isPlaying = false;
+      document.getElementById("music-player").addEventListener("click", () => {
+        if (isPlaying) {
+          music.pause();
+          musicIcon.className = "fa-solid fa-volume-xmark";
+        } else {
+          music.play();
+          musicIcon.className = "fa-solid fa-volume-low";
+        }
+        isPlaying = !isPlaying;
+      });
+    </script>
 
-  document.getElementById("music-player").addEventListener("click", () => {
-    if (isPlaying) {
-      music.pause();
-      musicIcon.className = "fa-solid fa-volume-xmark";
-    } else {
-      music.play();
-      musicIcon.className = "fa-solid fa-volume-low";
-    }
-    isPlaying = !isPlaying;
-  });
-</script>
-  <!-- #Nhạc trên web  END-->
 
 <!-- #popup khi gửi thông tin -->
 
 
-<div class="popup" id="popup" style="display:none;">
-    <div class="popup-inner">
-        <h4 style="color:black;"> ❤️ Lời chúc đã được cập nhật! ❤️</h4>
-        <hr>
-        <p>Cảm ơn <span id="namene">'Ai Đó'</span> đã gửi lời lời chúc!.  <br>
-            Chúc <span id="namene2">'Ai Đó'</span> một ngày vui vẻ, hạnh phúc</p>
-        <input type="button" name="Close" class="popup-send" onclick="popupClose();" value="OK">   
+    <div class="popup" id="popup" style="display:none;">
+        <div class="popup-inner">
+            <h4 style="color:black;"> ❤️ Lời chúc đã được cập nhật! ❤️</h4>
+            <hr>
+            <p>Cảm ơn <span id="namene">'Ai Đó'</span> đã gửi lời lời chúc!.  <br>
+                Chúc <span id="namene2">'Ai Đó'</span> một ngày vui vẻ, hạnh phúc</p>
+            <input type="button" name="Close" class="popup-send" onclick="popupClose();" value="OK">   
+        </div>
     </div>
-</div>
-
-    <!-- start page-wrapper -->
-    <div class="page-wrapper">
 
        <!-- ICON XOAY -->
         <div class="preloader">
@@ -145,14 +110,8 @@
             </div>
         </div>
      
-
-
- 
-
-
         <!-- home-->
         <section class="hero">
-
             <!-- ẢNH ĐẦU TRANG  -->
             <div class="hero-slider hero-slider-s1">
                 <div class="slide-item">
@@ -240,14 +199,11 @@
         </header>
         <!-- end of header -->
 
+       
 
-        <!-- start wedding-couple-section -->
-        <section class="wedding-couple-section" id="couple">
+ <!-- cặp đôi -->
+<section class="wedding-couple-section" id="couple">
 
-
-
-
-    <!-- new start -->
   <div class="herocapdoi">
     <!-- Backgrounds -->
     <div id="bg1" class="bg-layer active" style="background-image: url('https://ariesvn8.wordpress.com/wp-content/uploads/2025/07/img2.jpg');"></div>
@@ -255,74 +211,57 @@
 
     <!-- Character Info -->
     <div class="contenthero" id="contenthero">
-      <!-- Goku -->
-      <div class="character-info active" id="info-goku">
-        <div class="character-name-tt">Chú Rể</div>
-        <div class="character-name">Nguyễn Chiến</div>
-        <div class="character-desc">Đứa con rơi của Xuân Diệu. Chịu khó, thông minh, lanh lợi là các đức tính không hề có ở chú rể nhưng bù lại anh lại có tính thích trọc chó.Nhược điểm thì không có, Ưu điểm chính là không có nhược điểm ^^</div>
-        <div class="character-contact">
-            <a style="font-size:14px" href="tel:0337260123"> <i class="fa-solid fa-phone" style="color: #ffffff;" aria-hidden="true"></i></a>
-            <a style="font-size:14px" href="https://www.facebook.com/nchienms"> <i class="fa-brands fa-facebook-f" style="color: #ffffff;" aria-hidden="true"></i></a>
-        </div>
-      </div>
+          <!-- Chú rể -->
+          <div class="character-info active" id="info-chure">
+            <div class="character-name-tt">Chú Rể</div>
+            <div class="character-name">Nguyễn Chiến</div>
+            <div class="character-desc">Đứa con rơi của Xuân Diệu. Chịu khó, thông minh, lanh lợi là các đức tính không hề có ở chú rể nhưng bù lại anh lại có tính thích trọc chó.Nhược điểm thì không có, Ưu điểm chính là không có nhược điểm ^^</div>
+            <div class="character-contact">
+                <a style="font-size:14px" href="tel:0337260123"> <i class="fa-solid fa-phone" style="color: #ffffff;" aria-hidden="true"></i></a>
+                <a style="font-size:14px" href="https://www.facebook.com/nchienms"> <i class="fa-brands fa-facebook-f" style="color: #ffffff;" aria-hidden="true"></i></a>
+            </div>
+          </div>
 
-      <!-- Vegeta -->
-      <div class="character-info" id="info-vegeta">
-        <div class="character-name-tt">Cô dâu</div>
-        <div class="character-name">Thu Yến</div>
-        <div class="character-desc">Suy nghĩ, lập luận vô cùng sắc bén, mỗi tội chưa bao giờ suy luận chính xác, với tài tự biên tự diễn thì cá nhân Chú Rể nghĩ giống 1 nhà báo hơn là con của Sherlock Holmes</div>
-        <div class="character-contact">
-          <a style="font-size:14px" href="tel:0337260123"> <i class="fa-solid fa-phone" style="color: #ffffff;" aria-hidden="true"></i></a>
-          <a style="font-size:14px" href="https://www.facebook.com/nchienms"> <i class="fa-brands fa-facebook-f" style="color: #ffffff;" aria-hidden="true"></i></a>
-        </div>
-      </div>
+          <!-- codau -->
+          <div class="character-info" id="info-codau">
+            <div class="character-name-tt">Cô dâu</div>
+            <div class="character-name">Thu Yến</div>
+            <div class="character-desc">Suy nghĩ, lập luận vô cùng sắc bén, mỗi tội chưa bao giờ suy luận chính xác, với tài tự biên tự diễn thì cá nhân Chú Rể nghĩ giống 1 nhà báo hơn là con của Sherlock Holmes</div>
+            <div class="character-contact">
+              <a style="font-size:14px" href="tel:0337260123"> <i class="fa-solid fa-phone" style="color: #ffffff;" aria-hidden="true"></i></a>
+              <a style="font-size:14px" href="https://www.facebook.com/nchienms"> <i class="fa-brands fa-facebook-f" style="color: #ffffff;" aria-hidden="true"></i></a>
+            </div>
+          </div>
     </div>
 
     <!-- Thumbnails -->
     <div class="thumbnails">
-      <div id="thumb-goku" class="thumb active" style="background-image: url('https://ariesvn8.wordpress.com/wp-content/uploads/2025/07/img2.jpg')" onclick="changeCharacter('goku')">
+      <div id="thumb-chure" class="thumb active" style="background-image: url('https://ariesvn8.wordpress.com/wp-content/uploads/2025/07/img2.jpg')" onclick="changeCharacter('chure')">
         Chú Rể
       </div>
-      <div id="thumb-vegeta" class="thumb" style="background-image: url('https://ariesvn8.wordpress.com/wp-content/uploads/2025/07/img1.jpg')" onclick="changeCharacter('vegeta')">
+      <div id="thumb-codau" class="thumb" style="background-image: url('https://ariesvn8.wordpress.com/wp-content/uploads/2025/07/img1.jpg')" onclick="changeCharacter('codau')">
         Cô Dâu
       </div>
     </div>
   </div>
-
-  <script>
-    let current = "goku";
-
-    function changeCharacter(character) {
-      if (character === current) return;
-
-      // Hide previous info & background
-      document.getElementById(`info-${current}`).classList.remove('active');
-      document.getElementById(`bg${current === 'goku' ? 1 : 2}`).classList.remove('active');
-      document.getElementById(`thumb-${current}`).classList.remove('active');
-
-      // Show new info & background
-      document.getElementById(`info-${character}`).classList.add('active');
-      document.getElementById(`bg${character === 'goku' ? 1 : 2}`).classList.add('active');
-      document.getElementById(`thumb-${character}`).classList.add('active');
-
-      current = character;
-    }
-  </script>
-
-
-
-
       <!-- end new -->
-
-
-        </section>
-        <!-- end wedding-couple-section -->
+</section>
+    
 
 
         <!-- start count-down-section -->
 <section class="count-down-section section-padding parallax"  data-speed="7">
     <div class="container" style="">
         <div class="row">
+            <div class="section-title" >
+                <div style="width: 100%; text-align:center ;">
+                    <img data-src="images/gif/flower5.gif"   alt="" class="lazy-img" style="opacity: 0; max-width: 350px;">
+                    <div class="" style="width: 86%;margin: 0 auto;">
+                        <span class="text">SAVE THE DATE</span>
+                    </div>
+                </div>
+            </div>
+
             <div class="calendar_full">
                 <div class="calendar">
                     <span style="font-size: 25px; font-weight: bold; margin-bottom: 50px;"> Tháng 11 / 2025 </span>
@@ -379,9 +318,8 @@
                 
             </div>
             <div class="col col-md-7 col-md-offset-1" style="opacity: 0.9;">
-                    <div class="count-down-clock">
-                        <div id="clock"></div>
-                    </div>
+                 <div class="count-down-clock">
+                    <div id="clock"></div>
                 </div>
             </div>
         </div>
@@ -389,14 +327,13 @@
 </section>
         <!-- end count-down-section -->
 <section class="wedding-timeline" id="events">
-                <div class="container">
+    <div class="container">
                 <div class="row">
                     <div class="col col-xs-12">
                         <div class="section-title" >
-                           <i style="color: #ec919b; ;" class="fi flaticon-two"></i>
-                            <div style="width: 100%; text-align:center; margin-top: -30px;">
-
-                                <div class="ribbon" style="width: 86%;margin: 0 auto;">
+                            <div style="width: 100%; text-align:center ; margin-top: 20px;">
+                                <img data-src="images/gif/flower6.gif"   alt="" class="lazy-img" style="opacity: 0; max-width: 350px;">
+                                <div class="" style="width: 86%;margin: 0 auto;">
                                     <span class="text">SỰ KIỆN</span>
                                 </div>
                             </div>
@@ -404,271 +341,244 @@
                     </div>
                 </div> <!-- end section-title -->
   
-  <div class="timeline">
-    <div class="timeline-item left">
-      <div class="timeline-content">
-        <span class="date">19/11/2025</span>
-        <h3>Lễ Ăn Hỏi</h3>
-        <span><i class="fa-story fa fa-map-marker"></i>Nhà gái – Xóm X, Yên Mô <br>
-        <i class="fa-story fa fa-clock-o"></i>9AM – 5PM</span> <br>
-        <img style="max-width: 100%; margin: 10px 0; border-radius: 10px;" src="images/events/img-1.jpg" alt="Lễ ăn hỏi"><br>
-        <a class="see-location-btn " href="https://www.google.com/maps?q=20.186291,105.957747" target="_blank">
-                                    Chỉ đường <i class="fa fa-angle-right"></i>
-                                </a>
+      <div class="timeline">
+        <div class="timeline-item left">
+            <div class="timeline-content">
+                <span class="date">19/11/2025</span>
+                <h3>Lễ Ăn Hỏi</h3>
+                <span>
+                    <i class="fa-story fa fa-map-marker"></i>Nhà gái – Xóm X, Yên Mô <br>
+                    <i class="fa-story fa fa-clock-o"></i>9AM – 5PM
+                </span> <br>
+                <img style="max-width: 100%; margin: 10px 0; border-radius: 10px;" src="images/events/img-1.jpg" alt="Lễ ăn hỏi"><br>
+                    <a class="see-location-btn " href="https://www.google.com/maps?q=20.186291,105.957747" target="_blank">
+                                                Chỉ đường <i class="fa fa-angle-right"></i>
+                    </a>
+            </div>
+        </div>
+
+        <div class="timeline-item right">
+            <div class="timeline-content">
+                <span class="date">21/11/2025</span>
+                <h3>Lễ Thành Hôn</h3>
+                <span>
+                    <i class="fa-story fa fa-map-marker"></i>Nhà gái – Xóm X, Yên Mô  <br>
+                    <i class="fa-story fa fa-clock-o"></i>9AM – 5PM
+                </span> <br>
+                <img style="max-width: 100%; margin: 10px 0; border-radius: 10px;"  src="images/events/img-1.jpg" alt="Lễ thành hôn"><br>
+                    <a class="see-location-btn " href="https://www.google.com/maps?q=20.186291,105.957747" target="_blank">
+                                            Chỉ đường <i class="fa fa-angle-right"></i>
+                    </a>
+            </div>
+        </div>
       </div>
     </div>
-
-    <div class="timeline-item right">
-      <div class="timeline-content">
-        <span class="date">21/11/2025</span>
-        <h3>Lễ Thành Hôn</h3>
-        <span><i class="fa-story fa fa-map-marker"></i>Nhà gái – Xóm X, Yên Mô  <br>
-        <i class="fa-story fa fa-clock-o"></i>9AM – 5PM</span> <br>
-        <img style="max-width: 100%; margin: 10px 0; border-radius: 10px;"  src="images/events/img-1.jpg" alt="Lễ thành hôn"><br>
-        <a class="see-location-btn " href="https://www.google.com/maps?q=20.186291,105.957747" target="_blank">
-                                    Chỉ đường <i class="fa fa-angle-right"></i>
-        </a>
-      </div>
-    </div>
-  </div>
-
 </section>
 
 
-
-
                 <!-- start gallery-section -->
-        <section class="gallery-section section-padding2"id="gallery" >
+<section class="gallery-section section-padding2"id="gallery" >
+    <div class="container">
+        <div class="row">
+            <div class="col col-xs-12">
+                <div class="section-title" >
+                    <div style="width: 100%; text-align:center ;">
+                        <img data-src="images/gif/flower7.gif"   alt="" class="lazy-img" style="opacity: 0; max-width: 350px;">
+                        <div class="" style="width: 86%;margin: 0 auto;">
+                            <span class="text">ALBUM ẢNH</span>
+                        </div>
+                        <div style="text-align:center; font-size: 24px;">
+                            <p> Điều tuyệt vời nhất của một tấm ảnh là nó sẽ không bao giờ thay đổi!</p>
+                        </div>
 
-            <div class="container">
-                <div class="row">
-                    <div class="col col-xs-12">
-                        <div class="section-title" >
-                           <i style="color: #ec919b; ;" class="fi flaticon-two"></i>
-                            <div style="width: 100%; text-align:center; margin-top: -30px;">
+                    </div>
 
-                                <div class="ribbon" style="width: 86%;margin: 0 auto;">
-                                    <span class="text">ALBUM HÌNH CƯỚI</span>
-                                </div>
-                                <div style="text-align:center; font-size: 24px;">
-                                     <p> Điều tuyệt vời nhất của một tấm ảnh là nó sẽ không bao giờ thay đổi!</p>
-                                </div>
+                    <div class="swiper " style="width: 100%;">
+                        <div class="swiper-wrapper">
+                            <div class="hihi">
+                            <div class="">
+                                <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02134.jpg" data-fancybox="gallery">
+                                    <img loading="lazy" src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02134.jpg" alt="Image 1">
+                                </a>
                             </div>
-                        
-            
+                            <div class="">
+                                <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02156-1.jpg" data-fancybox="gallery">
+                                    <img loading="lazy" src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02156-1.jpg" alt="Image 2">
+                                </a>
+                            </div>
+                            <div class="">
+                                <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02241.jpg" data-fancybox="gallery">
+                                    <img loading="lazy" src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02241.jpg" alt="Image 3">
+                                </a>
+                            </div>
+                            <div class="">
+                                <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02411.jpg" data-fancybox="gallery">
+                                    <img loading="lazy" src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02411.jpg" alt="Image 4">
+                                </a>
+                            </div>
+                            <div class="">
+                                <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02399.jpg" data-fancybox="gallery">
+                                    <img loading="lazy" src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02399.jpg" alt="Image 5">
+                                </a>
+                            </div>
+                            <div class="">
+                                <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02761.jpg" data-fancybox="gallery">
+                                    <img loading="lazy" src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02761.jpg" alt="Image 6">
+                                </a>
+                            </div>
+                            <div class="">
+                                <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02541.jpg" data-fancybox="gallery">
+                                    <img loading="lazy" src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02541.jpg" alt="Image 7">
+                                </a>
+                            </div>
+                            <div class="">
+                                <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02553.jpg" data-fancybox="gallery">
+                                    <img loading="lazy" src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02553.jpg" alt="Image 8">
+                                </a>
+                            </div>
+                            <div class="">
+                                <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02672.jpg" data-fancybox="gallery">
+                                    <img loading="lazy" src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02672.jpg" alt="Image 9">
+                                </a>
+                            </div>
+                            <div class="">
+                                <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02693.jpg" data-fancybox="gallery">
+                                    <img loading="lazy" src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02693.jpg" alt="Image 10">
+                                </a>
+                            </div>
+                            <div class="">
+                                <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02694.jpg" data-fancybox="gallery">
+                                    <img loading="lazy" src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02694.jpg" alt="Image 11">
+                                </a>
+                            </div>
+                            <div class="">
+                                <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02662.jpg" data-fancybox="gallery">
+                                    <img loading="lazy" src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02662.jpg" alt="Image 12">
+                                </a>
+                            </div>
+                            <div class="">
+                                <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02602-e1726226114486.jpg" data-fancybox="gallery">
+                                    <img loading="lazy" src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02602-e1726226114486.jpg" alt="Image 13">
+                                </a>
+                            </div>
+                            <div class="">
+                                <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02583.jpg" data-fancybox="gallery">
+                                    <img loading="lazy" src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02583.jpg" alt="Image 14">
+                                </a>
+                            </div>
+                            <div class="">
+                                <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN03163.jpg" data-fancybox="gallery">
+                                    <img loading="lazy" src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN03163.jpg" alt="Image 15">
+                                </a>
+                            </div>
+                            <div class="">
+                                <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN03223.jpg" data-fancybox="gallery">
+                                    <img loading="lazy" src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN03223.jpg" alt="Image 16">
+                                </a>
+                            </div>
+                            <div class="">
+                                <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN03339.jpg" data-fancybox="gallery">
+                                    <img loading="lazy" src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN03339.jpg" alt="Image 17">
+                                </a>
+                            </div>
+                            <div class="">
+                                <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN03406.jpg" data-fancybox="gallery">
+                                    <img loading="lazy" src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN03406.jpg" alt="Image 18">
+                                </a>
+                            </div>
+                            <div class="">
+                                <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN03064.jpg" data-fancybox="gallery">
+                                    <img loading="lazy" src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN03064.jpg" alt="Image 19">
+                                </a>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
 
-
-            <div class="swiper " style="width: 100%;">
-                <div class="swiper-wrapper">
-                    <div class="hihi">
-                    <div class="">
-                        <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02134.jpg" data-fancybox="gallery">
-                            <img src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02134.jpg" alt="Image 1">
-                        </a>
-                    </div>
-                    <div class="">
-                        <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02156-1.jpg" data-fancybox="gallery">
-                            <img src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02156-1.jpg" alt="Image 2">
-                        </a>
-                    </div>
-                    <div class="">
-                        <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02241.jpg" data-fancybox="gallery">
-                            <img src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02241.jpg" alt="Image 3">
-                        </a>
-                    </div>
-                    <div class="">
-                        <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02411.jpg" data-fancybox="gallery">
-                            <img src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02411.jpg" alt="Image 4">
-                        </a>
-                    </div>
-                    <div class="">
-                        <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02399.jpg" data-fancybox="gallery">
-                            <img src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02399.jpg" alt="Image 5">
-                        </a>
-                    </div>
-                    <div class="">
-                        <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02761.jpg" data-fancybox="gallery">
-                            <img src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02761.jpg" alt="Image 6">
-                        </a>
-                    </div>
-                    <div class="">
-                        <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02541.jpg" data-fancybox="gallery">
-                            <img src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02541.jpg" alt="Image 7">
-                        </a>
-                    </div>
-                    <div class="">
-                        <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02553.jpg" data-fancybox="gallery">
-                            <img src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02553.jpg" alt="Image 8">
-                        </a>
-                    </div>
-                    <div class="">
-                        <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02672.jpg" data-fancybox="gallery">
-                            <img src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02672.jpg" alt="Image 9">
-                        </a>
-                    </div>
-                    <div class="">
-                        <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02693.jpg" data-fancybox="gallery">
-                            <img src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02693.jpg" alt="Image 10">
-                        </a>
-                    </div>
-                    <div class="">
-                        <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02694.jpg" data-fancybox="gallery">
-                            <img src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02694.jpg" alt="Image 11">
-                        </a>
-                    </div>
-                    <div class="">
-                        <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02662.jpg" data-fancybox="gallery">
-                            <img src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02662.jpg" alt="Image 12">
-                        </a>
-                    </div>
-                    <div class="">
-                        <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02602-e1726226114486.jpg" data-fancybox="gallery">
-                            <img src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02602-e1726226114486.jpg" alt="Image 13">
-                        </a>
-                    </div>
-                    <div class="">
-                        <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02583.jpg" data-fancybox="gallery">
-                            <img src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN02583.jpg" alt="Image 14">
-                        </a>
-                    </div>
-                    <div class="">
-                        <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN03163.jpg" data-fancybox="gallery">
-                            <img src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN03163.jpg" alt="Image 15">
-                        </a>
-                    </div>
-                    <div class="">
-                        <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN03223.jpg" data-fancybox="gallery">
-                            <img src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN03223.jpg" alt="Image 16">
-                        </a>
-                    </div>
-                    <div class="">
-                        <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN03339.jpg" data-fancybox="gallery">
-                            <img src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN03339.jpg" alt="Image 17">
-                        </a>
-                    </div>
-                    <div class="">
-                        <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN03406.jpg" data-fancybox="gallery">
-                            <img src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN03406.jpg" alt="Image 18">
-                        </a>
-                    </div>
-                    <div class="">
-                        <a href="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN03064.jpg" data-fancybox="gallery">
-                            <img src="https://www.rosewedding.link/wp-content/uploads/2024/09/ATN03064.jpg" alt="Image 19">
-                        </a>
-                    </div>
-                    </div>
-                </div>
+                </div> 
             </div>
-
-                        </div> 
-                    </div>
-                </div>
-            </div>
-                    
-   
-        </section>
+        </div>
+    </div>
+</section>
         <!-- end gallery-section -->
 
 
 
         <!-- start cta -->
-        <section class="cta section-padding parallax"  data-speed="7" id="story">
-            <div class="container">
-                <div class="row">
-                    <div class="col col-xs-12">
-                        <div class="section-title" >
-                           <i style="color: #ec919b; ;" class="fi flaticon-two"></i>
-                            <div style="width: 100%; text-align:center; margin-top: -30px;">
-
-                                <div class="ribbon" style="width: 86%;margin: 0 auto;">
-                                    <span class="text">LƯU BÚT</span>
-                                </div>
-                                <div style="text-align:center; font-size: 24px;">
-                                    
-                                </div>
-                            </div>
-                        </div>
-                        
-                        <div style="width: 100%; background-color: rgba(255, 255, 255, 0.8); padding: 10px; 
-                        border-top-left-radius: 10px;
-                         border-top-right-radius: 10px; ">
-                            <div style="font-size: 20px;display: none; color: black"><span style="font-size: 20px;" id="namene3">'Ai Đó'</span> gửi lời chúc tới cặp đôi</div>
-                            <img src="images/blog/img-1.jpg" style="width: 100%">
-
-                            <div style="width: 100%;  text-align:left;">
-                                <i class="fa-solid fa-heart" style="color: #df4758;margin-left: 10px;">&ensp;<strong style="font-size:12px; color: black;"> 163 k</strong></i>
-                                <i class="fa-regular fa-comment" style=" margin-left: 16px;">&ensp;<span id="messageCounter" style="font-size:12px;color: black;"></span></i>
-
-                                
-                            </div>
-
-                            <div id="messages" class="messages">Đang tải...</div>
-                        <script type="text/javascript">var submitted=false;</script>
-  <!-- 30/06 <iframe id="hidden_iframe" name="hidden_iframe" onload="if(submitted){ }" style="display: none;"></iframe>-->
-                        <div style="color: #df4758;height: 60px; font-weight: bold; width: 100%; padding-top: 15px;">
-
-
-                        --------------- LƯU BÚT TẠI ĐÂY ---------------</div>
-                        <form onsubmit="submitted=true;" id="chucForm" target="hidden_iframe" class="form validate-rsvp-form row">
-                            <div class="form-detail">
-                                <div class="">
-                                   <div class="col col-sm-12 " > 
-                                        <input class="control-custom form-control" type="text" id="name" placeholder="Họ và tên*" required><br>
-                                   </div>
-
-                                   <div class="col col-sm-6 " style="display:none;" >
-                                        <input class="control-custom form-control" type="text" id="phone" placeholder="Số điện thoại (có thể bỏ trống)" ><br>
-                                    </div>
-
-                                    <div class="col col-sm-12">
-                                        <textarea class="form-control control-custom" id="message" placeholder="Lời chúc*" required></textarea><br>
-                                    </div>
-
-                                 
-                                </div>
-
-                            </div>
-                            <div class="col col-sm-12 submit-btn">
-                                            <button type="submit"  class="snip1582"  onclick="popupOpen();"   value="Click to Show Popup"  style="
-                                                          background-color: #df4758;
-                                                          height: 45px;
-                                                          line-height: 45px;
-                                                          font-size: 16px;
-                                                          font-weight: 600;
-                                                          color: #fff;
-                                                          padding: 0 10px;
-                                                          border: 0;
-                                                          outline: 0;
-                                                          text-transform: uppercase;
-                                                          -webkit-border-radius: 3px;
-                                                          -moz-border-radius: 3px;
-                                                          -o-border-radius: 3px;
-                                                          -ms-border-radius: 3px;
-                                                          border-radius: 3px;
-                                                          -webkit-transition: all 0.3s;
-                                                          -moz-transition: all 0.3s;
-                                                          -o-transition: all 0.3s;
-                                                          -ms-transition: all 0.3s;
-                                                          transition: all 0.3s;">
-                                            <span >Gửi tâm tư</span>
-                                            </button>
-                            </div>
-                        </form>
+<section class="cta section-padding parallax"  data-speed="7" id="story">
+    <div class="container">
+        <div class="row">
+            <div class="col col-xs-12">
+                <div class="section-title" >
+                    <div style="width: 100%; text-align:center ;">
+                        <img data-src="images/gif/flower5.gif" height="150" alt="" class="lazy-img" style="opacity: 0;">
+                        <div class="" style="width: 86%;margin: 0 auto;">
+                            <span class="text">LƯU BÚT</span>
                         </div>
                     </div>
-                </div> <!-- end row -->
-            </div> <!-- end container -->
-        </section>
-        <!-- end cta -->
+                </div>
+                        
+                <div style="
+                            width: 100%; 
+                            background-color: rgba(255, 255, 255, 0.8); 
+                            padding: 10px; 
+                            border-top-left-radius: 10px;
+                            border-top-right-radius: 10px; 
+                            ">
+                    <div style="font-size: 20px;display: none; color: black">
+                        <span style="font-size: 20px;" id="namene3">'Ai Đó'</span> gửi lời chúc tới cặp đôi
+                    </div>
+                    <img src="images/blog/img-1.jpg"  loading="lazy" style="width: 100%">
+
+                    <div style="width: 100%;  text-align:left;">
+                        <i class="fa-solid fa-heart" style="color: #df4758;margin-left: 10px;">&ensp;
+                            <strong style="font-size:12px; color: black;"> 163 k</strong>
+                        </i>
+
+                        <i class="fa-regular fa-comment" style=" margin-left: 16px;">&ensp;
+                            <span id="messageCounter" style="font-size:12px;color: black;"></span>
+                        </i>
+                    </div>
+
+                    <div id="messages" class="messages">Đang tải...</div>
+                    <script type="text/javascript">var submitted=false;</script>
+
+                    <div style="color: #df4758;height: 60px; font-weight: bold; width: 100%; padding-top: 15px;">
+                            --------------- LƯU BÚT TẠI ĐÂY ---------------
+                    </div>
+                        
+                    <form onsubmit="submitted=true;" id="chucForm" target="hidden_iframe" class="form validate-rsvp-form row">
+                        <div class="form-detail">
+                            <div class="">
+                                <div class="col col-sm-12 " > 
+                                    <input class="control-custom form-control" type="text" id="name" placeholder="Họ và tên*" required><br>
+                                </div>
+
+                                <div class="col col-sm-6 " style="display:none;" >
+                                    <input class="control-custom form-control" type="text" id="phone" placeholder="Số điện thoại (có thể bỏ trống)" ><br>
+                                </div>
+
+                                <div class="col col-sm-12">
+                                    <textarea class="form-control control-custom" id="message" placeholder="Lời chúc*" required></textarea><br>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col col-sm-12 submit-btn">
+                            <button type="submit"  class="snip1582"  onclick="popupOpen();"   value="Click to Show Popup">
+                                <span >Gửi tâm tư</span>
+                            </button>
+                        </div>
+                    </form>
+                </div>
 
 
 
-        <!-- story -->
- 
+            </div>
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+</section>
 
-
-        <!-- start events-section -->
-      
 
 
 <section class="thank-you-card" id="rsvp">
@@ -683,45 +593,16 @@
  
 
         <!-- start rsvp-section data-bg-image="images/rsvp-bg.jpg"-->
-        <section class=" section-padding parallax"  data-speed="7" >
-            <div class="container">
+<section class=" section-padding parallax"  data-speed="7" >
+    <div class="container">
+        <div class="row content" style="color:black !important;">
+            <button type="submit"  class="snip1582"  onclick="window.location.href='./taianh.html'"   value="Click to Show Popup"  style="width: 100%;">
+                <span >Đóng góp ảnh kỷ niệm tại đây!</span>
+            </button>
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+</section>
        
-
-
-                <!-- start form gửi thông tin -->
-
-                <div class="row content" style="color:black !important;">
-     
-                      <button type="submit"  class="snip1582"  onclick="window.location.href='./taianh.html'"   value="Click to Show Popup"  style="                
-                                                          width: 100%;
-                                                          background-color: #df4758;
-                                                          height: 45px;
-                                                          line-height: 45px;
-                                                          font-size: 16px;
-                                                          font-weight: 600;
-                                                          color: #fff;
-                                                          padding: 0 10px;
-                                                          border: 0;
-                                                          outline: 0;
-                                                          text-transform: uppercase;
-                                                          -webkit-border-radius: 3px;
-                                                          -moz-border-radius: 3px;
-                                                          -o-border-radius: 3px;
-                                                          -ms-border-radius: 3px;
-                                                          border-radius: 3px;
-                                                          -webkit-transition: all 0.3s;
-                                                          -moz-transition: all 0.3s;
-                                                          -o-transition: all 0.3s;
-                                                          -ms-transition: all 0.3s;
-                                                          transition: all 0.3s;">
-                                            <span >Đóng góp ảnh kỷ niệm tại đây!</span>
-                                            </button>
-
-
-                </div> <!-- end row -->
-            </div> <!-- end container -->
-        </section>
-        <!-- end rsvp-section -->
 
 
 
@@ -739,20 +620,19 @@
 
 
         <!-- start footer -->
-        <footer class="site-footer">
-            <div class="back-to-top">
-                <a href="#" class="back-to-top-btn"><span><i class="fi flaticon-cupid"></i></span></a>
+<footer class="site-footer">
+    <div class="back-to-top">
+        <a href="#" class="back-to-top-btn"><span><i class="fi flaticon-cupid"></i></span></a>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col col-xs-12">
+                <h2>Mãi Mãi và Yêu thương</h2>
+                <span>- N. Chiến (The groom)</span>
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col col-xs-12">
-                        <h2>Mãi Mãi và Yêu thương</h2>
-
-                        <span>- N. Chiến (The groom)</span>
-                    </div>
-                </div> <!-- end row -->
-            </div> <!-- end container -->
-        </footer>
+        </div> <!-- end row -->
+    </div> <!-- end container -->
+</footer>
         <!-- end footer -->
 
     </div>
@@ -760,14 +640,14 @@
 
 
     <!-- All JavaScript files
-    ================================================== -->
-    <script src="js/jquery.min.js"></script>
+================================================== -->
+<script src="js/jquery.min.js"></script>
 
-    <!-- Plugins for this template -->
-    <script src="js/jquery-plugin-collection.js"></script>
+<!-- Plugins for this template -->
+<script src="js/jquery-plugin-collection.js"></script>
 
-    <!-- Custom script for this template -->
-    <script src="js/script.js"></script>
+<!-- Custom script for this template -->
+<script src="js/script.js"></script>
 
 
 <script>
@@ -959,6 +839,53 @@
   }
 
   updateCountdown();
+
+// load gif khi kéo tới
+    document.addEventListener("DOMContentLoaded", function () {
+    const lazyImages = document.querySelectorAll(".lazy-img");
+
+    const observer = new IntersectionObserver((entries, obs) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const img = entry.target;
+          img.src = img.dataset.src;
+          img.style.opacity = 1;
+          obs.unobserve(img); // Ngừng theo dõi sau khi đã tải
+        }
+      });
+    });
+
+    lazyImages.forEach(img => observer.observe(img));
+  });
+
+// trang tự cuojn lên đàu khi tải xong
+  if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+  }
+
+  // Khi tải xong thì cuộn lên đầu
+  window.addEventListener('load', function () {
+    window.scrollTo(0, 0);
+  });
+
+  // cô dâu chú rể
+    let current = "chure";
+
+    function changeCharacter(character) {
+      if (character === current) return;
+
+      // Hide previous info & background
+      document.getElementById(`info-${current}`).classList.remove('active');
+      document.getElementById(`bg${current === 'chure' ? 1 : 2}`).classList.remove('active');
+      document.getElementById(`thumb-${current}`).classList.remove('active');
+
+      // Show new info & background
+      document.getElementById(`info-${character}`).classList.add('active');
+      document.getElementById(`bg${character === 'chure' ? 1 : 2}`).classList.add('active');
+      document.getElementById(`thumb-${character}`).classList.add('active');
+
+      current = character;
+    }
 
 </script>
 
