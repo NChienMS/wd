@@ -3928,6 +3928,7 @@ a:focus {
 
     .character-info.active {
       display: block;
+      max-width: 600px;
     }
 
     .character-name {
