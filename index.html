@@ -857,6 +857,11 @@
 
     lazyImages.forEach(img => observer.observe(img));
   });
+     const observer = new IntersectionObserver(callback, {
+  rootMargin: '200px 0px 200px 0px',
+  threshold: 0.1
+});
+
 
 // trang tự cuojn lên đàu khi tải xong
   if ('scrollRestoration' in history) {
