@@ -810,3 +810,15 @@ document.getElementById("overlay2").style.display = "none";
 
 //inputsdt.oninvalid = function(event) {
  //   event.target.setCustomValidity('SĐT là dãy số 9-10 số, không khoảng trắng và ký tự!');
+
+//ngăn cuộn khi mở menu
+document.querySelector('.open-btn').addEventListener('click', function () {
+  document.body.classList.add('no-scroll');
+  document.getElementById('navbar').classList.add('open');
+});
+
+// Khi đóng menu
+document.querySelector('.close-navbar').addEventListener('click', function () {
+  document.body.classList.remove('no-scroll');
+  document.getElementById('navbar').classList.remove('open');
+});
