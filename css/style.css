@@ -1,3 +1,4 @@
+
 /*------------------------------------------------------------------
 [Master Stylesheet]
 Theme Name:
@@ -872,7 +873,7 @@ a:focus {
   .site-header .container {
     width: 100%;
   }
-  .site-header .navbar-header button {
+  .site-header .navbar-header .open-btn {
     background-color: #df4758;
     width: 40px;
     height: 35px;
@@ -884,11 +885,13 @@ a:focus {
     -ms-border-radius: 3px;
     border-radius: 3px;
     outline: 0;
-    position: absolute;
-    right: 15px;
-    top: 6px;
+    position: fixed;
+    right: 20px;
+    top: 20px
     z-index: 20;
+ 
   }
+
   .site-header .navbar-header button span {
     background-color: #fff;
     display: block;
@@ -1107,22 +1110,23 @@ a:focus {
 --------------------------------------------------------------*/
 .hero {
   position: relative;
-  height: calc(100vh - 90px);
   min-height: 700px;
   overflow: hidden;
-  /** slider controls **/
+  /**height: calc(100vh - 90px); **/
   /*** arrow hover ***/
 }
 
 @media (max-width: 1199px) {
   .hero {
     min-height: 600px;
+    height: 100vh;
   }
 }
 
 @media (max-width: 991px) {
   .hero {
     min-height: 500px;
+    height: 100vh;
   }
 }
 
@@ -1423,14 +1427,7 @@ a:focus {
   animation: save-the-date-pulse 1s infinite;
 }
 
-@media (max-width: 1199px) {
-  .hero .wedding-announcement .save-the-date:before {
-    width: 108%;
-    height: 108%;
-    left: -4%;
-    top: -4%;
-  }
-}
+
 
 .hero .wedding-announcement .save-the-date:after {
   background-color: rgb(242, 193, 205, 0.7);
