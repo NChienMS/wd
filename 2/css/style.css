@@ -884,6 +884,11 @@ a:focus {
   .site-header .navbar-header button span:last-child {
     margin: 0;
   }
+
+  .hđh{
+        width: 280px;
+    height: 100% !important;
+  }
   .site-header #navbar {
     background: rgb(245, 204, 214, 0.8);
     display: block !important;
@@ -897,6 +902,7 @@ a:focus {
     right: -300px;
     top: 0;
     z-index: 99999999;
+    padding-top: 50%;
   }
   .site-header #navbar ul a {
     color: #000;
@@ -923,8 +929,9 @@ a:focus {
     outline: none;
     position: absolute;
     left: -18px;
-    bottom: 20px;
+    top: 50%;
     z-index: 20;
+
   }
   .site-header #navbar > ul > li {
     border-bottom: 1px solid #cccccc;
@@ -4079,4 +4086,10 @@ a:focus {
   -ms-transition: all 0.3s;
   transition: all 0.3s;
 
+}
+
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
 }
