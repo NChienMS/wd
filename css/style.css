@@ -56,6 +56,9 @@ body {
 }
 
 @media (max-width: 991px) {
+  .thank-you-card{
+    margin: 80px 16px !important;
+  }
   body {
     font-size: 16px;
     font-style: 0.88889rem;
