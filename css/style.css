@@ -4109,3 +4109,9 @@ a:focus {
   transition: all 0.3s;
 
 }
+
+#message::placeholder, #name::placeholder {
+  color: white; /* ví dụ màu hồng pastel */
+  font-style: italic;
+}
+
