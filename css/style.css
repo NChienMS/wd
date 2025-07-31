@@ -3728,11 +3728,18 @@ a:focus {
 }
 
 
-
+.lazy-img{
+  margin-bottom: 36px;
+}
 .text {
     font-size: 24px;
     color: #df4758; /* Màu nâu cho chữ */
     font-weight: bold;
+    backdrop-filter: blur(20px);
+    border: 2px solid #ffffff87;
+    padding: 10px 50px;
+    background: #ffffff4d;
+    border-radius: 50px;
 }
 
 /* lời cảm ơn */
