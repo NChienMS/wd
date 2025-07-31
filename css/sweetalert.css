@@ -4,7 +4,9 @@
   /* IE8 */
   -ms-filter: "progid:DXImageTransform.Microsoft.Alpha(Opacity=40)";
   /* IE8 */
-  background-color: rgb(255, 226, 233, 0.92);
+  background-color: rgb(255, 226, 233, 0.6);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
   position: fixed;
   left: 0;
   right: 0;
