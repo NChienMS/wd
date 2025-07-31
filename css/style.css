@@ -3739,7 +3739,7 @@ a:focus {
   background-size: cover;
   background-position: center;
   max-width: 700px;
-  margin: 80px 16px;
+  margin: 80px auto;
   padding: 60px 10px;
   border: 2px solid #f7c5d0;
   border-radius: 20px;
