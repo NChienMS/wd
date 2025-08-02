@@ -895,16 +895,18 @@ a:focus {
 .site-header.shrink .navigation-holder {
   display: none !important;
 }
+.nvc908218{}
 
 .site-header.shrink .logone img {
   width: 40px !important;
   transition: width 0.3s ease;
-
-
 }
-
+.site-header.shrink .logone {
+  padding: 3px 16px;
+  transition: width 0.3s ease;
+}
 .header-style-1 .navigation.shrink {
-  padding: 0 0 56px 0;
+  padding: 0 0 0 0;
   transition: width 0.3s ease;
 
 }
@@ -932,8 +934,8 @@ a:focus {
     border-radius: 50%;
     backdrop-filter: blur(3px);
     -webkit-backdrop-filter: blur(20px);
-    width: 56px;
-    height: 56px;
+    width: 41.16px;
+    height: 41.16px;
     padding: 5px 10px;
     -webkit-border-radius: 3px solid #fff;
     -moz-border-radius: 3px solid #fff;
@@ -1021,11 +1023,11 @@ a:focus {
     margin: 0;
   }
 }
-
+.nvc908218{}
 @media (max-width: 991px) {
       .logone {
         background-color: #ffffff87;
-        padding: 8px 30px;
+        padding: 6px 26px;
         border-radius: 50px;
         backdrop-filter: blur(20px);
         border: 1px solid #fff;
