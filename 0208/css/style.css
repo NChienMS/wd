@@ -959,15 +959,14 @@ a:focus {
   }
   .site-header #navbar {
 
-    background: rgb(245, 204, 214, 0.6);
-    backdrop-filter: blur(20px);
+    background: #ffffff4d;
+    backdrop-filter: blur(6px);
    -webkit-backdrop-filter: blur(20px);
     
     display: block !important;
     width: 280px;
-    height: 100% !important;
+    border-top-left-radius: 10px;
     margin: 0;
-    padding: 30% 0;
     border-left: 1px solid #cccccc;
     border-right: 1px solid #cccccc;
     position: fixed;
@@ -987,6 +986,7 @@ a:focus {
     overflow: auto;
   }
   .site-header #navbar .close-navbar {
+    display: none;
     background-color: #df4758;
     width: 35px;
     height: 35px;
