@@ -14,33 +14,43 @@
 
 
     // Toggle mobile navigation
-    function toggleMobileNavigation() {
-        var navbar = $(".navigation-holder");
-        var openBtn = $(".navbar-header .open-btn");
-        var closeBtn = $(".navigation-holder .close-navbar");
-        var navLinks = $("#navbar > ul > li > a[href^='#']");
+function toggleMobileNavigation() {
+    var navbar = $(".navigation-holder");
+    var openBtn = $(".navbar-header .open-btn");
+    var closeBtn = $(".navigation-holder .close-navbar");
+    var navLinks = $("#navbar > ul > li > a[href^='#']");
 
-        openBtn.on("click", function() {
-            if (!navbar.hasClass("slideInn")) {
-                navbar.addClass("slideInn");
-            }
-            return false;
-        })
+    // Mở menu
+    openBtn.on("click", function (e) {
+        e.stopPropagation(); // Ngăn click lan ra ngoài
+        navbar.addClass("slideInn");
+        return false;
+    });
 
-        closeBtn.on("click", function() {
-            if (navbar.hasClass("slideInn")) {
-                navbar.removeClass("slideInn");
-            }
-            return false;
-        })
+    // Đóng menu bằng nút close
+    closeBtn.on("click", function () {
+        navbar.removeClass("slideInn");
+        return false;
+    });
 
-        navLinks.on("click", function() {
-            if (navbar.hasClass("slideInn")) {
-                navbar.removeClass("slideInn");
-            }
-            return false;
-        })
-    }
+    // Đóng menu khi click vào link trong menu
+    navLinks.on("click", function () {
+        navbar.removeClass("slideInn");
+        return false;
+    });
+
+    // Đóng menu khi click ra ngoài
+    $(document).on("click", function (e) {
+        if (
+            navbar.hasClass("slideInn") &&
+            !$(e.target).closest(".navigation-holder").length &&
+            !$(e.target).closest(".open-btn").length
+        ) {
+            navbar.removeClass("slideInn");
+        }
+    });
+}
+
 
     toggleMobileNavigation();
 
@@ -821,6 +831,12 @@ window.addEventListener("scroll", function () {
     if (st > lastScrollTop) {
         // Cuộn xuống → thêm class shrink
         shrinkTargets.forEach(el => el.classList.add("shrink"));
+
+        // Đóng menu mobile nếu đang mở
+        if ($(".navigation-holder").hasClass("slideInn")) {
+            $(".navigation-holder").removeClass("slideInn");
+        }
+
     } else {
         // Cuộn lên → gỡ class shrink
         shrinkTargets.forEach(el => el.classList.remove("shrink"));
@@ -828,6 +844,7 @@ window.addEventListener("scroll", function () {
 
     lastScrollTop = st <= 0 ? 0 : st;
 }, false);
+
 
 // Click vào logo để khôi phục
 document.querySelector(".logone").addEventListener("click", function () {
