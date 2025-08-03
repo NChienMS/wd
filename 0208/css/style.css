@@ -4153,11 +4153,11 @@ a:focus {
 
 /* NHẠC NỀN */
 .music-playercss{
-  background-color: #ffffff4d;
-  backdrop-filter: blur(3px);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1); /* Tạo chiều sâu */
+  backdrop-filter: blur(2px);
   border: 1px solid #fff;
-  width: 56px;
-  height: 56px;
+  width: 41.16px;
+  height: 41.16px;
   border-radius: 50%;
   display: flex;
   align-items: center;
@@ -4166,7 +4166,7 @@ a:focus {
   right: 20px;
   cursor: pointer;
   color: #333;
-  z-index: 120;
+  z-index: 9999999;
   position: fixed;
 }
 
