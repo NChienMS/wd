@@ -24,6 +24,8 @@ URL:            http://themeforest.net/user/themexriver
 #1.4  getting-there-section
 #1.5  gift-registration-section
 
+
+
 ----------------------------------------------------------------*/
 /*---------------------------
   Fonts
@@ -32,6 +34,33 @@ URL:            http://themeforest.net/user/themexriver
 /*--------------------------------------------------------------
 #0.1    Theme Reset Style
 --------------------------------------------------------------*/
+.svg-divider {
+  line-height: 0;
+  position: relative;
+  z-index: 2; /* tùy chỉnh nếu cần nổi trên hình ảnh */
+}
+
+.svg-divider svg {
+  display: block;
+  width: 100%;
+  height: 100px; /* hoặc auto nếu bạn muốn tự co giãn */
+}
+
+.latsvg{
+  transform: rotate(180deg);
+}
+
+.svgcong10{
+   top: 10px;
+}
+.svgtru10{
+   top: -10px;
+}
+.svgcong70{
+   top: 70px;
+}
+
+
 
 html {
   font-size: 18px;
@@ -881,9 +910,9 @@ a:focus {
 .header-style-1 .couple-logo a, .header-style-2 .couple-logo a {
   color: #df4758;
 }
-
+  /*** đường kẻ, thanh ngang #ececec****/
 .header-style-1 .navigation, .header-style-2 .navigation {
-  border-bottom: 1px solid #ececec;
+  border-bottom: 1px solid #fff;
 }
 
 .header-style-1 .navigation:after, .header-style-2 .navigation:after {
@@ -1504,7 +1533,8 @@ a:focus {
 .site-footer .back-to-top {
   position: absolute;
   left: 50%;
-  top: -25px;
+  top: 10px;
+  z-index: 2;
   -webkit-transform: translateX(-50%);
   -moz-transform: translateX(-50%);
   -o-transform: translateX(-50%);
@@ -2767,10 +2797,9 @@ a:focus {
 
 .section-padding2 {
   padding-top: 0px;
-  padding-bottom: 120px;
 }
 .section-padding {
-  padding: 100px 0;
+  padding: 0 0 100px 0;
 }
 
 @keyframes pulse-spark {
