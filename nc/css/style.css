@@ -21,8 +21,6 @@ URL:            http://themeforest.net/user/themexriver
 #1.1  inportant-people-section
 #1.2  ALBUM ẢNH
 #1.3  rsvp-section
-#1.4  getting-there-section
-#1.5  gift-registration-section
 
 
 
@@ -34,6 +32,15 @@ URL:            http://themeforest.net/user/themexriver
 /*--------------------------------------------------------------
 #0.1    Theme Reset Style
 --------------------------------------------------------------*/
+.text-luubut{
+  width: 100%; 
+                            background-color: rgba(255, 255, 255, 0.3); 
+                                box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.1);
+                            backdrop-filter: blur(20px);
+                            padding: 10px; 
+                            border-top-left-radius: 10px;
+                            border-top-right-radius: 10px; 
+}
 .svg-divider {
   line-height: 0;
   position: relative;
