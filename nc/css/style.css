@@ -748,8 +748,9 @@ a:focus {
   }
   .site-header #navbar {
     border-top-left-radius: 30px;
-    background: rgb(245, 204, 214, 0.6);
-    backdrop-filter: blur(20px);
+    box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.3); /* nền trắng mờ */
+    backdrop-filter: blur(2px); /* hiệu ứng liquid glass */
    -webkit-backdrop-filter: blur(20px);
     display: block !important;
     width: 280px;
@@ -759,6 +760,7 @@ a:focus {
     position: fixed;
     right: -300px;
     bottom: 0;
+    padding-bottom: 60px;
     z-index: 99999999;
   }
   .site-header #navbar ul a {
@@ -773,10 +775,13 @@ a:focus {
     overflow: auto;
   }
   .site-header #navbar .close-navbar {
-    background-color: #df4758;
+
+    box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.15); /* nền trắng mờ */
+    backdrop-filter: blur(2px); /* hiệu ứng liquid glass */
     width: 35px;
     height: 35px;
-    color: #fff;
+    color: black;
     border: 0;
     -webkit-border-radius: 50%;
     -moz-border-radius: 50%;
@@ -1025,7 +1030,6 @@ a:focus {
 
 .hero .slick-prev,
 .hero .slick-next {
-  background-color: rgb(216, 174, 176 , 0.6);
   width: 50px;
   height: 50px;
   z-index: 111;
@@ -1035,20 +1039,22 @@ a:focus {
   -ms-border-radius: 50%;
   border-radius: 50%;
   -webkit-box-shadow: 0 0 0 5px rgb(216, 174, 176 , 0.9);
-  box-shadow: 0 0 0 5px rgb(216, 174, 176 , 0.9);
   opacity: 0;
   -webkit-transition: all 0.3s;
   -moz-transition: all 0.3s;
   -o-transition: all 0.3s;
   -ms-transition: all 0.3s;
   transition: all 0.3s;
+  box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.15); /* nền trắng mờ */
+  backdrop-filter: blur(2px); /* hiệu ứng liquid glass */
 }
 
 .hero .slick-prev:hover,
 .hero .slick-next:hover {
   background-color: rgba(216, 174, 176 0.8);
-  -webkit-box-shadow: 0 0 0 5px #ffe2e9;
-  box-shadow: 0 0 0 5px #ffe2e9;
+  -webkit-box-shadow: 0 0 0 5px #ffffff87;
+  box-shadow: 0 0 0 3px #ffffff87;
 }
 
 @media (max-width: 1199px) {
@@ -1263,11 +1269,21 @@ a:focus {
 }
 
 .hero .wedding-announcement .save-the-date:before {
-  background-color: rgb(242, 193, 205, 0.7);
-  width: 110%;
-  height: 110%;
-  left: -5%;
-  top: -5%;
+  background-color: rgb(255, 255, 255, 0.1);
+  box-shadow:
+    0em 0em 5em #ffffff87,
+    0em 0em 5em #ffffff4d,
+    0em 0em 1em #ffffff4d,
+    0em 0em 0.8em #ffffff4d,
+    0em 0em 0.6em #ffffff4d,
+    0em 0em 0.4em #ffffff4d,
+    0em 0em 0.3em #ffffff4d,
+    0em 0em 0.2em #ffffff4d;
+  backdrop-filter: blur(2px); /* hiệu ứng liquid glass */
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
   -webkit-animation: save-the-date-pulse 1s infinite;
   animation: save-the-date-pulse 1s infinite;
 }
@@ -1275,7 +1291,9 @@ a:focus {
 
 
 .hero .wedding-announcement .save-the-date:after {
-  background-color: rgb(242, 193, 205, 0.7);
+  box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.15); /* nền trắng mờ */
+  backdrop-filter: blur(2px); /* hiệu ứng liquid glass */
   width: 100%;
   height: 100%;
   left: 0;
@@ -1700,7 +1718,9 @@ a:focus {
       height: 30px !important;
     }
 
-
+    .loa1{
+      display: none !important;
+    }
 
 .a908218{}
 
@@ -1887,10 +1907,10 @@ a:focus {
 }
 
 .count-down-section #clock > div {
-  background: #FFFFFF;
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  opacity: 0.7;
+  box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.5); /* nền trắng mờ */
+  backdrop-filter: blur(2px); /* hiệu ứng liquid glass */
+
   width: 100px;
   height: 100px;
   float: left;
@@ -1901,7 +1921,7 @@ a:focus {
   -o-border-radius: 50%;
   -ms-border-radius: 50%;
   border-radius: 50%;
-  border: 5px solid rgba(0, 0, 0, 0.1);
+  border: 5px solid rgba(255, 255, 255, 0.6);
 }
 
 
@@ -2219,9 +2239,8 @@ a:focus {
  /* popup thông báo gửi tin tới excel */
               
           .overlay2 {              
-          background: rgba(0, 0, 0, 0.8);              
-          opacity: 0.8;             
-          filter: alpha(opacity=80);              
+          background: rgba(255, 255, 255, 0.8);              
+          backdrop-filter: blur(2px);           
           position: fixed;             
           top: 0px;   
           bottom: 0px;
@@ -2232,7 +2251,10 @@ a:focus {
               
           /* Popup */             
           .popup { 
-          background: white;
+          box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.2);
+          background: rgba(255, 255, 255, 0.15); /* nền trắng mờ */
+          backdrop-filter: blur(2px); /* hiệu ứng liquid glass */
+          border: 1px solid white;
           position: fixed;
           top: 0;
           left: 0;
@@ -2351,13 +2373,12 @@ a:focus {
           }     
 
 .popup-send{
-  background-color: #df4758;
   height: 45px;
   width: 120px;
   line-height: 45px;
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
+  color: #4a4a4a;
   padding: 0 15px;
   border: 0;
   outline: 0;
@@ -2372,6 +2393,10 @@ a:focus {
   left: 50%;
   transform: translateX(-50%);
   cursor: pointer;  
+  box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.15); /* nền trắng mờ */
+  backdrop-filter: blur(2px); /* hiệu ứng liquid glass */
+  border: 1px solid white;
 }
 
 
@@ -2395,13 +2420,14 @@ a:focus {
 }
 .text {
     font-size: 24px;
-    color: #df4758; /* Màu nâu cho chữ */
+    color: black; /* Màu nâu cho chữ */
     font-weight: bold;
-    backdrop-filter: blur(20px);
-    border: 2px solid #ffffff87;
     padding: 10px 50px;
-    background: #ffffff4d;
     border-radius: 50px;
+    box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.15); /* nền trắng mờ */
+    backdrop-filter: blur(2px); /* hiệu ứng liquid glass */
+    border: 1px solid white;
 }
 
 /* lời cảm ơn */
@@ -2548,18 +2574,19 @@ a:focus {
     }
 
         .calendar {
-          backdrop-filter: blur(20px);
+                box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.1);
+      background: rgba(255, 255, 255, 0.5); /* nền trắng mờ */
+      backdrop-filter: blur(2px); /* hiệu ứng liquid glass */
           -webkit-backdrop-filter: blur(20px);
             display: inline-block;
             margin: 0 auto;
-            border: 2px solid #df4758;
+            border: 2px solid #fff;
             padding: 10px 20px 15px 20px;
-            background: #FFFFFF;
             text-align: center;
             border-radius: 10px;
             width: 360px;
             height: 401px;
-            opacity: 0.7;
+
         }
         .calendar h2 {
             margin-bottom: 10px;
@@ -2803,9 +2830,39 @@ a:focus {
   z-index: 120;
 }
 
+@media (min-width: 992px) {
+  .music-playercss{
+   
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    cursor: pointer; 
+    box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.1);
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(2px);
+    border: 1px solid #ffffff87;
+ 
+  }
+  .couple-logo img{
+    width: 120px;
+  }
+
+  .site-header .navigation {
+    box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.1);
+        background: rgba(255, 255, 255, 0.5);
+        backdrop-filter: blur(2px);
+        border: 1px solid #ffffff87;
+  }
+
+
+  .loa2{
+    display: none;
+  }
+
+}
+
 /* nút gửi tâm thư */
 .snip1582{
-  background-color: #df4758;
   height: 45px;
   line-height: 45px;
   font-size: 16px;
@@ -2825,7 +2882,10 @@ a:focus {
   -o-transition: all 0.3s;
   -ms-transition: all 0.3s;
   transition: all 0.3s;
-
+  box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.1);
+  background: rgba(255, 255, 255, 0.15); /* nền trắng mờ */
+  backdrop-filter: blur(2px); /* hiệu ứng liquid glass */
+  border: 1px solid white;
 }
 
 #message::placeholder, #name::placeholder {
