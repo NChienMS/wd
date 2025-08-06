@@ -2554,18 +2554,18 @@ a:focus {
   content: '';
   position: absolute;
   width: 4px;
-  background-color: #f7c5d087;
+  background-color: #ffffff87;
   backdrop-filter: blur(20px);
   top: 0;
   bottom: 0;
-  left: 40px; /* đặt line ở bên trái */
+  left: 10px; /* đặt line ở bên trái */
 }
 
 /* Tất cả item nằm bên phải line */
 .timeline-item {
   position: relative;
   width: 100%;
-  padding-left: 80px; /* tạo khoảng trống cho line + dot */
+  padding-left: 30px; /* tạo khoảng trống cho line + dot */
   margin-bottom: 40px;
 }
 
@@ -2573,7 +2573,7 @@ a:focus {
 .timeline-item::before {
   content: '';
   position: absolute;
-  left: 34px; /* căn giữa với line (40px line - nửa dot) */
+  left: 4px; /* căn giữa với line (40px line - nửa dot) */
   width: 16px;
   height: 16px;
   background: #df4758;
@@ -2961,7 +2961,7 @@ a:focus {
 }
 
 .wedding-timeline{
-  background-image: url('../images/blog/ATN03339.webp');
+  background-image: url('../images/blog/ATN03064.webp');
   background-size: cover;
   background-position: center;
 }
@@ -3021,5 +3021,128 @@ a:focus {
   transition: opacity 0.3s ease;
   pointer-events: none;
 }
+
+
+/* thư mời */
+
+    .thumoi {
+      text-align: center;
+      color: #000;
+      background: url('https://chyen.love/nc/images/blog/ATN02662.webp') ;
+      background-size: cover;
+      background-position: center;
+      font-family: "Times New Roman", serif;
+      color: #843C0C !important;
+
+    }
+
+.fontw{
+      font-family: 'Playfair Display', serif;
+}
+.card-text{
+  margin: 16px 0;
+}
+    .wedding-card {
+      padding: 30px 20px;
+      max-width: 650px;
+      margin: 30px auto;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 16px;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+      backdrop-filter: blur(4px);
+      -webkit-backdrop-filter: blur(4px);
+    }
+
+
+.names {
+  width: 100%;
+  max-width: 240px;
+  min-width: 240px;
+  min-height: 240px;
+  aspect-ratio: 1 / 1; /* giữ khung hình vuông tỉ lệ 1:1 */
+  margin: 40px auto 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+
+.names2 {
+  width: 100%;
+  max-width: 300px;
+  min-width: 300px;
+  min-height: 240px;
+  aspect-ratio: 1 / 1; /* giữ khung hình vuông tỉ lệ 1:1 */
+  margin: 40px auto 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+}
+.namesbg{
+  background: url('https://ariesvn8.wordpress.com/wp-content/uploads/2025/08/capdoi.png') no-repeat center center;
+  background-size: contain; /* Giữ đúng tỉ lệ ảnh */
+}
+.savethedatebg {
+  background: url('https://ariesvn8.wordpress.com/wp-content/uploads/2025/08/savethedate.png') no-repeat center center;
+  background-size: contain; /* Giữ đúng tỉ lệ ảnh */
+}
+.luubutbg {
+  background: url('https://ariesvn8.wordpress.com/wp-content/uploads/2025/08/luubut2.webp') no-repeat center center;
+  background-size: contain; /* Giữ đúng tỉ lệ ảnh */
+}
+.albumanhbg {
+  background: url('https://ariesvn8.wordpress.com/wp-content/uploads/2025/08/albumanh.png') no-repeat center center;
+  background-size: contain; /* Giữ đúng tỉ lệ ảnh */
+}
+.sukienbg {
+  background: url('https://ariesvn8.wordpress.com/wp-content/uploads/2025/08/sukien.webp') no-repeat center center;
+  background-size: contain; /* Giữ đúng tỉ lệ ảnh */
+}
+   .names h2 {
+      font-size: 24px;
+      margin: 8px 0;
+      letter-spacing: 1px;
+    }
+
+    .names span {
+      font-size: 20px;
+      margin: 4px 0;
+    }
+
+    .cart-date {
+      margin-top: 30px;
+      font-size: 16px;
+      letter-spacing: 2px;
+    }
+
+    @media (max-width: 480px) {
+      .names {
+        min-width: 240px;
+        min-height: 240px;
+        padding: 15px;
+      }
+
+      .names h2 {
+        font-size: 20px;
+      }
+
+      .names span {
+        font-size: 18px;
+      }
+
+      .flowers img {
+        width: 140px;
+      }
+
+      .cart-date {
+        font-size: 14px;
+      }
+    }
+
+
+
 
 
