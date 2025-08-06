@@ -2286,39 +2286,56 @@ a:focus {
           z-index: 10000; 
           }
               
-          /* Popup */             
-          .popup { 
-          box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.2);
-          background: rgba(255, 255, 255, 0.15); /* nền trắng mờ */
-          backdrop-filter: blur(2px); /* hiệu ứng liquid glass */
-          border: 1px solid white;
-          position: fixed;
-          top: 0;
-          left: 0;
-          bottom: 0;
-          right: 0;
-          z-index: 10001;
-          width: 500px;
-          height: 240px;
-          border-radius: 15px;
-          margin: auto;
-          }
-              
-          @media (max-width: 768px) {
-          .popup {
-          width: 90%;
-          margin: auto 5%;
-          }
-          }
-              
-          .popup .popup-inner {
-          padding: 20px;
-          text-align: center;
-          font-size: 18px;
-          font-family:arial;
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(255, 255, 255, 0.15); /* Nền trắng mờ */
+  backdrop-filter: blur(2px); /* Hiệu ứng liquid glass */
+  z-index: 10001;
+  display: flex;                 /* Căn giữa theo flex */
+  align-items: center;          /* Căn theo chiều dọc */
+  justify-content: center;      /* Căn theo chiều ngang */
+  padding: 10px;
+}
 
-          }
-              
+.popup-inner {
+  background: white;
+  border-radius: 15px;
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
+  text-align: center;
+  font-size: 18px;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box;
+  box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.15); /* nền trắng mờ */
+  backdrop-filter: blur(2px); /* hiệu ứng liquid glass */
+}
+
+.popup-header {
+  font-size: 18px;
+  color: black;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #7f7f7f;
+  margin-bottom: 10px;
+  font-weight: bold;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .popup-inner {
+          margin: auto 5%;
+    width: 90%;
+  }
+}
+
+
+
+   
           .popup .popup-inner input.s3-btn-close {
           padding: 10px;
           top: -0.5em;
@@ -2408,7 +2425,21 @@ a:focus {
               transform: rotate(360deg);
             }
           }     
+.popup-send2{
+  height: 45px;
+  width: 120px;
+  line-height: 45px;
+  font-size: 16px;
+  font-weight: 600;
+  color: #4a4a4a;
+  padding: 0 15px;
+  box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.2);
+  background: rgba(255, 255, 255, 0.15); /* nền trắng mờ */
+  backdrop-filter: blur(2px); /* hiệu ứng liquid glass */
+  border: 1px solid white;
+  border-radius: 3px;
 
+}
 .popup-send{
   height: 45px;
   width: 120px;
