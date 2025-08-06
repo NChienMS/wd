@@ -774,17 +774,18 @@ if ($("#message").val() == ""){
   $("#name").css('box-shadow', 'none');
 } else
 
-
-
-
-
-
 {
+
+     var name = $("#name").val().trim() || "Ai Đó";
+
+    // ✅ GÁN TÊN VÀO CÁC THÀNH PHẦN
+    document.getElementById("namene").textContent = name;
+    document.getElementById("namene2").textContent = name;
   $("#name").css('box-shadow', 'none');
  
   $("#message").css('box-shadow', 'none');
-document.getElementById("popup").style.display = "block";
-document.getElementById("loader").style.display = "block";
+document.getElementById("popup").style.display = "flex";
+document.getElementById("loader").style.display = "flexpopup-send";
 const rocks = who => {
   document.getElementById("loader").style.display = "none";
 };
