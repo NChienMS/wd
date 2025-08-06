@@ -785,7 +785,7 @@ if ($("#message").val() == ""){
  
   $("#message").css('box-shadow', 'none');
 document.getElementById("popup").style.display = "flex";
-document.getElementById("loader").style.display = "flexpopup-send";
+document.getElementById("loader").style.display = "flex";
 const rocks = who => {
   document.getElementById("loader").style.display = "none";
 };
