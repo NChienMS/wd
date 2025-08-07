@@ -29,7 +29,25 @@
   margin-top: -200px;
   overflow: hidden;
   display: none;
-  z-index: 99999; }
+  z-index: 99999;overflow: visible !important; }
+
+  
+  .sweet-alert::after {
+  content: "";
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  width: 150px;
+  height: 150px;
+  background-image: url('https://ariesvn8.wordpress.com/wp-content/uploads/2025/08/hoagocphai.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: top left;
+  pointer-events: none;
+  z-index: 100000;
+
+}
+
 
   .sweet-alert h2 {
     color: #575757;
