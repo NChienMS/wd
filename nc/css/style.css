@@ -35,7 +35,7 @@ URL:            http://themeforest.net/user/themexriver
 .text-luubut{
   width: 100%; 
                             background-color: rgba(255, 255, 255, 0.3); 
-                                box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.1);
+                            box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.1);
                             backdrop-filter: blur(20px);
                             padding: 10px; 
                             border-top-left-radius: 10px;
@@ -1875,10 +1875,6 @@ a:focus {
   position: relative;
 }
 
-.col-md-offset-1{
-  margin-left: 0 !important;
-  width: 100% !important;
-}
 
 .count-down-section:before {
   content: "";
@@ -1894,33 +1890,8 @@ a:focus {
   top: 0;
 }
 
-.count-down-section h2 {
-  font-family: "Great Vibes", cursive;
-  font-size: 72px;
-  font-size: 4rem;
-  color: #fff;
-  margin: 0;
-}
 
-@media (max-width: 1199px) {
-  .count-down-section h2 {
-    font-size: 62px;
-    font-size: 3.44444rem;
-  }
-}
 
-@media (max-width: 767px) {
-  .count-down-section h2 {
-    font-size: 50px;
-    font-size: 2.77778rem;
-
-  }
-    .count-down-section h2 > span {
-    font-size: 20px;
-    font-size: 1.11111rem;
-  }
-
-}
 
 .count-down-section h2 > span {
   font-size: 30px;
@@ -1939,38 +1910,20 @@ a:focus {
 
 
 .count-down-section #clock {
-  color: #df4758;
+  color: #fff;
   overflow: hidden;
 }
 
-.count-down-section #clock > div {
-  box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.1);
-  background: rgba(255, 255, 255, 0.5); /* nền trắng mờ */
-  backdrop-filter: blur(2px); /* hiệu ứng liquid glass */
-
-  width: 100px;
-  height: 100px;
-  float: left;
-  text-align: center;
-  padding: 15px;
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  -o-border-radius: 50%;
-  -ms-border-radius: 50%;
-  border-radius: 50%;
-  border: 5px solid rgba(255, 255, 255, 0.6);
-}
 
 
 
  
-.count-down-section #clock > div + div {
-  margin-left: 10px;
-}/*---làm cho các hình tròn cách đều nhau----*/
 
 #clock{
   margin-top: 20px;
-  width: 430px;
+    display: flex;
+  justify-content: center;  /* căn giữa theo chiều ngang */
+  gap: 20px;   
 
 }
 .count-down-clock{
@@ -1979,52 +1932,10 @@ a:focus {
     justify-content: center; /* căn ngang */
 
 }
-@media (max-width: 458px) {
-  .count-down-section #clock > div + div {
-    margin: 0 auto;
-  }
-    .count-down-section #clock {
-  width: 210px;
 
-}
-.count-down-clock{
-  display: flex;
-    justify-content: center; /* căn ngang */
 
-}
 
-.count-down-section h2 > span {
-    font-size: 20px;
-    font-size: 1.38889rem;
-  }
-}/*---làm cho các hình tròn xuống dòng khi màn hình nhỏ----*/
 
-.count-down-section #clock > div:nth-child(2),
-.count-down-section #clock > div:nth-child(4) {
-  margin: 0 0 10px 10px;
-}/*---làm cho các hình tròn xuống cách đều nhau khi xuống dòng----*/
-
-.count-down-section #clock .box > div {
-  font-size: 40px;
-  font-size: 2.22222rem;
-  font-weight: 600;
-  line-height: 1em;
-}
-
-@media (max-width: 1199px) {
-  .count-down-section #clock .box > div {
-    font-size: 35px;
-    font-size: 1.94444rem;
-  }
-}
-
-@media (max-width: 991px) {
-  .count-down-section #clock .box > div {
-    font-size: 30px;
-    font-size: 1.66667rem;
-    line-height: 1.3em;
-  }
-}
 
 
 
@@ -2623,7 +2534,7 @@ a:focus {
         border-collapse: collapse;
     }
     .calendar th, .calendar td {
-        padding: 8px;
+        padding: 5px;
         text-align: center;
         font-size: 16px;
     }
@@ -2653,7 +2564,6 @@ a:focus {
             text-align: center;
             border-radius: 10px;
             width: 360px;
-            height: 401px;
 
         }
         .calendar h2 {
@@ -2664,8 +2574,8 @@ a:focus {
             border-collapse: collapse;
         }
         th{
-            border-top: 1px solid #f5ccd6 !important;
-            border-bottom: 1px solid #f5ccd6 !important;
+            border-top: 1px solid #fff !important;
+            border-bottom: 1px solid #fff !important;
 
         }
         th, td {
@@ -3043,6 +2953,7 @@ a:focus {
   margin: 16px 0;
 }
     .wedding-card {
+      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.8);
       padding: 30px 20px;
       max-width: 650px;
       margin: 30px auto;
