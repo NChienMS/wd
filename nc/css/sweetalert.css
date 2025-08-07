@@ -15,8 +15,12 @@
   display: none;
   z-index: 10000; }
 
-.sweet-alert {
-  background-color: white;
+.sweet-alert {                            
+  background-color: rgba(255, 255, 255, 0.3); 
+  backdrop-filter: blur(6px);
+  box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.1);
+
+
   font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   width: 478px;
   padding: 17px;
@@ -135,10 +139,13 @@
       -webkit-transform: scale(1);
       transform: scale(1); }
   .sweet-alert input {
+                                background-color: rgba(255, 255, 255, 0.3); 
+                            box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.1);
+                            backdrop-filter: blur(20px);
     width: 100%;
     box-sizing: border-box;
     border-radius: 3px;
-    border: 1px solid #d7d7d7;
+    border: 1px solid #ffffff;
     height: 43px;
     margin-top: 10px;
     margin-bottom: 17px;
@@ -148,6 +155,7 @@
     display: none;
     -webkit-transition: all 0.3s;
     transition: all 0.3s; }
+
     .sweet-alert input:focus {
       outline: none;
       box-shadow: 0px 0px 3px #c4e6f5;
@@ -299,35 +307,8 @@
         background-color: #C9DAE1; }
     .sweet-alert .sa-icon.sa-success {
       border-color: #A5DC86; }
-      .sweet-alert .sa-icon.sa-success::before, .sweet-alert .sa-icon.sa-success::after {
-        content: '';
-        -webkit-border-radius: 40px;
-        border-radius: 40px;
-        border-radius: 50%;
-        position: absolute;
-        width: 60px;
-        height: 120px;
-        background: white;
-        -webkit-transform: rotate(45deg);
-        transform: rotate(45deg); }
-      .sweet-alert .sa-icon.sa-success::before {
-        -webkit-border-radius: 120px 0 0 120px;
-        border-radius: 120px 0 0 120px;
-        top: -7px;
-        left: -33px;
-        -webkit-transform: rotate(-45deg);
-        transform: rotate(-45deg);
-        -webkit-transform-origin: 60px 60px;
-        transform-origin: 60px 60px; }
-      .sweet-alert .sa-icon.sa-success::after {
-        -webkit-border-radius: 0 120px 120px 0;
-        border-radius: 0 120px 120px 0;
-        top: -11px;
-        left: 30px;
-        -webkit-transform: rotate(-45deg);
-        transform: rotate(-45deg);
-        -webkit-transform-origin: 0px 60px;
-        transform-origin: 0px 60px; }
+
+
       .sweet-alert .sa-icon.sa-success .sa-placeholder {
         width: 80px;
         height: 80px;
@@ -340,16 +321,7 @@
         left: -4px;
         top: -4px;
         z-index: 2; }
-      .sweet-alert .sa-icon.sa-success .sa-fix {
-        width: 5px;
-        height: 90px;
-        background-color: white;
-        position: absolute;
-        left: 28px;
-        top: 8px;
-        z-index: 1;
-        -webkit-transform: rotate(-45deg);
-        transform: rotate(-45deg); }
+
       .sweet-alert .sa-icon.sa-success .sa-line {
         height: 5px;
         background-color: #A5DC86;
@@ -519,9 +491,7 @@
   -webkit-animation: animateSuccessLong 0.75s;
   animation: animateSuccessLong 0.75s; }
 
-.sa-icon.sa-success.animate::after {
-  -webkit-animation: rotatePlaceholder 4.25s ease-in;
-  animation: rotatePlaceholder 4.25s ease-in; }
+
 
   @media all and (max-width: 540px) {
     .sweet-alert {
