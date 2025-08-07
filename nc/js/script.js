@@ -474,10 +474,10 @@ function stickIt($stickyClass, $toggleClass, $topOffset) {
     if ($("#clock").length) {
         $('#clock').countdown('2025/11/10', function(event) {
             var $this = $(this).html(event.strftime(''
-            + '<div class="box"><div>%D</div> <span>Days</span> </div>'
-            + '<div class="box"><div>%H</div> <span>Hours</span> </div>'
-            + '<div class="box"><div>%M</div> <span>Mins</span> </div>'
-            + '<div class="box"><div>%S</div> <span>Secs</span> </div>'));
+            + '<div class="box"><div>%D Ngày</div>  </div>'
+            + '<div class="box"><div>%H Giờ</div> </div>'
+            + '<div class="box"><div>%M Phút</div> </div>'
+            + '<div class="box"><div>%S Giây</div> </div>'));
         });
     }
 
@@ -913,3 +913,7 @@ document.querySelectorAll(".couple-logo").forEach(logo => {
     showFloatingText(x, y);
   });
 });
+
+
+
+
