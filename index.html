@@ -405,33 +405,33 @@
   
         <div class="timeline ">
             <div class="timeline-item left scroll-fade-left">
-                <div class="timeline-content scroll-fade-up">
-                    <span class="date scroll-fade-up">19/11/2025</span>
-                    <h3 class="scroll-fade-up">Lễ Ăn Hỏi</h3>
-                    <span class="scroll-fade-up">
+                <div class="timeline-content scroll-fade-down">
+                    <span class="date scroll-fade-down">19/11/2025</span>
+                    <h3 class="scroll-fade-down">Lễ Ăn Hỏi</h3>
+                    <span class="scroll-fade-down">
                         <i class="fa-story fa fa-map-marker "></i class="">Nhà gái – Xóm X, Yên Mô <br>
                         <i class="fa-story fa fa-clock-o "></i class="">9AM – 5PM
                     </span> <br>
-                    <img class="scroll-fade-up" style="max-width: 100%; margin: 10px 0; border-radius: 10px;" src="images/events/img-1.jpg" alt="Lễ ăn hỏi"><br>
-                        <a class="see-location-btn scroll-fade-up " href="https://www.google.com/maps?q=20.186291,105.957747" target="_blank">
+                    <img class="scroll-fade-down" style="max-width: 100%; margin: 10px 0; border-radius: 10px;" src="images/events/img-1.jpg" alt="Lễ ăn hỏi"><br>
+                        <a class="see-location-btn scroll-fade-down " href="https://www.google.com/maps?q=20.186291,105.957747" target="_blank">
                             Chỉ đường 
-                            <i class="fa fa-angle-right scroll-fade-up"></i>
+                            <i class="fa fa-angle-right scroll-fade-down"></i>
                         </a>
                 </div>
             </div>
 
             <div class="timeline-item right scroll-fade-left">
-                <div class="timeline-content scroll-fade-up">
-                    <span class="date scroll-fade-up">21/11/2025</span>
-                    <h3 class="scroll-fade-up">Lễ Thành Hôn</h3>
-                    <span class="scroll-fade-up">
+                <div class="timeline-content scroll-fade-down">
+                    <span class="date scroll-fade-down">21/11/2025</span>
+                    <h3 class="scroll-fade-down">Lễ Thành Hôn</h3>
+                    <span class="scroll-fade-down">
                         <i class="fa-story fa fa-map-marker"></i>Nhà gái – Xóm X, Yên Mô  <br>
                         <i class="fa-story fa fa-clock-o"></i>9AM – 5PM
                     </span> <br>
-                    <img class="scroll-fade-up" style="max-width: 100%; margin: 10px 0; border-radius: 10px;"  src="images/events/img-1.jpg" alt="Lễ thành hôn"><br>
-                        <a class="see-location-btn scroll-fade-up" href="https://www.google.com/maps?q=20.186291,105.957747" target="_blank">
+                    <img class="scroll-fade-down" style="max-width: 100%; margin: 10px 0; border-radius: 10px;"  src="images/events/img-1.jpg" alt="Lễ thành hôn"><br>
+                        <a class="see-location-btn scroll-fade-down" href="https://www.google.com/maps?q=20.186291,105.957747" target="_blank">
                             Chỉ đường 
-                            <i class="fa fa-angle-right scroll-fade-up"></i>
+                            <i class="fa fa-angle-right scroll-fade-down"></i>
                         </a>
                 </div>
             </div>
@@ -857,21 +857,6 @@
     );
   }
 
-// trình xem ảnh silder
-        const swiper = new Swiper('.swiper', {
-            effect: 'coverflow',
-            grabCursor: true,
-            centeredSlides: true,
-            slidesPerView: 'auto',
-            loop: true,
-            coverflowEffect: {
-                rotate: 55, // Góc nghiêng của ảnh hai bên
-                stretch: -30, // Giá trị âm lớn để các ảnh đứng sát nhau
-                depth: 200, // Độ sâu (ảnh xa sẽ nhỏ hơn)
-                modifier: 1,
-                slideShadows: true, // Thêm bóng cho ảnh
-            },
-        });
 
 // Khởi tạo Fancybox trình xem ảnh toàn màn hình
         Fancybox.bind("[data-fancybox]", {
@@ -910,39 +895,7 @@
 
   updateCountdown();
 
-// load gif khi kéo tới
-document.addEventListener("DOMContentLoaded", function () {
-  const lazyImages = document.querySelectorAll(".lazy-img");
 
-  // Fallback: nếu không hỗ trợ hoặc đang chạy trên iOS
-  const isIOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-  const supportIO = 'IntersectionObserver' in window;
-
-  if (!supportIO || isIOS) {
-    lazyImages.forEach(img => {
-      img.src = img.dataset.src;
-      img.style.opacity = 1;
-    });
-    return;
-  }
-
-  // Với trình duyệt bình thường
-  const observer = new IntersectionObserver((entries, obs) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        img.src = img.dataset.src;
-        img.style.opacity = 1;
-        obs.unobserve(img);
-      }
-    });
-  }, {
-    rootMargin: "100px",
-    threshold: 0.1
-  });
-
-  lazyImages.forEach(img => observer.observe(img));
-});
 
 // trang tự cuojn lên đàu khi tải xong
   if ('scrollRestoration' in history) {
