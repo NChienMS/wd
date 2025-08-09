@@ -1880,7 +1880,6 @@ a:focus {
 .count-down-section:before {
   content: "";
   background-image: url('../images/slider/slide-2.jpg');
-    background-attachment: fixed; /* Giữ nền cố định */
   filter: blur(2px);
   background-size: cover;
     background-position: center; /* Căn giữa hình nền */
@@ -1952,8 +1951,6 @@ a:focus {
 .cta:before {
   content: "";
   background-image: url('https://picsum.photos/id/1018/1920/1080');
-  background-attachment: fixed; /* Giữ nền cố định */
-  background-size: cover;
   background-position: center;
   width: 100%;
   height: 100%;
@@ -2881,7 +2878,6 @@ a:focus {
 
 .wedding-timeline{
   background-image: url('../images/blog/ATN03064.webp');
-    background-attachment: fixed; /* Giữ nền cố định */
   background-size: cover;
   background-position: center;
 }
@@ -2948,7 +2944,7 @@ a:focus {
 .thumoi {
   text-align: center;
   background: url('https://chyen.love/nc/images/blog/ATN02662.webp') center / cover no-repeat;
-  background-attachment: fixed; /* Giữ nền cố định */
+
   font-family: "Times New Roman", serif;
   color: #843C0C !important;
 }
