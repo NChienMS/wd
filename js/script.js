@@ -145,7 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 if (target.length) {
                     $("html, body").animate({
                     scrollTop: target.offset().top - topGap
-                }, 1000, "easeInOutExpo");
+                }, 2000, "easeInOutExpo");
                     return false;
                 }
             }
@@ -156,6 +156,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     // Parallax background
     function bgParallax() {
+         return; // Ngừng ngay lập tức 908218
         if ($(".parallax").length) {
             $(".parallax").each(function() {
                 var height = $(this).position().top;
@@ -274,151 +275,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
 
-    /*------------------------------------------
-        = ACTIVE POPUP GALLERY
-    -------------------------------------------*/
-    if ($(".gallery-fancybox").length) {
-        $(".fancybox").fancybox({
-            openEffect  : "elastic",
-            closeEffect : "elastic",
-            wrapCSS     : "project-fancybox-title-style"
-        });
-    }
 
 
-    /*------------------------------------------
-        = POPUP VIDEO
-    -------------------------------------------*/
-    if ($(".video-play-btn").length) {
-        $(".video-play-btn").on("click", function(){
-            $.fancybox({
-                href: this.href,
-                type: $(this).data("type"),
-                'title'         : this.title,
-                helpers     : {
-                    title : { type : 'inside' },
-                    media : {}
-                },
-
-                beforeShow : function(){
-                    $(".fancybox-wrap").addClass("gallery-fancybox");
-                }
-            });
-            return false
-        });
-    }
-
-    /*------------------------------------------
-        = POPUP YOUTUBE, VIMEO, GMAPS
-    -------------------------------------------*/
-    $('.popup-youtube, .popup-vimeo, .popup-gmaps').magnificPopup({
-        type: 'iframe',
-        mainClass: 'mfp-fade',
-        removalDelay: 160,
-        preloader: false,
-        fixedContentPos: false
-    });
-
-
-
-    /*------------------------------------------
-        = ACTIVE GALLERY POPUP IMAGE
-    -------------------------------------------*/
-    if ($(".popup-gallery").length) {
-        $('.popup-gallery').magnificPopup({
-            delegate: 'a',
-            type: 'image',
-
-            gallery: {
-              enabled: true
-            },
-
-            zoom: {
-                enabled: true,
-
-                duration: 300,
-                easing: 'ease-in-out',
-                opener: function(openerElement) {
-                    return openerElement.is('img') ? openerElement : openerElement.find('img');
-                }
-            }
-        });
-    }
-
-
-    /*------------------------------------------
-        = ACTIVE POPUP IMAGE
-    -------------------------------------------*/
-    if ($(".popup-image").length) {
-        $('.popup-image').magnificPopup({
-            type: 'image',
-            zoom: {
-                enabled: true,
-
-                duration: 300,
-                easing: 'ease-in-out',
-                opener: function(openerElement) {
-                    return openerElement.is('img') ? openerElement : openerElement.find('img');
-                }
-            }
-        });
-    }
-
-
-
-    /*------------------------------------------
-        = FUNCTION FORM SORTING GALLERY
-    -------------------------------------------*/
-    function sortingGallery() {
-        if ($(".sortable-gallery .gallery-filters").length) {
-            var $container = $('.gallery-container');
-            $container.isotope({
-                filter:'*',
-                animationOptions: {
-                    duration: 750,
-                    easing: 'linear',
-                    queue: false,
-                }
-            });
-
-            $(".gallery-filters li a").on("click", function() {
-                $('.gallery-filters li .current').removeClass('current');
-                $(this).addClass('current');
-                var selector = $(this).attr('data-filter');
-                $container.isotope({
-                    filter:selector,
-                    animationOptions: {
-                        duration: 750,
-                        easing: 'linear',
-                        queue: false,
-                    }
-                });
-                return false;
-            });
-        }
-    }
-
-    sortingGallery();
-
-
-    /*------------------------------------------
-        = MASONRY GALLERY SETTING
-    -------------------------------------------*/
-    function masonryGridSetting() {
-        if ($('.masonry-gallery').length) {
-            var $grid =  $('.masonry-gallery').masonry({
-                itemSelector: '.grid',
-                columnWidth: '.grid',
-                percentPosition: true
-            });
-
-            $grid.imagesLoaded().progress( function() {
-                $grid.masonry('layout');
-            });
-        }
-    }
-
-    masonryGridSetting();
 
 
     /*------------------------------------------
@@ -468,24 +326,6 @@ function stickIt($stickyClass, $toggleClass, $topOffset) {
 }
 
 
-    /*-------------------------------------------------------
-        = COUPLE SECTION IMAGE BG SETTING
-    -----------------------------------------------------*/
-    if ($(".wedding-couple-section .gb").length) {
-
-        var imgHolder = $(".wedding-couple-section .gb .img-holder");
-
-        imgHolder.each(function() {
-            var $this = $(this);
-            var imgHolderPic = $this.find("img").attr("src");
-
-            $this.css({
-                backgroundImage: "url("+ imgHolderPic +")",
-                backgroundSize: "cover",
-                backgroundPosition: "center center"
-            })
-        })
-    }
 
 
     /*------------------------------------------
@@ -502,119 +342,7 @@ function stickIt($stickyClass, $toggleClass, $topOffset) {
     }
 
 
-    /*------------------------------------------
-        = STORY SLIDER
-    -------------------------------------------*/
-    if ($(".story-slider").length) {
-        $('.story-slider').owlCarousel({
-            items: 1,
-            dots: false,
-            autoplay: true,
-            autoplayTimeout: 3000,
-            smartSpeed: 1000,
-            loop: true,
-        });
-    }
 
-
-    /*------------------------------------------
-        = GIFT REGISTRATION SLIDER
-    -------------------------------------------*/
-    if ($(".gif-registration-slider").length) {
-        $('.gif-registration-slider').owlCarousel({
-            items: 3,
-            dots: false,
-            autoplay: true,
-            autoplayTimeout: 3000,
-            smartSpeed: 1000,
-            loop: true,
-            margin: 20,
-            stagePadding: 10,
-            responsive: {
-                0 : {
-                    items: 1
-                },
-                480 : {
-                    items: 2
-                },
-                768 : {
-                    items: 3
-                }
-            }
-        });
-    }
-
-
-    /*------------------------------------------
-        = RSVP FORM SUBMISSION
-    -------------------------------------------*/
-    if ($("#rsvp-form").length) {
-        $("#rsvp-form").validate({
-            rules: {
-                name: {
-                    required: true,
-                    minlength: 2
-                },
-                email: "required",
-
-                guest: {
-                    required: true
-                },
-
-                events: {
-                    required: true
-                }
-
-            },
-
-            messages: {
-                name: "Please enter your name",
-                email: "Please enter your email",
-                guest: "Select your number of guest",
-                events: "Select your event list"
-            },
-
-            submitHandler: function (form) {
-                $("#loader").css("display", "inline-block");
-                $.ajax({
-                    type: "POST",
-                    url: "mail.php",
-                    data: $(form).serialize(),
-                    success: function () {
-                        $( "#loader").hide();
-                        $( "#success").slideDown( "slow" );
-                        setTimeout(function() {
-                        $( "#success").slideUp( "slow" );
-                        }, 3000);
-                        form.reset();
-                    },
-                    error: function() {
-                        $( "#loader").hide();
-                        $( "#error").slideDown( "slow" );
-                        setTimeout(function() {
-                        $( "#error").slideUp( "slow" );
-                        }, 3000);
-                    }
-                });
-                return false; // required to block normal submit since you used ajax
-            }
-
-        });
-    }
-
-
-    /*------------------------------------------
-        = TOGGLE MUSUC BIX
-    -------------------------------------------*/
-    if($(".music-box").length) {
-        var musicBtn = $(".music-box-toggle-btn"),
-            musicBox = $(".music-holder");
-
-        musicBtn.on("click", function() {
-            musicBox.toggleClass("toggle-music-box");
-            return false;
-        })
-    }
 
 
     /*------------------------------------------
@@ -624,90 +352,13 @@ function stickIt($stickyClass, $toggleClass, $topOffset) {
         $(".back-to-top-btn").on("click", function() {
             $("html,body").animate({
                 scrollTop: 0
-            }, 2000, "easeInOutExpo");
+            }, 3000, "easeInOutExpo");
             return false;
         })
     }
 
 
-    /*------------------------------------------
-        = BLOG MEDIA CAROUSEL
-    -------------------------------------------*/
-    if ($(".media-carousel").length) {
-        $(".media-carousel").owlCarousel({
-            items: 1,
-            smartSpeed: 500,
-            nav: true,
-            navText: ["<i class='fa fa-angle-left'></i>","<i class='fa fa-angle-right'></i>"],
-            dots: false
-        })
-    }
 
-
-    /*------------------------------------------
-        = WATER RIPPLE
-    -------------------------------------------*/
-    if ($(".ripple").length) {
-        $('.ripple').ripples({
-            resolution: 512,
-            dropRadius: 20, //px
-            perturbance: 0.04,
-        });
-
-        // Automatic drops
-        setInterval(function() {
-            var $el = $('.ripple');
-            var x = Math.random() * $el.outerWidth();
-            var y = Math.random() * $el.outerHeight();
-            var dropRadius = 20;
-            var strength = 0.04 + Math.random() * 0.04;
-
-            $el.ripples('drop', x, y, dropRadius, strength);
-        }, 400);
-    }
-
-
-    /*------------------------------------------
-        = PARTICLE GROUND
-    -------------------------------------------*/
-    if ($(".particleground").length) {
-        $('.particleground').particleground({
-            dotColor: "#78c1b3",
-            lineColor: "#5e9a8e",
-            lineWidth: 0.7,
-            particleRadius: 6
-
-        });
-    }
-
-
-    /*------------------------------------------
-        = VIDEO BACKGROUND
-    -------------------------------------------*/
-    if ($("#video-background").length) {
-        $('#video-background').YTPlayer({
-            showControls: false,
-            playerVars: {
-                modestbranding: 0,
-                autoplay: 1,
-                controls: 1,
-                showinfo: 0,
-                wmode: 'transparent',
-                branding: 0,
-                rel: 0,
-                autohide: 0,
-                origin: window.location.origin
-            }
-        });
-    }
-
-
-    /*------------------------------------------
-        = SURFACE SHADER
-    -------------------------------------------*/
-    if ($(".surface-shader").length) {
-        //$('.surface-shader')
-    }
 
 
 
@@ -724,10 +375,7 @@ function stickIt($stickyClass, $toggleClass, $topOffset) {
 
             smallNavFunctionality();
 
-            //set the couple section groom bride two col equal height
-            if($(".wedding-couple-section").length) {
-                setTwoColEqHeight($(".wedding-couple-section .gb .img-holder"), $(".wedding-couple-section .gb .details"));
-            }
+
 
             smoothScrolling($("#navbar > ul > li > a[href^='#']"), $(".header-style-1 .navigation").innerHeight());
 
