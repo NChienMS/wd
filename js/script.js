@@ -1,3 +1,23 @@
+// đối tượng xuất hiện mượt maf
+document.addEventListener("DOMContentLoaded", () => {
+  const items = document.querySelectorAll('.scroll-fade-up, .scroll-fade-right, .scroll-fade-down, .scroll-fade-left');
+
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        setTimeout(() => {
+          entry.target.classList.add('show');
+        }, 300); // delay 300ms trước khi hiện
+      }
+    });
+  }, { threshold: 0.2 });
+
+  items.forEach(item => observer.observe(item));
+});
+
+
+
+
 (function($) {
 
 	"use strict";
@@ -421,30 +441,31 @@
     }
 
     // Function for sticky menu
-    function stickIt($stickyClass, $toggleClass, $topOffset) {
-        if ($(window).scrollTop() >= $topOffset) {
-            var orgElement = $(".original");
-            var widthOrgElement = orgElement.css("width");
+function stickIt($stickyClass, $toggleClass, $topOffset) {
+    if ($(window).scrollTop() >= $topOffset) {
+        var orgElement = $(".original");
+        var widthOrgElement = orgElement.outerWidth(); // outerWidth thay vì css("width")
 
-            $stickyClass.addClass($toggleClass);
-
-            $stickyClass.css({
+        $stickyClass
+            .addClass($toggleClass)
+            .css({
                 "width": widthOrgElement
-            }).show();
+            })
+            .fadeIn(); // dùng fadeIn thay vì .show()
 
-            $(".original").css({
-                "visibility": "hidden"
-            });
+        orgElement.css({
+            "visibility": "hidden"
+        });
+    } else {
+        $(".original").css({
+            "visibility": "visible"
+        });
 
-        } else {
-
-            $(".original").css({
-                "visibility": "visible"
-            });
-
-            $stickyClass.removeClass($toggleClass);
-        }
+        $stickyClass
+            .removeClass($toggleClass)
+            .fadeOut(); // dùng fadeOut thay vì để nguyên
     }
+}
 
 
     /*-------------------------------------------------------
@@ -473,10 +494,10 @@
     if ($("#clock").length) {
         $('#clock').countdown('2025/11/10', function(event) {
             var $this = $(this).html(event.strftime(''
-            + '<div class="box"><div>%D</div> <span>Days</span> </div>'
-            + '<div class="box"><div>%H</div> <span>Hours</span> </div>'
-            + '<div class="box"><div>%M</div> <span>Mins</span> </div>'
-            + '<div class="box"><div>%S</div> <span>Secs</span> </div>'));
+            + '<div class="box"><div>%D Ngày</div>  </div>'
+            + '<div class="box"><div>%H Giờ</div> </div>'
+            + '<div class="box"><div>%M Phút</div> </div>'
+            + '<div class="box"><div>%S Giây</div> </div>'));
         });
     }
 
@@ -773,17 +794,18 @@ if ($("#message").val() == ""){
   $("#name").css('box-shadow', 'none');
 } else
 
-
-
-
-
-
 {
+
+     var name = $("#name").val().trim() || "Ai Đó";
+
+    // ✅ GÁN TÊN VÀO CÁC THÀNH PHẦN
+    document.getElementById("namene").textContent = name;
+    document.getElementById("namene2").textContent = name;
   $("#name").css('box-shadow', 'none');
  
   $("#message").css('box-shadow', 'none');
-document.getElementById("popup").style.display = "block";
-document.getElementById("loader").style.display = "block";
+document.getElementById("popup").style.display = "flex";
+document.getElementById("loader").style.display = "flex";
 const rocks = who => {
   document.getElementById("loader").style.display = "none";
 };
@@ -810,3 +832,108 @@ document.getElementById("overlay2").style.display = "none";
 
 //inputsdt.oninvalid = function(event) {
  //   event.target.setCustomValidity('SĐT là dãy số 9-10 số, không khoảng trắng và ký tự!');
+
+
+let lastScrollTop = 0;
+
+// Danh sách các phần tử cần thêm class shrink
+const shrinkTargets = document.querySelectorAll(".header-style-1,.navigation,.site-header, .navigation-holder, .logone, .top-banner");
+
+window.addEventListener("scroll", function () {
+    let st = window.pageYOffset || document.documentElement.scrollTop;
+
+    if (st > lastScrollTop) {
+        // Cuộn xuống → thêm class shrink
+        shrinkTargets.forEach(el => el.classList.add("shrink"));
+
+        // Đóng menu mobile nếu đang mở
+        if ($(".navigation-holder").hasClass("slideInn")) {
+            $(".navigation-holder").removeClass("slideInn");
+        }
+
+    } else {
+        // Cuộn lên → gỡ class shrink
+        shrinkTargets.forEach(el => el.classList.remove("shrink"));
+    }
+
+    lastScrollTop = st <= 0 ? 0 : st;
+}, false);
+
+
+        // nhạc
+const music = document.getElementById("background-music");
+let isPlaying = false;
+
+// Chọn tất cả các nút phát nhạc nếu có nhiều bản sao
+document.querySelectorAll("#music-player").forEach(player => {
+  player.addEventListener("click", () => {
+        player.classList.add("pulsing");
+    setTimeout(() => player.classList.remove("pulsing"), 500);
+
+    // Cập nhật icon trên tất cả bản sao cùng lúc
+    document.querySelectorAll("#music-icon").forEach(icon => {
+      if (isPlaying) {
+        music.pause();
+        icon.className = "fa-solid fa-volume-xmark";
+      } else {
+        music.play();
+        icon.className = "fa-solid fa-volume-low";
+      }
+    });
+
+    isPlaying = !isPlaying;
+  });
+});
+
+
+// Tạo overlay 1 lần khi trang tải
+let overlay = document.createElement("div");
+overlay.id = "floating-overlay";
+document.body.appendChild(overlay);
+
+const loveWords = [
+  "💖 Yêu thương",
+  "🎉 Hạnh phúc",
+  "🎂 Ngọt ngào",
+  "💌 Tình yêu",
+  "🌸 Dịu dàng",
+  "✨ Mãi bên nhau",
+  "❤️ Forever"
+];
+
+function showFloatingText(x, y) {
+  // Bật overlay
+  overlay.style.opacity = "1";
+
+  // Tạo chữ bay
+  const text = document.createElement("div");
+  text.className = "floating-text";
+  text.textContent = loveWords[Math.floor(Math.random() * loveWords.length)];
+  text.style.left = `${x}px`;
+  text.style.top = `${y}px`;
+
+  document.body.appendChild(text);
+
+  setTimeout(() => {
+    text.remove();
+    overlay.style.opacity = "0"; // Tắt overlay sau chữ bay
+  }, 1000);
+}
+
+document.querySelectorAll(".couple-logo").forEach(logo => {
+  logo.style.cursor = "pointer";
+  logo.addEventListener("click", (e) => {
+    // Rung nhẹ logo
+    logo.style.animation = "logoPulse 0.4s ease";
+    setTimeout(() => logo.style.animation = "", 400);
+
+    // Gọi chữ bay
+    const x = e.clientX || window.innerWidth / 2;
+    const y = e.clientY || window.innerHeight / 2;
+    showFloatingText(x, y);
+  });
+});
+
+
+
+
