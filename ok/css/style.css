@@ -827,19 +827,18 @@ a:focus {
   overflow: hidden;
   /**height: calc(100vh - 90px); **/
   /*** arrow hover ***/
+  height: 100vh;
 }
 
 @media (max-width: 1199px) {
   .hero {
     min-height: 600px;
-    height: 100vh;
   }
 }
 
 @media (max-width: 991px) {
   .hero {
     min-height: 500px;
-    height: 100vh;
   }
 }
 
