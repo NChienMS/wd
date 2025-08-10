@@ -34,7 +34,6 @@ URL:            http://themeforest.net/user/themexriver
 /*--------------------------------------------------------------
 #0.1    Theme Reset Style
 --------------------------------------------------------------*/
-
 .text-luubut{
   width: 100%; 
                             background-color: rgba(255, 255, 255, 0.3); 
@@ -1599,7 +1598,7 @@ a:focus {
 /*--------------------------------------------------------------
 #0.9  Lưu bút
 --------------------------------------------------------------*/
-.cta.parallax {
+.cta {
     background-image: url("../images/blog/ATN03064.webp") !important;
     background-position: center !important;
     background-size: cover !important;
@@ -2176,10 +2175,11 @@ a:focus {
 
     .herocapdoi {
       width: 100%;
-      height: 100%;
+      height: 100vh;
       position: relative;
       overflow: hidden;
     }
+
 
     .bg-layer {
       position: absolute;
@@ -2516,7 +2516,7 @@ a:focus {
 
 .thumoi {
   text-align: center;
-  background: url('https://chyen.love/nc/images/blog/ATN02662.webp') center / cover no-repeat;
+  background: url('../images/blog/ATN02662.webp') center / cover no-repeat;
 
   font-family: "Times New Roman", serif;
   color: #843C0C !important;
