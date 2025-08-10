@@ -1,0 +1,850 @@
+<!DOCTYPE html>
+<html lang="vi_VN">
+
+<!-- Mirrored from irsfoundation.com/tf/templates/wedding/lovely-wedding/lovely-wedding/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 May 2018 09:07:16 GMT -->
+<head>
+    <!-- Meta Tags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- Liên kết kiểm duyệt FB -->
+    <meta property="fb:app_id" content="602062251744557"/>
+    <meta property="fb:admins" content="100008676467394"/>
+    <!-- Loader xoay <script src="https://kit.fontawesome.com/7e83b73089.js" crossorigin="anonymous"></script>-->
+    
+    <!-- js nhập tên -->
+    <script src='js/sweetalert-dev.js'></script>
+
+    <!-- Page Title -->
+    <title>ChYến- Lovly Wedding </title>
+
+    <!-- Favicon and Touch Icons 
+    <link href="images/favicon/favicon.png" rel="shortcut icon" type="image/png">
+    <link href="images/favicon/apple-touch-icon.png" rel="apple-touch-icon">
+    <link href="images/favicon/apple-touch-icon-72x72.png" rel="apple-touch-icon" sizes="72x72">
+    <link href="images/favicon/apple-touch-icon-114x114.png" rel="apple-touch-icon" sizes="114x114">
+    <link href="images/favicon/apple-touch-icon-144x144.png" rel="apple-touch-icon" sizes="144x144">
+-->
+    <link href="images/favicon/favicon.png" rel="shortcut icon" type="image/x-icon">
+    <meta property="og:image"
+    content="images/favicon/favicon.png">
+
+    <!-- Icon fonts -->
+    <link href="css/font-awesome.min.css" rel="stylesheet">
+    <link href="css/flaticon.css" rel="stylesheet">
+
+    <!--css cho form nhập tên-->
+    <link href="css/sweetalert.css" rel="stylesheet">
+
+    <!-- Bootstrap core CSS -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- Plugins for this template -->
+    <link href="css/animate.css" rel="stylesheet">
+    <link href="css/owl.carousel.css" rel="stylesheet">
+    <link href="css/owl.theme.css" rel="stylesheet">
+    <link href="css/slick.css" rel="stylesheet">
+    <link href="css/slick-theme.css" rel="stylesheet">
+    <link href="css/owl.transitions.css" rel="stylesheet">
+    <link href="css/jquery.fancybox.css" rel="stylesheet">
+    <!-- <link href="css/magnific-popup.css" rel="stylesheet"> -->
+
+    <!-- Custom styles for this template -->
+    <link href="css/style.css" rel="stylesheet">
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/html5shiv/3.7.3/html5shiv.min.js"></script>
+    <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+    <style type="text/css">
+
+          /* popup thông báo gửi tin tới excel */
+              
+          .overlay2 {              
+          background: rgba(0, 0, 0, 0.8);              
+          opacity: 0.8;             
+          filter: alpha(opacity=80);              
+          position: fixed;             
+          top: 0px;   
+          bottom: 0px;
+          left: 0px; 
+          right: 0px; 
+          z-index: 10000; 
+          }
+              
+          /* Popup */             
+          .popup { 
+          background: white;
+          position: fixed;
+          top: 0;
+          left: 0;
+          bottom: 0;
+          right: 0;
+          z-index: 10001;
+          width: 500px;
+          height: 240px;
+          border-radius: 15px;
+          margin: auto;
+          }
+              
+          @media (max-width: 768px) {
+          .popup {
+          width: 90%;
+          margin: auto 5%;
+          }
+          }
+              
+          .popup .popup-inner {
+          position: relative;
+          padding: 20px 0;
+          text-align: center;
+          font-size: 18px;
+          font-family:arial;
+          }
+              
+          .popup .popup-inner input.s3-btn-close {
+          padding: 10px;
+          top: -0.5em;
+          right: -0.5em;
+          background: #2c40ee;
+          border: solid 2px white;
+          color: white;
+          cursor: pointer;
+          border-radius: 15px;
+          outline: none;
+          }
+              
+          /*************
+              
+          S3 Button nút tắt popup
+              
+          *************/
+              
+          input.s3-btn {
+          background: #4E92DF;
+          border: none;
+          width: 30%;
+          height: 50px;
+          cursor: pointer;
+          position: absolute;
+          top: -400px;
+          color: white;
+          right: 0;
+          bottom: 0;
+          left: 0;
+          margin: auto;
+          font-size: 18pt;
+          }
+              
+          .s3-center {
+          text-align: center;
+          }
+          /*************
+                        
+                    Loader xoay ko cần nữa
+                        
+               
+                 *************/      
+
+          .loader{
+            width: 100%;
+            height: 100%;
+            background-color: white;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 100000000000;
+            display: none;
+            overflow: hidden;
+          }
+          .icon2{
+            font-size: 80px;
+            color: #fff;
+            position: absolute; 
+            top: 50%;
+            left: 50%;
+            margin-top: -40px;
+            margin-left: -40px;
+            
+          }
+          .xoay{
+            animation: xoay 1.5s linear infinite;
+            -moz-animation: xoay 1.5s linear infinite;
+            -ms-animation: xoay 1.5s linear infinite;
+            -o-animation: xoay 1.5s linear infinite;
+            -webkit-animation: xoay 1.5s linear infinite;
+
+          }
+          @-webkit-keyframes xoay{
+            from{
+              -ms-transform:rotate(0deg);
+              -moz-transform: rotate(0deg);
+              -o-transform: rotate(0deg);
+              -webkit-transform: rotate(0deg);
+              transform: rotate(0deg);
+            }
+            to{
+              -ms-transform:rotate(360deg);
+              -moz-transform: rotate(360deg);
+              -o-transform: rotate(360deg);
+              -webkit-transform: rotate(360deg);
+              transform: rotate(360deg);
+            }
+          }     
+    </style>
+<body id="home" onload="nhappass()" >
+    <!-- #Bình luận FB -- class="preloading2"-- style="display: none;"> 
+
+  <div id="fb-root"></div>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v16.0&appId=602062251744557&autoLogAppEvents=1" nonce="0OlDv5Cq"></script>
+<script async defer crossorigin="anonymous" src="https://connect.facebook.net/vi_VN/sdk.js#xfbml=1&version=v16.0&appId=1173656706661282&autoLogAppEvents=1" nonce="8WS1lxtO"></script>
+    <!-- #Load khi nhấn gửi thông tin -->
+    <div class="overlay2" id="overlay2" style="display:none;"></div>
+    <div class="loader" id="loader" style="display:none;">
+            <div class="inner">
+                <span class="icon"><i class="fi flaticon-two"></i></span>
+            </div>
+       <!-- Thẻ load mặc định, thì xóa dev inner bên trên  <span class="icon"><i class="fi flaticon-two"></i></span>  -->
+    </div>
+
+    <!-- #popup khi gửi thông tin -->
+    <div class="popup" id="popup" style="display:none;">
+        <div class="popup-inner">
+            <h3>Cảm ơn <span id="namene">'Ai Đó'</span> đã gửi lời nhắn tham dự</h3>
+            <br>  
+            <p>Sự góp mặt của <span id="namene2">'Ai Đó'</span> góp phần kiếm thêm thu nhập cho gia đình chúng mình ^^</p>
+           <input type="button" name="Close" class="s3-btn-close" onclick="popupClose();" value="Ồ Kế">   
+        </div>
+    </div>
+
+
+    <!-- start page-wrapper -->
+    <div class="page-wrapper">
+
+      
+        <div class="preloader">
+            <div class="inner">
+                <span class="icon"><i class="fi flaticon-two"></i></span>
+            </div>
+        </div>
+     
+
+
+        <!-- strat music-box -->
+        <div class="music-box">
+            <button class="music-box-toggle-btn">
+                <i class="fa fa-music"></i>
+            </button>
+
+            <div class="music-holder">
+                <iframe width="100%" height="300" scrolling="no" frameborder="no" allow="autoplay" src="https://w.soundcloud.com/player/?url=https%3A//api.soundcloud.com/tracks/1443689671&color=%23ff5500&auto_play=false&hide_related=true&show_comments=false&show_user=false&show_reposts=false&show_teaser=false&visual=false"></iframe>
+
+  
+            </div>
+        </div>
+        <!-- end music box -->
+
+
+        <!-- start of hero -->
+        <section class="hero">
+            <div class="hero-slider hero-slider-s1">
+                <div class="slide-item">
+                    <img src="images/slider/slide-1.jpg" alt class="slider-bg">
+                </div>
+
+                <div class="slide-item">
+                    <img src="images/slider/slide-2.jpg" alt class="slider-bg">
+                </div>
+            </div>
+            <div class="wedding-announcement">
+                <div class="couple-name-merried-text">
+                    <h2 class="wow slideInUp" data-wow-duration="1s">ChYến</h2>
+
+                    <div class="married-text wow fadeIn" data-wow-delay="1s">
+                        <h4 class="">
+                        <span class=" wow fadeInUp" data-wow-delay="1.05s">W</span>
+                        <span class=" wow fadeInUp" data-wow-delay="1.10s">e</span>
+                        <span class=" wow fadeInUp" data-wow-delay="1.15s">'</span>
+                        <span class=" wow fadeInUp" data-wow-delay="1.20s">r</span>
+                        <span class=" wow fadeInUp" data-wow-delay="1.25s">e</span>
+                        <span>&nbsp;</span>
+                        <span class=" wow fadeInUp" data-wow-delay="1.30s">g</span>
+                        <span class=" wow fadeInUp" data-wow-delay="1.35s">e</span>
+                        <span class=" wow fadeInUp" data-wow-delay="1.40s">t</span>
+                        <span class=" wow fadeInUp" data-wow-delay="1.45s">t</span>
+                        <span class=" wow fadeInUp" data-wow-delay="1.50s">i</span>
+                        <span class=" wow fadeInUp" data-wow-delay="1.55s">n</span>
+                        <span class=" wow fadeInUp" data-wow-delay="1.60s">g</span>
+                        <span>&nbsp;</span>
+                        <span class=" wow fadeInUp" data-wow-delay="1.65s">m</span>
+                        <span class=" wow fadeInUp" data-wow-delay="1.70s">a</span>
+                        <span class=" wow fadeInUp" data-wow-delay="1.75s">r</span>
+                        <span class=" wow fadeInUp" data-wow-delay="1.80s">r</span>
+                        <span class=" wow fadeInUp" data-wow-delay="1.85s">i</span>
+                        <span class=" wow fadeInUp" data-wow-delay="1.90s">e</span>
+                        <span class=" wow fadeInUp" data-wow-delay="1.95s">d</span>
+
+                        </h4>
+                    </div>
+                    <!-- <i class="fa fa-heart"></i> -->
+                </div>
+
+                <div class="save-the-date">
+                    <h4>Lễ Thành Hôn</h4>
+                    <span class="date">25 DEC 2023</span>
+                </div>
+            </div>
+        </section>
+        <!-- end of hero slider -->
+
+        <!-- Start header -->
+        <header id="header" class="site-header header-style-1">
+            <nav class="navigation navbar navbar-default">
+                <div class="container">
+                    <div class="navbar-header">
+                        <button type="button" class="open-btn">
+                            <span class="sr-only">Toggle navigation</span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                            <span class="icon-bar"></span>
+                        </button>
+                        <div class="couple-logo">
+                            <h1><a href="#home"><img src="images/logo/logo.png" alt="Logo Image" width="120px;"></a></h1>
+                        </div>
+                    </div>
+                    <div id="navbar" class="navbar-collapse collapse navbar-right navigation-holder">
+                        <button class="close-navbar"><i class="fa fa-close"></i></button>
+                        <ul class="nav navbar-nav">
+                            <li><a href="#home">Trang Chủ</a></li>
+                            <li><a href="#couple">Couple</a></li>
+                            <li><a href="#story">Story</a></li>
+                            <li><a href="#events">Events</a></li>
+                            <li><a href="#gallery">Gallery</a></li>
+                            <li><a href="#rsvp">RSVP</a></li>
+                            <li  class="menu-item-has-children" style="display:none;">
+                                <a href="javascript:void(0);">Blog</a>
+                                <ul class="sub-menu">
+                                    <li><a href="blog.html">Blog</a></li>
+                                    <li><a href="blog-details.html">Blog Details</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div><!-- end of nav-collapse -->
+                </div><!-- end of container -->
+            </nav>
+        </header>
+        <!-- end of header -->
+
+
+        <!-- start wedding-couple-section -->
+        <section class="wedding-couple-section section-padding" id="couple">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-xs-12">
+
+                        <div class="gb groom">
+                            <div class="img-holder wow fadeInLeftSlow">
+                                <img src="images/couple/img-1.png" alt>
+                            </div>
+                            <div class="details">
+                                <div class="details-inner">
+                                    <span class="signature">Nguyễn Chiến</span>
+                                    <p style="font-size: 14px;">Chú Rể</p>
+                                    <p>
+                                        16/04/1998 <br>
+                                    Đứa con rơi của Xuân Diệu. Chịu khó, thông minh, lanh lợi là các đức tính không hề có ở chú rể nhưng bù lại anh lại có tính thích trọc chó. </br>
+                                    Nhược điểm thì không có, Ưu điểm chính là không có nhược điểm ^^ 
+                                   
+                                    </p>
+                                    
+                                    <ul class="social-links">
+                                        <p>Liên Hệ</p>
+                                        <li><a href="https://nchienms.github.io/NChienMS/"><i class="fa fa-facebook"></i></a></li>
+                                       
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="gb bride">
+                            <div class="details">
+                                <div class="details-inner">
+                                    <span class="signature">Thu Yến</span>
+                                    <p style="font-size: 14px;">Cô Dâu</p>
+                                     <p>
+                                        29/05/2001 <br>
+                                        Là con rơi của Sherlock Holmes. Suy nghĩ, lập luận vô cùng sắc bén, mỗi tội chưa bao giờ suy luận chính xác, với tài tự biên tự diễn thì cá nhân Chú Rể nghĩ giống 1 nhà báo hơn là con của Sherlock Holmes
+                                   
+                                    </p>
+                                    <ul class="social-links">
+                                        <p>Liên Hệ</p>
+                                        <li><a href="https://nchienms.github.io/NChienMS/"><i class="fa fa-facebook"></i></a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="img-holder wow fadeInRightSlow">
+                                <img src="images/couple/img-2.jpg" alt>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end row -->
+            </div> <!-- end container -->
+        </section>
+        <!-- end wedding-couple-section -->
+
+
+        <!-- start count-down-section -->
+        <section class="count-down-section section-padding parallax" style="background-color: #5e9a8e" data-speed="7">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-md-4">
+                        <h2 style="font-size: 40px;"><span>Hãy cùng đếm ngược.....</span> Mà cần gì đếm vì có bộ đếm này rồi ^^</h2>
+                       
+                    </div>
+
+                    <div class="col col-md-7 col-md-offset-1">
+                        <div class="count-down-clock" >
+                            <div id="clock">
+
+                            </div>
+                        </div>
+                    </div>
+
+                   
+                </div> <!-- end row -->
+            </div> <!-- end container -->
+        </section>
+        <!-- end count-down-section -->
+
+
+        <!-- start story-section -->
+        <section class="story-section section-padding" id="story">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-xs-12">
+                        <div class="section-title">
+                            <div class="vertical-line"><span><i class="fi flaticon-two"></i></span></div>
+                            <h2>Story</h2>
+                        </div>
+                    </div>
+                </div> <!-- end section-title -->
+
+                <div class="row">
+                    <div class="col col-xs-12">
+                        <div class="story-timeline">
+                            <div class="row">
+                                <div class="col col-md-6">
+                                    <div class="story-text right-align-text">
+                                        <h3>Ánh mắt đầu tiên</h3>
+                                        <span class="date">2022</span>
+                                        <p>“Thanh xuân là cảm giác làm bất cứ điều gì cũng vẫn kịp. Một khi nắm tuổi thanh xuân trong tay bạn sẽ cảm thấy có nhiều thời gian, nhiều tinh lực để ‘tiêu xài’.” </p>
+                                    </div>
+                                </div>
+                                <div class="col col-md-6">
+                                    <div class="img-holder">
+                                        <img src="images/story/img-1.jpg" alt class="img img-responsive">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-md-6">
+                                    <div class="img-holder right-align-text story-slider">
+                                        <img src="images/story/img-2.jpg" alt class="img img-responsive">
+                                        <img src="images/story/img-3.jpg" alt class="img img-responsive">
+                                    </div>
+                                </div>
+                                <div class="col col-md-6 text-holder">
+                                    <span class="heart">
+                                        <i class="fa fa-heart"></i>
+                                    </span>
+                                    <div class="story-text">
+                                        <h3>Những cái nắm tay</h3>
+                                        <span class="date">2018 và 2022</span>
+                                        <p>Người ta từng nói tình yêu thương thường được đong đếm bằng những lần nắm tay nhau. Một cái nắm tay nhẹ nhàng, siết hờ làm con tim rung rinh hay một cái nắm tay ghì chặt để dìu dắt nhau bước tiếp về đường đời muôn trùng khó khăn phía trường. Ấm áp, giản dị vậy thôi nhưng lại đong đầy yêu thương và ai cũng thao thức đi tìm. </p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-md-6 text-holder right-heart">
+                                    <span class="heart">
+                                        <i class="fa fa-heart"></i>
+                                    </span>
+                                    <div class="story-text right-align-text">
+                                        <h3>Hẹn hò có kẻ T3</h3>
+                                        <span class="date">2022 VÀ 2023</span>
+                                        <p>Những buổi hẹn hò lại có mặt của kẻ thứ bar, nhưng như thế mưới có culi để chụp cho chúng ta các bức ảnh này nè </p>
+                                    </div>
+                                </div>
+                                <div class="col col-md-6">
+                                    <div class="img-holder right-align-text story-slider">
+                                        <img src="images/story/img-7.jpg" alt class="img img-responsive">
+                                        <img src="images/story/img-5.jpg" alt class="img img-responsive">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col col-md-6">
+                                    <div class="img-holder video-holder">
+                                        <img src="images/story/img-8.jpg" alt class="img img-responsive">
+                                        <a href="https://www.youtube.com/embed/_fe4jNlOAvs?autoplay=1" data-type="iframe" class="video-play-btn">
+                                            <i class="fa fa-play"></i>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div class="col col-md-6 text-holder">
+                                    <span class="heart">
+                                        <i class="fa fa-heart"></i>
+                                    </span>
+                                    <div class="story-text">
+                                        <h3>Dỗi Yêu</h3>
+                                        <span class="date">25/12/2022</span>
+                                        <p>Từ nhỏ đến lớn, thứ duy nhất không biến hóa, đó chính là trái tim không thích học. <br>
+                                        “Giận nhau để yêu nhau nhiều hơn” </p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end row -->
+            </div> <!-- end container -->
+        </section>
+        <!-- end story-section -->
+
+
+        <!-- start cta -->
+        <section class="cta section-padding parallax" style="background-color: #5e9a8e;" data-speed="7">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-xs-12">
+                        
+                        <div style="width: 100%; background-color: rgba(255, 255, 255, 0.8); padding: 10px; 
+                        border-top-left-radius: 10px;
+                         border-top-right-radius: 10px; ">
+                            <div style="font-size: 25px; color: black">Cảm ơn <span style="font-size: 25px;" id="namene3">'Ai Đó'</span>, hãy nói gì đó ở phần bình luận này nhé ạ ^^</div>
+                            <img src="images/blog/img-1.jpg" style="width: 100%">
+                           <div class="fb-like" style="float: left;" data-href="https://nchiennb.github.io/nchiennb/wedding/" data-width="350px" data-layout="button_count" data-action="" data-size="" data-share="false"></div>
+                            <div class="fb-comments" data-href="https://nchiennb.github.io/nchiennb/wedding/" data-width="100%" data-numposts="8"></div>
+
+                        </div>
+                        
+
+                    </div>
+                </div> <!-- end row -->
+            </div> <!-- end container -->
+        </section>
+        <!-- end cta -->
+
+
+
+        <!-- start events-section -->
+        <section class=" events-section section-padding" id="events" style="border-bottom: #2a4540 solid 5px;">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-xs-12">
+                        <div class="section-title">
+                            <div class="vertical-line"><span><i class="fi flaticon-two"></i></span></div>
+                            <h2>Wedding events</h2>
+                        </div>
+                    </div>
+                </div> <!-- end section-title -->
+
+                <div class="row">
+                    <div class="col col-lg-10 col-lg-offset-1">
+                        <div class="event">
+                            <div class="img-holder">
+                                <img src="images/events/img-1.jpg" alt class="img img-responsive">
+                            </div>
+                            <div class="details">
+                                <h3>Lễ ăn hỏi</h3>
+                                <ul>
+                                    <li><i class="fa fa-map-marker"></i> Nhà gái - Xóm X, Yên Mô.</li>
+                                    <li><i class="fa fa-clock-o"></i>25/12/2023, 9AM - 5PM</li>
+                                </ul>
+                                <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
+                                <a class="see-location-btn popup-gmaps" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1872.3631955424532!2d105.95613505033509!3d20.18711457501405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31367b7f883b167d%3A0x96b70aa8a06a43ef!2zTmjDoCBWxINuIEhvw6EgTcahIFTDonk!5e0!3m2!1svi!2s!4v1676519474518!5m2!1svi!2s">
+                                    Chỉ đường <i class="fa fa-angle-right"></i>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="event">
+                            <div class="img-holder">
+                                <img src="images/events/img-2.jpg" alt class="img img-responsive">
+                            </div>
+                            <div class="details">
+                                <h3>Lễ thành hôn</h3>
+                                <ul>
+                                    <li><i class="fa fa-map-marker"></i> Nhà trai - Xóm X, Yên Mô.</li>
+                                    <li><i class="fa fa-clock-o"></i> Nov 25 2017, 9AM - 5PM</li>
+                                </ul>
+                                <p>when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. </p>
+                                <a class="see-location-btn popup-gmaps" href="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1872.3631955424532!2d105.95613505033509!3d20.18711457501405!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x31367b7f883b167d%3A0x96b70aa8a06a43ef!2zTmjDoCBWxINuIEhvw6EgTcahIFTDonk!5e0!3m2!1svi!2s!4v1676519474518!5m2!1svi!2s">
+                                    Chỉ đường <i class="fa fa-angle-right"></i>
+                                </a>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end row -->
+            </div> <!-- end container -->
+          
+        </section>
+        <!-- end events-section -->
+
+
+        <!-- start inportant-people-section -->
+       
+
+
+        <!-- start gallery-section -->
+        <section class="gallery-section section-padding" id="gallery" >
+            <div class="container">
+                <div class="row">
+                    <div class="col col-xs-12">
+                        <div class="section-title">
+                            <div class="vertical-line"><span><i class="fi flaticon-two"></i></span></div>
+                            <h2>Our gallery</h2>
+                        </div>
+                    </div>
+                </div> <!-- end section-title -->
+
+                <div class="row">
+                    <div class="col col-xs-12 sortable-gallery">
+                        <div class="gallery-filters">
+                            <ul>
+                                <li><a data-filter="*" href="#" class="current">All</a></li>
+                                <li><a data-filter=".wedding" href="#">Wedding</a></li>
+                                <li><a data-filter=".ceremony" href="#">Ceremony</a></li>
+                                <li><a data-filter=".party" href="#">Party</a></li>
+                            </ul>
+                        </div>
+
+                        <div class="gallery-container gallery-fancybox masonry-gallery">
+                            <div class="grid wedding">
+                                <a href="images/gallery/img-1.jpg" class="fancybox" data-fancybox-group="gall-1">
+                                    <img src="images/gallery/img-1.jpg" alt class="img img-responsive">
+                                </a>
+                            </div>
+                            <div class="grid wedding ceremony">
+                                <a href="images/gallery/img-2.jpg" class="fancybox" data-fancybox-group="gall-1">
+                                    <img src="images/gallery/img-2.jpg" alt class="img img-responsive">
+                                </a>
+                            </div>
+                            <div class="grid ceremony eudcation">
+                                <a href="images/gallery/img-3.jpg" class="fancybox" data-fancybox-group="gall-1">
+                                    <img src="images/gallery/img-3.jpg" alt class="img img-responsive">
+                                </a>
+                            </div>
+                            <div class="grid wedding party">
+                                <a href="images/gallery/img-4.jpg" class="fancybox" data-fancybox-group="gall-1">
+                                    <img src="images/gallery/img-4.jpg" alt class="img img-responsive">
+                                </a>
+                            </div>
+                            <div class="grid ceremony">
+                                <a href="images/gallery/img-5.jpg" class="fancybox" data-fancybox-group="gall-1">
+                                    <img src="images/gallery/img-5.jpg" alt class="img img-responsive">
+                                </a>
+                            </div>
+                            <div class="grid party">
+                                <a href="images/gallery/img-6.jpg" class="fancybox" data-fancybox-group="gall-1">
+                                    <img src="images/gallery/img-6.jpg" alt class="img img-responsive">
+                                </a>
+                            </div>
+                            <div class="grid wedding">
+                                <a href="images/gallery/img-7.jpg" class="fancybox" data-fancybox-group="gall-1">
+                                    <img src="images/gallery/img-7.jpg" alt class="img img-responsive">
+                                </a>
+                            </div>
+                            <div class="grid ceremony">
+                               <!--  <a href="images/gallery/img-8.jpg" class="fancybox" data-fancybox-group="gall-1">
+                                    <img src="images/gallery/img-8.jpg" alt class="img img-responsive">
+                                </a> -->
+                                <a href="https://www.youtube.com/embed/_fe4jNlOAvs?autoplay=1" data-type="iframe" class="video-play-btn">
+                                    <img src="images/gallery/img-8.jpg" alt class="img img-responsive">
+                                    <i class="fa fa-play"></i>
+                                </a>
+
+                            </div>
+                            <div class="grid ceremony">
+                                <a href="images/gallery/img-9.jpg" class="fancybox" data-fancybox-group="gall-1">
+                                    <img src="images/gallery/img-9.jpg" alt class="img img-responsive">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div> <!-- end row -->
+            </div> <!-- end container -->
+        </section>
+        <!-- end gallery-section -->
+
+
+ 
+
+        <!-- start rsvp-section data-bg-image="images/rsvp-bg.jpg"-->
+        <section class="rsvp-section section-padding parallax"  data-speed="7" id="rsvp">
+            <div class="container">
+                <div class="row">
+                    <div class="col col-xs-12">
+                        <div class="section-title-white">
+                            <div class="vertical-line"><span><i class="fi flaticon-two"></i></span></div>
+                            <h2>Messenger</h2>
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- start form gửi thông tin -->
+
+                <div class="row content">
+                    <div class="col col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+                        <p style="text-align: center;"><span id="namene4">'Ai Đó'</span> vui lòng để lại lời nhắn ở đây nhé ^^</p>
+                                        <script type="text/javascript">
+                                    var submitted=false;
+                                </script>
+                                <iframe id="hidden_iframe" name="hidden_iframe" onload="if(submitted){
+                                                                      }" style="display: none;"></iframe>
+                         <form onsubmit="submitted=true;" target="hidden_iframe" class="form validate-rsvp-form row"  role="form" id="ss-form" method="GET" action="https://script.google.com/macros/s/AKfycbxnYlfjCCr5CTZbduBM3SVYauaZ94aBT1oX57WbHXAnWn2vo-Gt6_GxJ7G9mFjiY5VpnA/exec">
+                            <div class="form-detail">
+                                 <div class="">
+                                
+                                    <div class="col col-sm-6 " > 
+                                        <input title="" required="" class="control-custom form-control" dir="auto" id="hoten" value="" name="name-pa" placeholder="Họ và tên*">
+                                    </div>
+
+                                     <div class="col col-sm-6" > 
+                                        <input title="" type="number" required="" class="control-custom form-control" dir="auto" id="Reason" value="" name="Reason" placeholder="Số điện thoại*" >
+
+                                    </div>
+                                    
+                                    <div class="col col-sm-12">
+                                        <textarea required="" class="form-control control-custom" dir="auto" id="Reason2" value="" name="Reason2" placeholder="Lời nhắn*"></textarea>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                           
+                                
+
+                                <div class="col col-sm-12 submit-btn">
+                                    <button type="submit"   onclick="popupOpen();" class="snip1582"  value="Click to Show Popup" >
+                                    <span >Gửi tâm tư</span>
+                                </button>
+                                </div>
+
+                         </form>   
+
+
+                   
+                    </div>
+                </div> <!-- end row -->
+            </div> <!-- end container -->
+        </section>
+        <!-- end rsvp-section -->
+
+
+        <!-- start getting-there-section -->
+   
+        <!-- end getting-there-section -->
+
+
+        <!-- start gift-registration-section -->
+    
+        <!-- end gift-registration-section -->
+
+
+        <!-- start footer -->
+        <footer class="site-footer">
+            <div class="back-to-top">
+                <a href="#" class="back-to-top-btn"><span><i class="fi flaticon-cupid"></i></span></a>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col col-xs-12">
+                        <h2>Mãi Mãi và Yêu thương</h2>
+                        <span>- N. Chiến (The groom)</span>
+                    </div>
+                </div> <!-- end row -->
+            </div> <!-- end container -->
+        </footer>
+        <!-- end footer -->
+
+    </div>
+    <!-- end of page-wrapper -->
+
+
+<!-- partial -->
+
+    <!-- All JavaScript files
+    ================================================== -->
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugins for this template -->
+    <script src="js/jquery-plugin-collection.js"></script>
+
+    <!-- Custom script for this template -->
+    <script src="js/script.js"></script>
+
+
+
+
+</body>
+<!-- js nhập tên người dùng -->
+<script>
+   // Thay đổi tên người đăng nhập bằng lệnh  div.innerHTML = 'Demo thay đổi nội dung thẻ div bằng Javascript tại Freetuts'; khi nhấn oki
+    var div = document.getElementById('namene');
+    var div2 = document.getElementById('namene2');
+    var div3 = document.getElementById('namene3');
+    var div4 = document.getElementById('namene4');
+
+    
+  
+      // Sau khi load trang sẽ yêu cầu nhập mật khẩu
+  function nhappass() {
+                 
+                  swal({
+                  title: "Oh chúng ta lại gặp nhau rồi!",
+                  text: "Chẳng hay cao danh quý tánh của Vị đây là gì?",
+                  type: "input",
+                  showCancelButton: false, // Có hiển thị nút cancel không(true = có)
+                  closeOnConfirm: false, // Có thể tắt popup khi nhấp Ok không (true = có)
+                  showLoaderOnConfirm: true, // Hiển thị loading khi nhấp vào nút Ok
+                  animation: "slide-from-top", // Như tên của nó, popup sẽ slide from top
+                  inputPlaceholder: "Ta đây là..."
+
+              },
+
+
+        function (inputValue) {
+                   //alert(inputValue);
+                    if (inputValue == ""){ 
+                      var ttname = "Xin chào 'Ai đó'"; 
+                      var ttname2 = "'Ai đó' ơi, Mình sẽ liên hệ sớm nhất có thể\n 'Ai đó' có thể để lại thông tin liên hệ ở phần gửi lời nhắn để mình biết bạn đã ghé qua nhé ạ!";
+                      var aido = "Ai đó";
+                    } else {
+                    var ttname = "Xin chào " + inputValue;
+                    var ttname2 = inputValue +" ơi, Mình sẽ liên hệ sớm nhất có thể\n "+ inputValue+ " có thể để lại thông tin liên hệ ở phần gửi lời nhắn để mình biết bạn đã ghé qua nhé ạ!";
+                    var aido = inputValue;
+                    }
+                    div.innerHTML = aido;
+                    div2.innerHTML = aido;
+                    div3.innerHTML = aido;
+                    div4.innerHTML = aido;
+                    //alert(ttname);
+                    setTimeout(function() {
+                    swal(ttname, ttname2, "success");}, 500);
+              
+              });      
+
+      };
+
+
+
+   </script>
+
+<!-- Mirrored from irsfoundation.com/tf/templates/wedding/lovely-wedding/lovely-wedding/index.html by HTTrack Website Copier/3.x [XR&CO'2014], Tue, 15 May 2018 09:09:09 GMT -->
+</html>
