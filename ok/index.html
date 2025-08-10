@@ -27,7 +27,7 @@
     <!-- js nhập tên lúc load xong-->
     <script src='js/sweetalert-dev.js'></script>
     <!-- Page Title -->
-    <title>ChYến- Lovly Wedding </title>
+    <title>ChYến- Lovly Wedding dd </title>
     <!-- biểu tượng trang -->
     <link href="images/favicon/favicon.png" rel="shortcut icon" type="image/x-icon">
     <!-- ảnh chia sẻ (để ảnh dạng link http:// đê tích hợp trên zalo) -->
@@ -916,6 +916,30 @@
         setTimeout(setHeroFixedHeight, 300);
     });
 })();
+
+(function () {
+    function setFixedHeight(selector) {
+        var height = window.visualViewport ? window.visualViewport.height : window.innerHeight;
+        document.querySelectorAll(selector).forEach(function (el) {
+            el.style.height = height + "px";
+        });
+    }
+
+    function applyForSmallScreens() {
+        if (window.matchMedia("(max-width: 1199px)").matches || window.matchMedia("(max-width: 991px)").matches) {
+            setFixedHeight('.hero');
+        }
+    }
+
+    // Khi load trang
+    document.addEventListener("DOMContentLoaded", applyForSmallScreens);
+
+    // Khi đổi hướng màn hình
+    window.addEventListener("orientationchange", function () {
+        setTimeout(applyForSmallScreens, 300);
+    });
+})();
+
 </script>
 
 
