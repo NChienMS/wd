@@ -2746,10 +2746,3 @@ a:focus {
 .wave span:nth-child(22) { animation-delay: 2.1s; }
 
 
-@media (max-width: 1199px) {
-  .hero,
-  .hero .slide-item,
-  .herocapdoi {
-    height: calc(var(--vh, 1vh) * 100) !important;
-  }
-}
