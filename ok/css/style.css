@@ -34,6 +34,12 @@ URL:            http://themeforest.net/user/themexriver
 /*--------------------------------------------------------------
 #0.1    Theme Reset Style
 --------------------------------------------------------------*/
+.hero-slider img.slider-bg,
+.bg-layer {
+    transform: none !important;
+    will-change: auto !important;
+    background-attachment: scroll !important;
+}
 .text-luubut{
   width: 100%; 
                             background-color: rgba(255, 255, 255, 0.3); 
