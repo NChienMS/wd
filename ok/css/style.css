@@ -2181,7 +2181,7 @@ a:focus {
 
     .herocapdoi {
       width: 100%;
-      height: calc(100vh - 71.75px);
+      height: 100%;
       position: relative;
       overflow: hidden;
     }
