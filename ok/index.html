@@ -910,34 +910,12 @@
         setTimeout(setHeroFixedHeight, 300);
     });
 })();
-
-
-(function(){
-    function setHeroSectionHeight(){
-        var hero = document.querySelector('.hero');
-        var heroSlides = document.querySelectorAll('.hero .slide-item');
-
-        if(hero){
-            var height = window.innerHeight;
-            hero.style.height = height + "px";
-        }
-
-        if(heroSlides.length){
-            heroSlides.forEach(function(slide){
-                slide.style.height = window.innerHeight + "px";
-            });
-        }
-    }
-
-    document.addEventListener("DOMContentLoaded", setHeroSectionHeight);
-    window.addEventListener("orientationchange", function(){
-        setTimeout(setHeroSectionHeight, 300);
-    });
 </script>
 
 
 </body>
 </html>
+
 
 
 
