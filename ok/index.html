@@ -51,103 +51,7 @@
     <script src="https://cdn.jsdelivr.net/npm/@fancyapps/ui@5.0/dist/fancybox/fancybox.umd.js"></script>
     <!-- Swiper JS slider ảnh-->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script type="text/javascript">
-        (function () {
-  // Selector cần áp dụng
-  const SELECTOR = '.hero';
-  // Áp khi màn hình nhỏ (tương ứng media query CSS của bạn)
-  const MQ = '(max-width: 1199px)';
 
-  const mq = window.matchMedia(MQ);
-  let locked = false; // đã khóa chiều cao hay chưa
-
-  // Ghi chiều cao (px) bằng inline style với !important để override CSS
-  function applyHeight(px) {
-    document.querySelectorAll(SELECTOR).forEach(el => {
-      el.style.setProperty('height', px + 'px', 'important');
-      // đặt min-height bằng giá trị tương tự để tránh min-height CSS can thiệp
-      el.style.setProperty('min-height', px + 'px', 'important');
-      el.classList.add('vh-locked'); // tiện cho debug nếu cần
-    });
-    locked = true;
-  }
-
-  // Xóa inline style (khi màn hình lớn lên)
-  function removeHeight() {
-    document.querySelectorAll(SELECTOR).forEach(el => {
-      el.style.removeProperty('height');
-      el.style.removeProperty('min-height');
-      el.classList.remove('vh-locked');
-    });
-    locked = false;
-  }
-
-  // Đo viewport hiện tại (ưu tiên visualViewport)
-  function measuredHeight() {
-    if (window.visualViewport && window.visualViewport.height) {
-      return Math.round(window.visualViewport.height);
-    }
-    if (window.innerHeight) return Math.round(window.innerHeight);
-    return Math.round(window.screen ? window.screen.height : 0);
-  }
-
-  // Đo 1 lần và khóa (chỉ thực hiện nếu media query khớp)
-  function measureAndLockOnce() {
-    if (!mq.matches || locked) return;
-    const h = measuredHeight();
-    if (h && h > 0) {
-      applyHeight(h);
-    }
-  }
-
-  // Handler khi media query thay đổi
-  function onMqChange(e) {
-    if (!e.matches) {
-      // màn hình to hơn ngưỡng → phục hồi CSS (bỏ khóa)
-      removeHeight();
-    } else {
-      // màn hình nhỏ lại → đo lại ngay
-      locked = false;
-      // đo sau 30-80ms để trình duyệt ổn định
-      setTimeout(measureAndLockOnce, 50);
-    }
-  }
-
-  // Nếu đang ở màn hình nhỏ, đo ngay (lấy "kích thước lần đầu")
-  if (mq.matches) {
-    // đo ngay ngay tại thời điểm script chạy
-    measureAndLockOnce();
-
-    // backup: lắng nghe 1 lần resize của visualViewport/window trong trường hợp
-    // script chạy *trước* khi visualViewport sẵn sàng — nhưng chúng ta chỉ set 1 lần
-    function oneTimeResizeHandler() {
-      if (!locked) measureAndLockOnce();
-      if (window.visualViewport) window.visualViewport.removeEventListener('resize', oneTimeResizeHandler);
-      window.removeEventListener('resize', oneTimeResizeHandler);
-    }
-    if (window.visualViewport) window.visualViewport.addEventListener('resize', oneTimeResizeHandler, { passive: true });
-    window.addEventListener('resize', oneTimeResizeHandler, { passive: true });
-
-    // Khi đổi hướng: đo lại (sau trình duyệt ổn định)
-    window.addEventListener('orientationchange', function () {
-      // cho trình duyệt 200-400ms để ổn định kích thước
-      setTimeout(function () {
-        // unlock để đo giá trị "mới" ở trạng thái ban đầu sau xoay
-        locked = false;
-        measureAndLockOnce();
-      }, 300);
-    });
-  }
-
-  // Bắt sự kiện thay đổi media query (tương thích cũ/new)
-  if (mq.addEventListener) mq.addEventListener('change', onMqChange);
-  else if (mq.addListener) mq.addListener(onMqChange);
-
-  // Khi script được tải ở trạng thái màn lớn (không match), vẫn cần lắng nghe khi user thu nhỏ cửa sổ
-  // (handled by mq listener ở trên)
-})();
-
-    </script>
 </head>
 
 
@@ -193,9 +97,9 @@
      
         <!-- home-->
 <!-- ẢNH ĐẦU TRANG  -->
-    <section class="hero ">
+    <section class="hero setcung">
         <div class="hero-slider hero-slider-s1">
-            <div class="slide-item">
+            <div class="slide-item setcung">
                 <img src="https://chyen.love/images/blog/ATN03064.webp" alt class="slider-bg">
             </div>
 
@@ -990,25 +894,27 @@
 
 
 (function(){
-    function setFixedHeight() {
-        // Lấy tất cả phần tử có class .herocapdoi hoặc .setcung
-        var elements = document.querySelectorAll('.herocapdoi, .setcung');
-        if (elements.length > 0) {
-            var height = window.innerHeight;
-            elements.forEach(function(el) {
-                el.style.height = height + "px";
-            });
-        }
+    function setFixedHeight(selector){
+        var els = document.querySelectorAll(selector);
+        var height = window.innerHeight;
+        els.forEach(function(el){
+            el.style.height = height + "px";
+        });
     }
 
-    // Gọi ngay khi trang load xong
-    document.addEventListener("DOMContentLoaded", setFixedHeight);
+    document.addEventListener("DOMContentLoaded", function(){
+        setFixedHeight('.herocapdoi');
+        setFixedHeight('.setcung');
+    });
 
-    // Chỉ cập nhật khi đổi hướng màn hình (portrait <-> landscape)
     window.addEventListener("orientationchange", function(){
-        setTimeout(setFixedHeight, 300);
+        setTimeout(function(){
+            setFixedHeight('.herocapdoi');
+            setFixedHeight('.setcung');
+        }, 300);
     });
 })();
+
 
 
 
@@ -1017,8 +923,6 @@
 
 </body>
 </html>
-
-
 
 
 
