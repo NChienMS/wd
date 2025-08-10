@@ -926,29 +926,31 @@
       current = character;
     }
 
+function fixFullHeightSections() {
+    if (window.innerWidth <= 1199) { // Mobile & Tablet
+        let vh = window.innerHeight;
 
- (function(){
-    function setHeroFixedHeight(){
-        var hero = document.querySelector('.herocapdoi');
-        if(hero){
-            // Lấy chiều cao hiển thị hiện tại
-            var height = window.innerHeight;
-            hero.style.height = height + "px";
-        }
+        // Các section cần set chiều cao
+        document.querySelectorAll('.hero, .hero .slide-item, .herocapdoi').forEach(el => {
+            el.style.height = vh + 'px';
+        });
+
+    } else {
+        // Desktop trả về CSS gốc
+        document.querySelectorAll('.hero, .hero .slide-item, .herocapdoi').forEach(el => {
+            el.style.height = '';
+        });
     }
+}
 
-    // Gọi ngay khi trang load xong
-    document.addEventListener("DOMContentLoaded", setHeroFixedHeight);
-
-    // Chỉ cập nhật khi đổi hướng màn hình (portrait <-> landscape)
-    window.addEventListener("orientationchange", function(){
-        // Delay một chút cho trình duyệt ổn định kích thước
-        setTimeout(setHeroFixedHeight, 300);
-    });
-})();
+// Chạy khi load
+window.addEventListener('load', fixFullHeightSections);
+// Chạy khi thay đổi kích thước / xoay màn hình
+window.addEventListener('resize', fixFullHeightSections);
 </script>
 
 
 </body>
 </html>
+
 
