@@ -382,13 +382,19 @@ function stickIt($stickyClass, $toggleClass, $topOffset) {
         });
 
 */
-
-$(document).ready(function() {
-    preloader(); // tắt loader sớm
+document.addEventListener("DOMContentLoaded", function() {
+    preloader(); // tắt loader khi DOM + CSS + JS đã sẵn sàng
     sliderBgSetting();
     toggleMobileNavigation();
     smallNavFunctionality();
     smoothScrolling($("#navbar > ul > li > a[href^='#']"), $(".header-style-1 .navigation").innerHeight());
+
+    // Gọi nhappass() trễ 500ms để mượt hơn
+    setTimeout(function() {
+        if (!getQueryParam('to')) { 
+            nhappass();
+        }
+    }, 500);
 });
     
 
