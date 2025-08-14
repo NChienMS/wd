@@ -364,7 +364,7 @@ function stickIt($stickyClass, $toggleClass, $topOffset) {
 
      /*==========================================================================
         WHEN DOCUMENT LOADING
-    ==========================================================================*/
+    ==========================================================================
         $(window).on('load', function() {
 
             preloader();
@@ -381,7 +381,16 @@ function stickIt($stickyClass, $toggleClass, $topOffset) {
 
         });
 
+*/
 
+$(document).ready(function() {
+    preloader(); // tắt loader sớm
+    sliderBgSetting();
+    toggleMobileNavigation();
+    smallNavFunctionality();
+    smoothScrolling($("#navbar > ul > li > a[href^='#']"), $(".header-style-1 .navigation").innerHeight());
+});
+    
 
     /*==========================================================================
         WHEN WINDOW SCROLL
