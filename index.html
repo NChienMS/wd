@@ -51,6 +51,14 @@
 
 
 <body id="home"  >
+    <!-- Template cánh hoa -->
+<template id="petalTpl">
+  <div class="petal" aria-hidden="true">
+    <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" class="petal-svg">
+      <path d="M12 2c3 2 7 5 7 9 0 5-4 9-7 9s-7-4-7-9c0-4 4-7 7-9z"/>
+    </svg>
+  </div>
+</template>
 
     <!-- #Load khi nhấn gửi thông tin -->
     <div class="overlay2" id="overlay2" style="display:none;"></div>
@@ -960,6 +968,58 @@
     }
   }
 }
+</script>
+<script>
+(function(){
+  const media = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const tpl = document.getElementById('petalTpl');
+  const rand = (min, max) => Math.random() * (max - min) + min;
+
+  let timer = null;
+  const defaults = {
+    intervalMs: 1200,   // mật độ: nhỏ hơn = rơi dày hơn
+    sizePx: 16,         // kích thước cánh
+    color: 'red',   // màu cánh
+    driftPx: 120,       // độ lệch ngang khi rơi
+    durationS: [9,14],  // khoảng thời gian rơi
+  };
+
+  function spawnPetal(cfg){
+    const el = tpl.content.firstElementChild.cloneNode(true);
+    const svg = el.querySelector('.petal-svg path');
+    svg.setAttribute('fill', cfg.color);
+
+    el.style.width = el.style.height = cfg.sizePx + 'px';
+    const startX = rand(-10, window.innerWidth + 10);
+    const drift = rand(-cfg.driftPx, cfg.driftPx);
+    const dur = rand(cfg.durationS[0], cfg.durationS[1]);
+
+    el.style.left = startX + 'px';
+    el.style.setProperty('--xEnd', drift + 'px');
+    el.style.animationDuration = dur + 's';
+    el.style.animationDelay = rand(0, 3) + 's';
+
+    document.body.appendChild(el);
+    el.addEventListener('animationend', () => el.remove());
+  }
+
+  function start(opts = {}){
+    const cfg = Object.assign({}, defaults, opts);
+    if (media.matches) return; // tôn trọng người dùng giảm chuyển động
+    stop();
+    for(let i=0;i<8;i++) spawnPetal(cfg);
+    timer = setInterval(() => spawnPetal(cfg), cfg.intervalMs);
+  }
+  function stop(){
+    if(timer) clearInterval(timer), timer = null;
+    document.querySelectorAll('.petal').forEach(el => el.remove());
+  }
+  media.addEventListener?.('change', e => { if(e.matches) stop(); });
+
+  window.Petals = { start, stop };
+  // tự chạy
+  start(); 
+})();
 </script>
 
 
