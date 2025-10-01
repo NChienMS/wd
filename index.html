@@ -10,6 +10,7 @@
 <meta property="og:image" content="https://ariesvn8.wordpress.com/wp-content/uploads/2025/06/img-1.jpg" />
 <meta property="og:url" content="https://chyen.love" />
 <meta property="og:type" content="website" />
+<link rel="preload" href="images/tt/hoagocphai.webp" as="image">
     
 
 
@@ -32,8 +33,7 @@
     <link href="images/favicon/favicon.png" rel="shortcut icon" type="image/x-icon">
     <!-- ảnh chia sẻ (để ảnh dạng link http:// đê tích hợp trên zalo) -->
     <meta property="og:image"content="images/favicon/favicon.png">
-    <!-- Icon fonts -->
-    <link href="css/flaticon.css" rel="stylesheet">
+
     <script src="https://kit.fontawesome.com/7e83b73089.js" crossorigin="anonymous"></script>
     <!-- Bootstrap core CSS: thanh logo-->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -52,7 +52,7 @@
 
 <body id="home"  >
 
-<!-- #Load khi nhấn gửi thông tin -->
+    <!-- #Load khi nhấn gửi thông tin -->
     <div class="overlay2" id="overlay2" style="display:none;"></div>
     <div class="loader" id="loader" style="display:none;">
             <div class="inner">
@@ -61,24 +61,24 @@
     </div>
 
 
-<!-- Âm thanh -->
+    <!-- Âm thanh -->
     <audio id="background-music" loop>
       <source src="music/dunglamtraitimanhdau.mp3" type="audio/mpeg">
     </audio>
 
-<!-- #popup khi gửi thông tin -->
-<div class="popup" id="popup" style="display: none;">
-  <div class="popup-inner">
-    <div class="popup-header">
-      ❤️ Lời chúc đã được cập nhật! ❤️
+    <!-- #popup khi gửi thông tin -->
+    <div class="popup" id="popup" style="display: none;">
+      <div class="popup-inner">
+        <div class="popup-header">
+          ❤️ Lời chúc đã được cập nhật! ❤️
+        </div>
+        <p>
+          Cảm ơn <span id="namene">'Ai Đó'</span> đã gửi lời chúc!. <br>
+          Chúc <span id="namene2">'Ai Đó'</span> một ngày vui vẻ, hạnh phúc
+        </p>
+        <input type="button" name="Close" class="popup-send2" onclick="popupClose();" value="OK">
+      </div>
     </div>
-    <p>
-      Cảm ơn <span id="namene">'Ai Đó'</span> đã gửi lời chúc!. <br>
-      Chúc <span id="namene2">'Ai Đó'</span> một ngày vui vẻ, hạnh phúc
-    </p>
-    <input type="button" name="Close" class="popup-send2" onclick="popupClose();" value="OK">
-  </div>
-</div>
 
        <!-- ICON XOAY -->
     <div class="preloader">
@@ -96,7 +96,7 @@
             </div>
 
             <div class="slide-item setcung">
-                <img src="https://chyen.love/images/blog/ATN03064.webp" alt class="slider-bg">
+                <img src="images/blog/ATN02134.webp" alt class="slider-bg">
             </div>
         </div>
 
@@ -396,7 +396,7 @@
             <div class="timeline-item left ">
                 <div class="timeline-content scroll-fade-down">
                     <span class="date scroll-fade-down">19/11/2025</span>
-                    <h3 class="scroll-fade-down">Lễ Ăn Hỏi</h3>
+                    <h3 class="scroll-fade-down">LỄ ĂN HỎI</h3>
                     <span class="scroll-fade-down">
                         <i class="fa-story fa fa-map-marker "></i class="">Nhà gái – Xóm X, Yên Mô <br>
                         <i class="fa-story fa fa-clock-o "></i class="">9AM – 5PM
@@ -412,7 +412,7 @@
             <div class="timeline-item right ">
                 <div class="timeline-content scroll-fade-down">
                     <span class="date scroll-fade-down">21/11/2025</span>
-                    <h3 class="scroll-fade-down">Lễ Thành Hôn</h3>
+                    <h3 class="scroll-fade-down">LỄ THÀNH HÔN</h3>
                     <span class="scroll-fade-down">
                         <i class="fa-story fa fa-map-marker"></i>Nhà gái – Xóm X, Yên Mô  <br>
                         <i class="fa-story fa fa-clock-o"></i>9AM – 5PM
@@ -605,7 +605,6 @@
                         
                     <form onsubmit="submitted=true;" id="chucForm" target="hidden_iframe" class="form validate-rsvp-form row">
                         <div class="form-detail">
-                            <div class="">
                                 <div class="col col-sm-12  scroll-fade-left" > 
                                     <input class="control-custom form-control" type="text" id="name" placeholder="Họ và tên*" required><br>
                                 </div>
@@ -617,7 +616,6 @@
                                 <div class="col col-sm-12 scroll-fade-left">
                                     <textarea class="form-control control-custom" id="message" placeholder="Lời chúc*" required></textarea><br>
                                 </div>
-                            </div>
                         </div>
 
                         <div class="submit-btn">
