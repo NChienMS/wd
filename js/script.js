@@ -1,3 +1,41 @@
+
+  document.addEventListener('DOMContentLoaded', () => {
+    const snowflakeContainer = document.querySelector('.snowflakes');
+    const numberOfSnowflakes = 20; // Số lượng hạt tuyết
+    const symbols = ['❤️', '❅', '✨', '💖']; // Các biểu tượng
+
+    for (let i = 0; i < numberOfSnowflakes; i++) {
+      const snowflake = document.createElement('div');
+      snowflake.classList.add('snowflake');
+
+      // 1. NGẪU NHIÊN BIỂU TƯỢNG
+      const symbol = symbols[Math.floor(Math.random() * symbols.length)];
+      snowflake.innerHTML = symbol;
+
+      // 2. NGẪU NHIÊN KÍCH THƯỚC (8px đến 24px)
+      const size = Math.random() * 16 + 8;
+      snowflake.style.fontSize = `${size}px`;
+
+      // 3. NGẪU NHIÊN VỊ TRÍ NGANG (0% đến 100%)
+      snowflake.style.left = `${Math.random() * 100}%`;
+
+      // 4. NGẪU NHIÊN THỜI GIAN RƠI (8s đến 18s)
+      const fallDuration = Math.random() * 10 + 8;
+      // 5. NGẪU NHIÊN THỜI GIAN LẮC LƯ (2s đến 5s)
+      const shakeDuration = Math.random() * 3 + 2;
+
+      // 6. NGẪU NHIÊN ĐỘ TRỄ KHỞI ĐỘNG (0s đến -18s, giá trị âm để bắt đầu ngay)
+      const delay = Math.random() * -18;
+
+      // ÁP DỤNG CÁC GIÁ TRỊ NGẪU NHIÊN VÀO STYLE
+      snowflake.style.animationDuration = `${fallDuration}s, ${shakeDuration}s`;
+      snowflake.style.animationDelay = `${delay}s, ${delay}s`;
+
+      snowflakeContainer.appendChild(snowflake);
+    }
+  });
+
+
 // đối tượng xuất hiện mượt maf
 document.addEventListener("DOMContentLoaded", () => {
   const items = document.querySelectorAll('.scroll-fade-up, .scroll-fade-right, .scroll-fade-down, .scroll-fade-left');
