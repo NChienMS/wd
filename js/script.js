@@ -426,13 +426,13 @@ document.addEventListener("DOMContentLoaded", function() {
     toggleMobileNavigation();
     smallNavFunctionality();
     smoothScrolling($("#navbar > ul > li > a[href^='#']"), $(".header-style-1 .navigation").innerHeight());
-
+/*
     // Gọi nhappass() trễ 500ms để mượt hơn
     setTimeout(function() {
         if (!getQueryParam('to')) { 
             nhappass();
         }
-    }, 500);
+    }, 500);*/
 });
     
 
