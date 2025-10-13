@@ -876,33 +876,40 @@
   }
 
 // Xử lý khi có hoặc không có tham số
-  window.onload = function () {
-    const guestName = getQueryParam('to');
+// Đảm bảo chỉ mở hộp nhập tên 1 lần
+let nhappassShown = false;
+function nhappassOnce() {
+  if (nhappassShown) return;
+  nhappassShown = true;
+  nhappass();
+}
 
-    if (guestName) {
-      // Nếu có tên trong URL, tự động hiển thị
-      const decodedName = decodeURIComponent(guestName.replace(/\+/g, ' '));
-      div.innerHTML = decodedName;
-      div2.innerHTML = decodedName;
-      div3.innerHTML = decodedName;
-      div4.innerHTML = decodedName;
-      div5.innerHTML = decodedName;
-      div6.innerHTML = decodedName;
-      // Trường nhập tên tự nhận theo tên trên ủrl document.getElementById("name").value = decodedName;
+// Hiện sớm ngay khi DOM sẵn sàng (không chờ ảnh/font)
+document.addEventListener('DOMContentLoaded', function () {
+  const guestName = getQueryParam('to');
 
-      // Có thể hiển thị lời chào popup nhẹ (tuỳ chọn)
-      setTimeout(function () {
-        swal(
-          "Xin chào " + decodedName,
-         
-          "Cảm ơn vì sự ưu ái và quan tâm của " + decodedName + " ạ. Hy vọng được chào đón " + decodedName + " trong ngày vui này \n Chúc " + decodedName + " có những phút giây vui vẻ tại đây!"
-        );
-      }, 500);
-    } else {
-      // Nếu không có tên, chạy như cũ
-      nhappass();
-    }
-  };
+  if (guestName) {
+    const decodedName = decodeURIComponent(guestName.replace(/\+/g, ' '));
+    div.innerHTML = decodedName;
+    div2.innerHTML = decodedName;
+    div3.innerHTML = decodedName;
+    div4.innerHTML = decodedName;
+    div5.innerHTML = decodedName;
+    div6.innerHTML = decodedName;
+
+    // Popup chào nho nhỏ (delay nhẹ cho mượt)
+    setTimeout(function () {
+      swal(
+        "Xin chào " + decodedName,
+        "Cảm ơn vì sự ưu ái và quan tâm của " + decodedName + " ạ. Hy vọng được chào đón " + decodedName + " trong ngày vui này \n Chúc " + decodedName + " có những phút giây vui vẻ tại đây!"
+      );
+    }, 300);
+  } else {
+    // Không có tên → mở hộp nhập tên ngay khi DOM ready
+    nhappassOnce();
+  }
+});
+
 
 // Nếu không có tên, chạy như cũ . chạy cho người dùng tự nhập tên
   function nhappass() {
