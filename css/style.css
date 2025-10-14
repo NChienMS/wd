@@ -36,7 +36,7 @@ URL:            http://themeforest.net/user/themexriver
 --------------------------------------------------------------*/
 .text-luubut{
   width: 100%; 
-                            background-color: rgba(255, 255, 255, 0.3); 
+                            background-color: rgba(255, 255, 255, 0.5); 
                             box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.1);
                             backdrop-filter: blur(20px);
                             padding: 10px; 
@@ -2567,7 +2567,7 @@ a:focus {
   background: url('../images/blog/sl1.jpg') center / cover no-repeat;
 
   font-family: "Times New Roman", serif;
-  color: #843C0C !important;
+  color: #3b3f46  !important;
 }
 
 .fontw{
@@ -3306,3 +3306,25 @@ a:focus {
       margin-right: 0;
       left: 15px;
       right: 15px; } }
+
+
+.lead{ text-align:center; color:#3b3f46; font-weight:600; letter-spacing:.02em; margin-bottom:22px; }
+.cardnames{ text-align:center; margin:8px 0 10px; }
+    .cardname-line{ display:flex; align-items:center; justify-content:center; gap:18px; flex-wrap:wrap; }
+    .cardname{ font-family:"Great Vibes", "Playfair Display", serif; font-size:56px; line-height:1; color:#c79a3b; white-space:nowrap; }
+    .cardheart{ margin-left:10%; }
+
+.cardsection-title{ text-align:center; margin:18px 0 4px; font-weight:700; letter-spacing:.02em; color:#3b3f46 !important; }
+    .cardtime{ text-align:center; margin:0 0 14px; font-weight:600; color:#222; }
+
+        .carddate-row{ display:grid; grid-template-columns:1fr auto 1fr; align-items:center; gap:22px; margin:12px 0 6px; }
+    .cardpill{ text-align:center; font-weight:700; border-top:1px solid #cfd6de; border-bottom:1px solid #cfd6de; padding:8px 4px; }
+    .cardbigday{  border-radius:999px; display:grid; place-items:center;color:#c79a3b; font-family:"Playfair Display",serif; font-weight:700; font-size:70px; margin-top:-20px;  }
+    .cardmonth-year{ text-align:center; font-weight:700; border-top:1px solid #cfd6de; border-bottom:1px solid #cfd6de; padding:8px 4px; }
+
+    .cardlunar{ text-align:center;  font-style:italic;  font-size:.98rem; margin-top: -20px;}
+
+    .cardplace-title{ text-align:center; color:#c79a3b; font-weight:700; font-family:"Playfair Display",serif; font-size:22px; letter-spacing:.02em; margin:10px 0 6px; }
+    .cardddr{ text-align:center; color:#374151; }
+
+    .cardfooter{ margin-top:16px; text-align:center; font-style:italic; }
