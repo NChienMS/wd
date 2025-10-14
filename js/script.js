@@ -561,30 +561,79 @@ window.addEventListener("scroll", function () {
 }, false);
 
 
-        // nhạc
+   // nhạc
 const music = document.getElementById("background-music");
 let isPlaying = false;
 
-// Chọn tất cả các nút phát nhạc nếu có nhiều bản sao
-document.querySelectorAll("#music-player").forEach(player => {
+// Chọn cả hai nút theo 2 ID
+document.querySelectorAll("#music-player, #music-player-2").forEach(player => {
   player.addEventListener("click", () => {
-        player.classList.add("pulsing");
+    // hiệu ứng nhấn nút (nếu có CSS .pulsing)
+    player.classList.add("pulsing");
     setTimeout(() => player.classList.remove("pulsing"), 500);
 
-    // Cập nhật icon trên tất cả bản sao cùng lúc
-    document.querySelectorAll("#music-icon").forEach(icon => {
-      if (isPlaying) {
-        music.pause();
-        icon.className = "fa-solid fa-volume-xmark";
+    // Toggle phát/tạm dừng
+    if (isPlaying) {
+      music.pause();
+      isPlaying = false;
+    } else {
+      const p = music.play();
+      if (p && typeof p.then === "function") {
+        p.then(() => { isPlaying = true; }).catch(() => {});
       } else {
-        music.play();
-        icon.className = "fa-solid fa-volume-low";
+        isPlaying = true;
       }
-    });
+    }
 
-    isPlaying = !isPlaying;
+    // Cập nhật icon trên cả hai bản sao
+    document.querySelectorAll("#music-icon, #music-icon-2").forEach(icon => {
+      icon.className = isPlaying
+        ? "fa-solid fa-volume-low"
+        : "fa-solid fa-volume-xmark";
+    });
   });
 });
+
+// Autoplay nhạc sau tương tác đầu tiên ở bất kỳ đâu trên trang
+(function () {
+  if (!music) return;
+
+  // Tối ưu cho mobile/iOS
+  music.autoplay = false;
+  music.preload = "auto";
+  music.setAttribute("playsinline", "");
+
+  let triggered = false;
+
+  const tryStart = () => {
+    if (triggered || isPlaying) return;
+    triggered = true;
+
+    const p = music.play();
+    if (p && typeof p.then === "function") {
+      p.then(() => {
+        isPlaying = true;
+        // Đồng bộ icon của cả hai nút
+        document.querySelectorAll("#music-icon, #music-icon-2").forEach(icon => {
+          icon.className = "fa-solid fa-volume-low";
+        });
+      }).catch(() => {
+        // Nếu vẫn bị chặn, cho phép thử lại ở tương tác kế tiếp
+        triggered = false;
+      });
+    } else {
+      isPlaying = true;
+      document.querySelectorAll("#music-icon, #music-icon-2").forEach(icon => {
+        icon.className = "fa-solid fa-volume-low";
+      });
+    }
+  };
+
+  // Bắt mọi cử chỉ đầu tiên
+  window.addEventListener("pointerdown", tryStart, { once: true, passive: true });
+  window.addEventListener("keydown", tryStart, { once: true });
+})();
+
 
 
 // Tạo overlay 1 lần khi trang tải
