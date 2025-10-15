@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Batch Link → QR</title>
+
+  <!-- QRCode.js -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+  <!-- JSZip để nén ZIP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js" defer></script>
+
+  <style>
+    :root { --muted:#94a3b8; --text:#e5e7eb; --bg:#0b1020; --panel:#0b1226; }
+    *{box-sizing:border-box}
+    body{margin:0;font-family:system-ui,Segoe UI,Roboto,Helvetica,Arial;background:var(--bg);color:var(--text);
+      min-height:100svh;display:grid;grid-template-rows:auto 1fr;gap:16px}
+    header{padding:16px 20px}
+    h1{margin:0;font-size:20px}
+    .container{padding:0 20px 24px}
+    .card{background:var(--panel);border:1px solid rgba(255,255,255,.12);border-radius:16px;padding:16px}
+    .controls{display:flex;flex-wrap:wrap;gap:10px;margin-top:10px;align-items:center}
+    textarea{width:100%;min-height:140px;background:var(--bg);color:var(--text);border:1px solid rgba(255,255,255,.2);
+      border-radius:12px;padding:12px 14px;font-size:14px}
+    select,input[type="range"]{background:var(--bg);color:var(--text);border:1px solid rgba(255,255,255,.2);
+      border-radius:10px;padding:8px 10px;font-size:14px}
+    .btn{border:1px solid rgba(255,255,255,.18);background:#13233a;color:#e8f3ff;padding:10px 14px;border-radius:12px;
+      cursor:pointer;font-weight:600}
+    .btn.primary{background:#22c55e;border-color:#16a34a;color:#021203}
+    .btn.ghost{background:#0b1226}
+    .hint{font-size:12px;color:var(--muted)}
+    .grid{margin-top:16px;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+    .item{background:#0a0f1f;border:1px solid rgba(255,255,255,.12);border-radius:14px;padding:12px;display:grid;gap:8px}
+    .qrbox{display:grid;place-items:center;padding:8px;background:#0b1226;border-radius:12px;border:1px dashed rgba(255,255,255,.2);min-height:200px}
+    .label{font-size:12px;color:var(--muted);word-break:break-all}
+    .row{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+    footer{opacity:.7;font-size:12px;text-align:center;margin:8px 0 16px}
+    progress{height:10px}
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Batch Link → QR</h1>
+  </header>
+
+  <div class="container">
+    <div class="card">
+      <label for="urls" class="hint">Mỗi dòng 1 đường dẫn (ví dụ: https://chyen.love/?to=Anh+Quân). Dấu “+” sẽ được hiểu là khoảng trắng.</label>
+      <textarea id="urls" placeholder="https://chyen.love/?to=Anh+Quân
+https://example.com/?q=Cà+phê+muối"></textarea>
+
+      <div class="controls">
+        <label>Kích thước: <span id="sizeLabel">320</span> px</label>
+        <input id="size" type="range" min="160" max="1024" step="16" value="320" />
+        <label>Sửa lỗi:</label>
+        <select id="ecl">
+          <option value="L">L (7%)</option>
+          <option value="M" selected>M (15%)</option>
+          <option value="Q">Q (25%)</option>
+          <option value="H">H (30%)</option>
+        </select>
+
+        <button id="make" class="btn primary">Tạo tất cả QR</button>
+        <button id="clear" class="btn ghost">Xoá kết quả</button>
+        <button id="downloadAll" class="btn">Tải ZIP (PNG)</button>
+        <span class="hint" id="countHint">0 mã QR</span>
+      </div>
+
+      <div class="controls" id="progressWrap" style="display:none">
+        <progress id="zipProgress" value="0" max="100"></progress>
+        <span class="hint" id="zipStatus">Đang chuẩn bị...</span>
+      </div>
+    </div>
+
+    <div id="grid" class="grid"></div>
+
+    <footer>Chạy hoàn toàn trên trình duyệt; không tải dữ liệu lên server.</footer>
+  </div>
+
+  <script>
+    // Helpers
+    const $ = (s)=>document.querySelector(s);
+    const grid = $('#grid');
+    const urlsTA = $('#urls');
+    const sizeInput = $('#size');
+    const sizeLabel = $('#sizeLabel');
+    const eclSel = $('#ecl');
+    const countHint = $('#countHint');
+    const progWrap = $('#progressWrap');
+    const prog = $('#zipProgress');
+    const progLabel = $('#zipStatus');
+
+    let items = []; // {raw, encoded, node, filename}
+
+    sizeInput.addEventListener('input', ()=> sizeLabel.textContent = sizeInput.value);
+
+    // UTF-16 -> UTF-8 bytes for QRCode.js
+    function utf16to8(str) {
+      let out = "", i, c;
+      for (i = 0; i < str.length; i++) {
+        c = str.charCodeAt(i);
+        if (c >= 1 && c <= 0x7F) out += str[i];
+        else if (c > 0x7FF) {
+          out += String.fromCharCode(0xE0 | ((c >> 12) & 0x0F));
+          out += String.fromCharCode(0x80 | ((c >> 6) & 0x3F));
+          out += String.fromCharCode(0x80 | (c & 0x3F));
+        } else {
+          out += String.fromCharCode(0xC0 | ((c >> 6) & 0x1F));
+          out += String.fromCharCode(0x80 | (c & 0x3F));
+        }
+      }
+      return out;
+    }
+
+    // YÊU CẦU: Dấu "+" được hiểu là khoảng trắng trước khi encode.
+    function sanitizeAndEncodeUrl(raw) {
+      try {
+        if (!/^https?:\/\//i.test(raw)) raw = 'https://chyen.love/?to=' + raw;
+        const u = new URL(raw);
+        const entries = Array.from(u.searchParams.entries());
+        u.search = '';
+        entries.forEach(([k,v])=>{
+          v = v.replace(/\+/g, ' ');                        // + -> space
+          u.searchParams.append(k, encodeURIComponent(v));  // percent-encode
+        });
+        return u.toString();
+      } catch {
+        return encodeURI(raw.replace(/\+/g,' '));
+      }
+    }
+
+    function fileSafeName(s, fallback='qr') {
+      const trimmed = (s || '').trim();
+      if (!trimmed) return fallback;
+      // Ưu tiên lấy tên từ param ?to=
+      try {
+        const u = new URL(trimmed);
+        const to = u.searchParams.get('to');
+        if (to) return decodeURIComponent(to).replace(/[^a-z0-9\-_.]+/gi,'_').slice(0,80) || fallback;
+        const host = (u.hostname || 'qr');
+        return (host.replace(/[^a-z0-9\-_.]+/gi,'_')).slice(0,80) || fallback;
+      } catch {
+        return trimmed.replace(/[^a-z0-9\-_.]+/gi,'_').slice(0,80) || fallback;
+      }
+    }
+
+    function buildItem(raw, index) {
+      const encoded = sanitizeAndEncodeUrl(raw);
+      const filenameBase = fileSafeName(raw, `qr_${index+1}`);
+      const card = document.createElement('div');
+      card.className = 'item';
+      card.innerHTML = `
+        <div class="label">${encoded}</div>
+        <div class="qrbox"></div>
+        <div class="row">
+          <button class="btn" data-action="dl">Tải PNG</button>
+          <span class="hint">${filenameBase}.png</span>
+        </div>
+      `;
+      grid.appendChild(card);
+
+      const box = card.querySelector('.qrbox');
+      // render QR
+      new QRCode(box, {
+        text: utf16to8(encoded),
+        width: parseInt(sizeInput.value,10),
+        height: parseInt(sizeInput.value,10),
+        colorDark : "#000000",
+        colorLight : "#ffffff",
+        correctLevel : QRCode.CorrectLevel[eclSel.value]
+      });
+
+      // tải từng ảnh
+      card.querySelector('[data-action="dl"]').addEventListener('click', async ()=>{
+        const canvas = box.querySelector('canvas');
+        if (!canvas) return;
+        const a = document.createElement('a');
+        a.href = canvas.toDataURL("image/png");
+        a.download = `${filenameBase}.png`;
+        a.click();
+      });
+
+      return { raw, encoded, node: card, filename: `${filenameBase}.png` };
+    }
+
+    function parseLines(text) {
+      return text
+        .split(/\r?\n/)
+        .map(s => s.trim())
+        .filter(s => s.length > 0);
+    }
+
+    function clearGrid() {
+      grid.innerHTML = '';
+      items = [];
+      countHint.textContent = '0 mã QR';
+    }
+
+    function generateAll() {
+      clearGrid();
+      const lines = parseLines(urlsTA.value);
+      if (!lines.length) { alert('Nhập ít nhất 1 đường dẫn (mỗi dòng 1 link).'); return; }
+      lines.forEach((line, idx) => {
+        const it = buildItem(line, idx);
+        items.push(it);
+      });
+      countHint.textContent = `${items.length} mã QR`;
+    }
+
+    async function dataURLtoBlob(dataURL) {
+      // Cách nhanh, tương thích tốt
+      const res = await fetch(dataURL);
+      return await res.blob();
+    }
+
+    async function downloadAllZip() {
+      if (!items.length) { alert('Chưa có mã QR nào.'); return; }
+      progWrap.style.display = 'flex';
+      prog.value = 0;
+      progLabel.textContent = 'Đang kết xuất PNG...';
+
+      const zip = new JSZip();
+      let done = 0;
+
+      for (const it of items) {
+        const canvas = it.node.querySelector('.qrbox canvas');
+        if (!canvas) continue;
+
+        // Nếu người dùng đổi size sau khi tạo, render lại nhanh
+        if (parseInt(canvas.width,10) !== parseInt(sizeInput.value,10)) {
+          const box = it.node.querySelector('.qrbox');
+          box.innerHTML = '';
+          new QRCode(box, {
+            text: utf16to8(it.encoded),
+            width: parseInt(sizeInput.value,10),
+            height: parseInt(sizeInput.value,10),
+            colorDark : "#000000",
+            colorLight : "#ffffff",
+            correctLevel : QRCode.CorrectLevel[eclSel.value]
+          });
+        }
+
+        const freshCanvas = it.node.querySelector('.qrbox canvas');
+        const blob = await dataURLtoBlob(freshCanvas.toDataURL('image/png'));
+        zip.file(it.filename, blob);
+
+        done++;
+        prog.value = Math.round(done / items.length * 100);
+        progLabel.textContent = `Đã thêm ${done}/${items.length} tệp...`;
+      }
+
+      progLabel.textContent = 'Đang nén ZIP...';
+      const zipBlob = await zip.generateAsync({ type: 'blob' });
+      const url = URL.createObjectURL(zipBlob);
+      const a = document.createElement('a');
+      a.href = url;
+      const ts = new Date().toISOString().replace(/[-:T.Z]/g,'').slice(0,14);
+      a.download = `qr_batch_${ts}.zip`;
+      a.click();
+      URL.revokeObjectURL(url);
+
+      progLabel.textContent = 'Xong!';
+      setTimeout(()=>{ progWrap.style.display='none'; }, 1200);
+    }
+
+    // Bindings
+    $('#make').addEventListener('click', generateAll);
+    $('#clear').addEventListener('click', clearGrid);
+    $('#downloadAll').addEventListener('click', downloadAllZip);
+    eclSel.addEventListener('change', ()=>{
+      // cập nhật tất cả QR khi đổi mức sửa lỗi
+      if (!items.length) return;
+      items.forEach(it=>{
+        const box = it.node.querySelector('.qrbox');
+        box.innerHTML = '';
+        new QRCode(box, {
+          text: utf16to8(it.encoded),
+          width: parseInt(sizeInput.value,10),
+          height: parseInt(sizeInput.value,10),
+          colorDark : "#000000",
+          colorLight : "#ffffff",
+          correctLevel : QRCode.CorrectLevel[eclSel.value]
+        });
+      });
+    });
+
+    // Demo mẫu
+    urlsTA.value = `https://chyen.love/?to=Anh+Quân
+https://chyen.love/?to=Thu+Yến
+https://example.com/?q=Cà+phê+muối`;
+  </script>
+</body>
+</html>
