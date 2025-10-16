@@ -2493,7 +2493,7 @@ a:focus {
 }
 
 #message::placeholder, #name::placeholder {
-  color: white; /* ví dụ màu hồng pastel */
+  color: #6a6a6a; /* ví dụ màu hồng pastel */
   font-style: italic;
 }
 
