@@ -1253,7 +1253,7 @@ a:focus {
 #0.5  footer
 --------------------------------------------------------------*/
 .site-footer {
-  background: url("../images/blog/img-12.jpg") center center/cover no-repeat local;
+  background: url("../images/blog/img-12.webp") center center/cover no-repeat local;
   text-align: center;
   color: #fff;
   padding: 160px 0;
@@ -1587,7 +1587,7 @@ a:focus {
 
 .count-down-section:before {
   content: "";
-  background-image: url('../images/blog/lich.jpg');
+  background-image: url('../images/blog/lich.webp');
   filter: blur(1px);
   background-size: cover;
     background-position: center; /* Căn giữa hình nền */
@@ -1636,7 +1636,7 @@ a:focus {
 
 
 /*--------------------------------------------------------------
-#0.9  Lưu bút background-image: url("../images/blog/sl2.jpg") !important;
+#0.9  Lưu bút background-image: url("../images/blog/sl2.webp") !important;
 --------------------------------------------------------------*/
 .cta {
     background-color: #adafae;
@@ -2043,7 +2043,7 @@ a:focus {
   content: "";
   position: absolute;
   inset: 0;
-  background: url('../images/blog/thank.jpg') no-repeat center/cover;
+  background: url('../images/blog/thank.webp') no-repeat center/cover;
   filter: blur(2px); /* Làm mờ nền */
   transform: scale(1.05); /* tránh viền bị cắt khi blur */
   z-index: -1;
@@ -2498,7 +2498,7 @@ a:focus {
 }
 
 .wedding-timeline{
-  background-image: url('../images/blog/JBN09164.JPG');
+  background-image: url('../images/blog/JBN09164.webp');
   background-size: cover;
   background-position: center;
 }
@@ -2564,7 +2564,7 @@ a:focus {
 
 .thumoi {
   text-align: center;
-  background: url('../images/blog/sl1.jpg') center / cover no-repeat;
+  background: url('../images/blog/sl1.webp') center / cover no-repeat;
 
   font-family: "Times New Roman", serif;
   color: #3b3f46  !important;
