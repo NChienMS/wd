@@ -239,18 +239,25 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     //Setting hero slider
-    function heroSlider() {
-        if ($(".hero-slider").length) {
-            $(".hero-slider").slick({
-                arrows: true,
-                prevArrow: '<button type="button" class="slick-prev">Previous</button>',
-                nextArrow: '<button type="button" class="slick-next">Next</button>',
-                dots: true,
-                fade: true,
-                cssEase: 'linear'
-            });
-        }
-    }
+$(".hero-slider").slick({
+  arrows: true,
+  prevArrow: '<button type="button" class="slick-prev">Previous</button>',
+  nextArrow: '<button type="button" class="slick-next">Next</button>',
+  dots: true,
+  fade: true,                 // chuyển mờ dần mượt hơn trượt ngang
+  speed: 800,                 // thời gian chuyển (ms)
+  cssEase: 'ease-in-out',     // đường cong mượt hơn 'linear'
+  autoplay: true,
+  autoplaySpeed: 5000,
+  infinite: true,
+  pauseOnHover: true,
+  pauseOnFocus: false,
+  waitForAnimate: false,      // không bị “giật” nếu user bấm liên tục
+  useTransform: true,
+  useCSS: true,
+  lazyLoad: 'progressive'     // tải dần ảnh để bớt khựng
+});
+
 
 
     // set two coloumn height equial
