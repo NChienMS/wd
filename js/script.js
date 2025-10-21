@@ -441,6 +441,93 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }, 500);*/
 });
+
+
+(function () {
+  const els = {
+    section: document.querySelector('.wedding-couple-section'),
+    bg1: document.getElementById('bg1'),
+    bg2: document.getElementById('bg2'),
+    infoChure: document.getElementById('info-chure'),
+    infoCodau: document.getElementById('info-codau'),
+    thumbChure: document.getElementById('thumb-chure'),
+    thumbCodau: document.getElementById('thumb-codau'),
+  };
+
+  if (!els.section) return; // phòng hờ trang khác không có section
+
+  const state = {
+    current: 'chure',
+    timer: null,
+    period: 4000, // 5s
+  };
+
+  function setActive(isChure) {
+    // Nội dung
+    els.infoChure?.classList.toggle('active', isChure);
+    els.infoCodau?.classList.toggle('active', !isChure);
+
+    // Nền (bg1: chú rể, bg2: cô dâu — đúng như HTML anh đang đặt)
+    els.bg1?.classList.toggle('active', isChure);
+    els.bg2?.classList.toggle('active', !isChure);
+
+    // Thumbnail
+    els.thumbChure?.classList.toggle('active', isChure);
+    els.thumbCodau?.classList.toggle('active', !isChure);
+  }
+
+  // Hàm public để vẫn dùng được onclick trong HTML hiện tại
+  window.changeCharacter = function (who, manual = false) {
+    const next = (who === 'codau') ? 'codau' : 'chure';
+    state.current = next;
+    setActive(state.current === 'chure');
+
+    // Nếu người dùng click tay → reset đồng hồ
+    if (manual) {
+      stopAuto();
+      startAuto();
+    }
+  };
+
+  function nextAuto() {
+    const next = state.current === 'chure' ? 'codau' : 'chure';
+    window.changeCharacter(next, false);
+  }
+
+  function startAuto() {
+    stopAuto();
+    state.timer = setInterval(nextAuto, state.period);
+  }
+
+  function stopAuto() {
+    if (state.timer) {
+      clearInterval(state.timer);
+      state.timer = null;
+    }
+  }
+
+  // Pause khi hover/touch vào khu vực cặp đôi, resume khi rời
+  ['mouseenter', 'touchstart'].forEach(evt =>
+    els.section.addEventListener(evt, stopAuto, { passive: true })
+  );
+  ['mouseleave', 'touchend', 'touchcancel'].forEach(evt =>
+    els.section.addEventListener(evt, startAuto, { passive: true })
+  );
+
+  // Bảo toàn tài nguyên: dừng khi tab ẩn, chạy lại khi hiện
+  document.addEventListener('visibilitychange', () => {
+    if (document.hidden) stopAuto();
+    else startAuto();
+  });
+
+  // Gắn click cho thumbnail (đồng bộ với onclick trong HTML, không xung đột)
+  els.thumbChure?.addEventListener('click', () => window.changeCharacter('chure', true));
+  els.thumbCodau?.addEventListener('click', () => window.changeCharacter('codau', true));
+
+  // Khởi tạo trạng thái và chạy auto
+  setActive(true);   // bắt đầu ở "Chú Rể"
+  startAuto();
+})();
     
 
     /*==========================================================================
