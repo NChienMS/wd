@@ -1771,9 +1771,7 @@ a:focus {
   .messages { 
             margin: 20px 0; 
             padding: 10px; 
-            border-right: 1px solid #ffffff;
-            border-bottom: 1px solid #ffffff;
-            border-left: 1px solid #ffffff;
+            border: 1px solid #ffffff;
             
             border-bottom-left-radius: 5px;
             border-bottom-right-radius: 5px;
@@ -3328,3 +3326,122 @@ a:focus {
     .cardddr{ text-align:center; color:#374151; }
 
     .cardfooter{ margin-top:16px; text-align:center; font-style:italic; }
+
+
+    /* ===== Floating Action Button: Gửi lời chúc ===== */
+    .wish-fab{ position: fixed; right: 20px; bottom: 70px; z-index: 9999; }
+    .wish-fab button{
+
+      --h: 56px;
+      --collapsed: var(--h);
+      --expanded: 160px;
+      height: var(--h);
+      width: var(--collapsed);
+      padding: 0 18px 0 14px;
+      display: inline-flex; align-items: center;
+      border: 1px solid #ffffff87;
+      border-radius: 999px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--brand-1), var(--brand-2));
+      box-shadow: 0 4px 30px 0 rgba(0, 0, 0, 0.1);
+      overflow: hidden; position: relative;
+      /* ĐIỀU CHỈNH: transition width 0.6s để khớp với thời gian bung/thu */
+      transition: width 0.6s cubic-bezier(.2,.8,.2,1), transform .4s ease;
+      /* ĐIỀU CHỈNH: Tổng chu kỳ là 9.2s */
+      animation: expandCycle 9.2s infinite; 
+    }
+    .wish-fab button:hover{
+      /* Giữ hiệu ứng tương tác nhỏ, KHÔNG dừng chu kỳ */
+      transform: scale(1.02);
+    }
+
+    .wish-fab button::after{
+      content:""; position:absolute; inset:-10px; border-radius:999px;
+      background: radial-gradient(120px 60px at 90% 50%, rgba(255,255,255,.25), transparent 60%);
+      pointer-events:none;
+    }
+    .wish-fab .ring{
+      pointer-events:none; position:absolute; inset:0; border-radius:999px;
+      border:1px solid rgba(255,255,255,.35); opacity:.0; transform: scale(.9);
+      animation: ring 3s infinite;
+    }
+    @keyframes ring{
+      0%{opacity:.0; transform:scale(.9)}
+      70%{opacity:.0}
+      78%{opacity:.35}
+      100%{opacity:0; transform:scale(1.06)}
+    }
+
+    .wish-fab .icon{
+      width: 26px; height: 26px; flex: 0 0 auto;
+      display:grid; place-items:center;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,.25));
+      transform-origin: 50% 60%;
+      animation: tilt 3s infinite;
+      color: black;
+    }
+    @keyframes tilt{
+      0%,60%{ transform: rotate(0deg) }
+      66%{ transform: rotate(-10deg) }
+      72%{ transform: rotate(8deg) }
+      78%{ transform: rotate(-4deg) }
+      84%,100%{ transform: rotate(0deg) }
+    }
+
+    /* LABEL: luôn đồng bộ với chu kỳ mở rộng */
+    .wish-fab .label{
+      font-weight: 600; letter-spacing:.2px; white-space: nowrap;
+      opacity: 0; transform: translateX(-6px);
+      transition: opacity .35s ease, transform .35s ease;
+      text-shadow: 0 1px 0 rgba(0,0,0,.15);
+      /* ĐIỀU CHỈNH: Tổng chu kỳ là 9.2s */
+      animation: labelCycle 9.2s infinite; 
+      color: black;
+      padding-left: 8px;
+    }
+
+    /* ĐÃ LOẠI BỎ logic dừng animation khi hover/focus */
+
+    /* CHU KỲ MỚI: (Tổng 9.2s)
+     * 0.0s - 5.0s: Giữ đóng (0% - 54.34%)
+     * 5.0s - 5.6s: Bung ra (54.34% - 60.86%)
+     * 5.6s - 8.6s: Giữ mở (60.86% - 93.47%)
+     * 8.6s - 9.2s: Thu vào (93.47% - 100%)
+     */
+    @keyframes expandCycle{
+      0%   { width: var(--collapsed) }
+      /* Kết thúc Giữ đóng, bắt đầu Bung ra */
+      54.34%  { width: var(--collapsed) } 
+      /* Kết thúc Bung ra (5.0s + 0.6s) */
+      60.86%  { width: var(--expanded) }  
+      /* Bắt đầu Thu vào (5.6s + 3.0s) */
+      93.47%  { width: var(--expanded) }  
+      /* Kết thúc Thu vào (8.6s + 0.6s) */
+      100% { width: var(--collapsed) } 
+    }
+    @keyframes labelCycle{
+      0%   { opacity: 0; transform: translateX(-6px); }
+      54.34%  { opacity: 0; transform: translateX(-6px); } /* Bắt đầu hiện chữ */
+      60.86%  { opacity: 1; transform: translateX(0); } /* Chữ hiện xong */
+      93.47%  { opacity: 1; transform: translateX(0); } /* Chữ bắt đầu ẩn */
+      100% { opacity: 0; transform: translateX(-6px); }
+    }
+
+    /* Tôn trọng người dùng không thích chuyển động */
+    @media (prefers-reduced-motion: reduce){
+      .wish-fab button{ animation: none }
+      .wish-fab .icon{ animation: none }
+      .wish-fab .ring{ display:none }
+    }
+
+.wish-fab .rim {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  pointer-events: none;
+  z-index: 2;
+  box-shadow:
+    inset 0 1px 1px var(--glass-highlight),   /* ánh sáng mép trên */
+    inset 0 -1px 1px rgba(0,0,0,.12);         /* bóng nhẹ mép dưới */
+  opacity: .9;
+}
