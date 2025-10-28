@@ -36,7 +36,40 @@
     .sub{ color:var(--muted); font-size:14px; margin:4px 0 0 }
 
     /* Hình ảnh bản đồ */
-    .map-image{ display:block; width:100%; height:auto; border-top:1px solid var(--border); border-bottom:1px solid var(--border); }
+    .map-image{
+      display:block;
+      width:100%;
+      height:auto;
+      border-top:1px solid var(--border);
+      border-bottom:1px solid var(--border);
+      cursor: zoom-in;
+      transition: transform .25s ease;
+    }
+    .map-image:hover { transform: scale(1.01); }
+
+    /* Overlay xem ảnh */
+    .image-overlay{
+      position:fixed;
+      top:0; left:0;
+      width:100%; height:100%;
+      background:rgba(0,0,0,0.85);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      z-index:9999;
+      cursor: zoom-out;
+    }
+    .image-overlay img{
+      max-width:90%;
+      max-height:90%;
+      border-radius:10px;
+      box-shadow:0 0 30px rgba(0,0,0,0.5);
+      animation: zoomIn .25s ease;
+    }
+    @keyframes zoomIn {
+      from { transform:scale(0.8); opacity:0; }
+      to { transform:scale(1); opacity:1; }
+    }
 
     .btns{ padding:18px 22px; }
     .btn{
@@ -53,22 +86,23 @@
     .pill{ display:inline-flex; align-items:center; gap:8px; font-size:12px; padding:8px 12px; border-radius:999px; border:1px solid var(--border); background:#fff; color:var(--text) }
     @media (prefers-color-scheme: dark){ .pill{ background:rgba(255,255,255,.06); color:var(--text); } }
     .time{ font-variant-numeric: tabular-nums }
+
     .call-btn {
-  display: inline-block;
-  background: linear-gradient(45deg, #ff6aa2, #ff9770);
-  color: white;
-  padding: 12px 20px;
-  border-radius: 50px;
-  font-size: 18px;
-  font-weight: 600;
-  text-decoration: none;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
-  transition: transform 0.2s ease, box-shadow 0.2s ease;
-}
-.call-btn:hover {
-  transform: scale(1.05);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.3);
-}
+      display: inline-block;
+      background: linear-gradient(45deg, #ff6aa2, #ff9770);
+      color: white;
+      padding: 12px 20px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 600;
+      text-decoration: none;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    .call-btn:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 18px rgba(0,0,0,0.3);
+    }
   </style>
 </head>
 <body>
@@ -78,37 +112,57 @@
         <span class="dot" aria-hidden="true"></span>
         <div>
           <h1>Hướng dẫn chỉ đường</h1>
-          
         </div>
-
       </header>
-        <p class="sub " style="padding-left: 60px;">Điểm đến: Xóm 6, Xã Mai Sơn, Yên Mô, Ninh Bình</p> 
 
-              <div class="info">
+      <p class="sub" style="padding-left: 60px;">Điểm đến: Xóm 6, Xã Mai Sơn, Yên Mô, Ninh Bình</p> 
+
+      <div class="info">
         <p><strong>Kính mời anh chị</strong></p>
         <ul>
           <li>Tới dự <strong>bữa cơm thân mật</strong> cùng gia đình chúng em vào <strong>10h00 Chủ Nhật: 09/11/2025</strong>.</li>
           <li>Tới dự <strong>lễ thành hôn</strong> của chúng em <strong>ChYến</strong> vào <strong>10h00 Thứ Hai: 10/11/2025</strong>.</li>
         </ul>
-        <p style="width: 100%; text-align: center;"><strong><a href="tel:0337260123"  class="call-btn" style="text-align: center;">📞 Em Chiến: 033 726 0123</a></strong></p>
+        <p style="width: 100%; text-align: center;">
+          <strong><a href="tel:0337260123" class="call-btn">📞 Em Chiến: 033 726 0123</a></strong>
+        </p>
       </div>
 
-      <!-- Thay phần khung xem trước bằng hình ảnh bản đồ -->
-      <img class="map-image" src="https://ariesvn8.wordpress.com/wp-content/uploads/2025/10/chi-duong.jpg" alt="Bản đồ chỉ đường đến đám cưới" />
+      <!-- Hình bản đồ -->
+      <img class="map-image" src="https://ariesvn8.wordpress.com/wp-content/uploads/2025/10/chi-duong.jpg" alt="Bản đồ chỉ đường đến đám cưới" id="mapImg" />
+
+      <!-- Overlay xem ảnh phóng to -->
+      <div class="image-overlay" id="imageOverlay">
+        <img src="" alt="Phóng to bản đồ" id="overlayImg">
+      </div>
 
       <div class="btns">
         <a class="btn" href="https://maps.app.goo.gl/n6jKGSAi6Rmc7oSN6" target="_blank" rel="noopener">🚗 Mở Google Maps</a>
       </div>
 
-
-
       <div class="footer">
         <div>
           <span class="pill" style="display: none;">Ngày cưới: <span class="time">10/11/2025</span></span>
         </div>
-        
       </div>
     </div>
   </div>
+
+  <script>
+    const mapImg = document.getElementById('mapImg');
+    const overlay = document.getElementById('imageOverlay');
+    const overlayImg = document.getElementById('overlayImg');
+
+    // Khi click vào hình -> mở overlay
+    mapImg.addEventListener('click', () => {
+      overlayImg.src = mapImg.src;
+      overlay.style.display = 'flex';
+    });
+
+    // Khi click overlay -> tắt
+    overlay.addEventListener('click', () => {
+      overlay.style.display = 'none';
+    });
+  </script>
 </body>
 </html>
