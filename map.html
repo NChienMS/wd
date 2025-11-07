@@ -62,31 +62,10 @@
     .footer{ padding:14px 22px 20px; display:flex; justify-content:flex-end; border-top:1px solid var(--border) }
     .pill{ display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border-radius:999px; border:1px solid var(--border); color:var(--text); text-decoration:none }
     @media (prefers-color-scheme: dark){ .pill{ background:rgba(255,255,255,.06) } }
-
-    /* In-app banner */
-    .bar{
-      display:none; padding:12px 16px; font-size:14px; line-height:1.5;
-      background:linear-gradient(90deg,#fff4f8,#fff); border-bottom:1px solid var(--border);
-    }
-    .bar strong{ color:#c83d6b }
-    .bar .open-ext{
-      margin-top:8px; display:inline-flex; align-items:center; gap:8px;
-      padding:10px 12px; border-radius:10px; font-weight:700; text-decoration:none; color:#fff;
-      background:linear-gradient(90deg,var(--brand),var(--brand2));
-    }
-    .showbar .bar{ display:block }
   </style>
 </head>
 <body>
-  <div class="wrap card" id="root">
-    <!-- In-app banner -->
-    <div class="bar" id="inappBar">
-      <div>
-        <div><strong>Đang mở trong ứng dụng (Messenger/Zalo)</strong> — một số tính năng có thể bị chặn.</div>
-        <a href="#" id="openExternal" class="open-ext">↗️ Mở bằng trình duyệt ngoài</a>
-      </div>
-    </div>
-
+  <div class="wrap card">
     <header>
       <span class="dot" aria-hidden="true"></span>
       <div>
@@ -100,7 +79,7 @@
       <button class="tab" data-target="bride">🎀 Nhà Gái</button>
     </div>
 
-    <!-- Nội dung tĩnh cho từng bên (không còn dòng Liên hệ) -->
+    <!-- Nội dung -->
     <section class="pane active" id="groom">
       <div class="info">
         <div><strong>Điểm đến:</strong> Xóm 6, Xã Mai Sơn, Yên Mô, Ninh Bình</div>
@@ -113,7 +92,7 @@
       </div>
     </section>
 
-    <!-- Cụm nút CHUNG, tự đổi theo tab -->
+    <!-- Nút chung -->
     <div class="btn-row">
       <a id="callBtn" class="btn" href="#">📞 …</a>
       <a id="mapBtn"  class="btn" href="#" target="_blank" rel="noopener noreferrer">🚗 …</a>
@@ -131,13 +110,13 @@
         callText: "N Chiến (cr): 033 276 0123",
         tel: "tel:0332760123",
         mapText: "Mở Google tới Nhà Trai",
-        mapUrl: "https://maps.app.goo.gl/n6jKGSAi6Rmc7oSN6"
+        mapUrl: "https://www.google.com/maps?q=20.186291,105.957747"
       },
       bride: {
         callText: "Thu Yến (cd): 0777 66 77 35",
         tel: "tel:0777667735",
         mapText: "Mở Google tới Nhà Gái",
-        mapUrl: "https://maps.app.goo.gl/A7SWBnmWPqCeQKPh8"
+        mapUrl: "https://www.google.com/maps?q=20.163861,105.960722"
       }
     };
 
@@ -166,34 +145,6 @@
         document.getElementById(t.dataset.target).classList.add('active');
         applySide(t.dataset.target);
       });
-    });
-
-    // ---- Detect in-app browser
-    const ua = navigator.userAgent || '';
-    const isInApp = /(FBAN|FBAV|Instagram|Line\/|Zalo|ZaloPC|Messenger|Twitter|TikTok|Snapchat)/i.test(ua);
-    if (isInApp) {
-      document.getElementById('root').classList.add('showbar');
-    }
-
-    // ---- Open external browser
-    const extBtn = document.getElementById('openExternal');
-    extBtn.addEventListener('click', (e) => {
-      e.preventDefault();
-      const url = location.href;
-
-      if (/Android/i.test(ua)) {
-        const intent = `intent://${url.replace(/^https?:\/\//,'')}` +
-                       '#Intent;scheme=https;package=com.android.chrome;end';
-        window.location.href = intent;
-        setTimeout(() => window.open(url, '_blank', 'noopener,noreferrer'), 350);
-        return;
-      }
-      if (/iPhone|iPad|iPod/i.test(ua)) {
-        const w = window.open('', '_blank');
-        if (w) { w.location.href = url; }
-        return;
-      }
-      window.open(url, '_blank', 'noopener,noreferrer');
     });
   </script>
 </body>
