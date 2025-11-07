@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Chỉ đường đến đám cưới</title>
+
+  <meta name="description" content="Trang chỉ đường nhanh đến địa điểm đám cưới – mở Google Maps chỉ với 1 chạm.">
+  <meta property="og:title" content="Chỉ đường đến đám cưới" />
+  <meta property="og:description" content="Trang chỉ đường nhanh đến địa điểm đám cưới – mở Google Maps chỉ với 1 chạm." />
+  <meta property="og:image" content="https://ariesvn8.wordpress.com/wp-content/uploads/2025/11/chyen.jpg" />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#ff6aa2" />
+
+  <style>
+    :root{
+      --bg:#f7f8fb; --card:#fff; --text:#0b0f14; --muted:#5b6b79;
+      --brand:#ff6aa2; --brand2:#ff9770; --radius:18px; --border:#e6ebf2;
+      --shadow:0 10px 30px rgba(16,24,40,.08);
+    }
+    @media (prefers-color-scheme: dark){
+      :root{ --bg:#0b0f14; --card:#0f1622; --text:#e9eef5; --muted:#9fb0c2; --border:rgba(255,255,255,.08); --shadow:0 10px 30px rgba(0,0,0,.35) }
+    }
+    *{ box-sizing:border-box }
+    body{
+      margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+      color:var(--text); background:var(--bg);
+      display:flex; justify-content:center; align-items:center; min-height:100vh;
+    }
+    .wrap{ max-width:760px; width:100%; padding:22px; }
+    .card{ background:var(--card); border:1px solid var(--border); border-radius:var(--radius); box-shadow:var(--shadow); overflow:hidden }
+
+    header{ padding:22px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; justify-content:center; text-align:center }
+    header .dot{ width:12px; height:12px; background:linear-gradient(45deg,var(--brand),var(--brand2)); border-radius:50%; box-shadow:0 0 0 6px rgba(255,106,162,.18) }
+    h1{ font-size:22px; margin:0 }
+
+    /* Tabs */
+    .tabs{ display:flex; gap:10px; padding:0 22px 16px }
+    .tab{
+      flex:1; text-align:center; padding:12px 10px; border-radius:999px;
+      border:1px solid var(--border); cursor:pointer; font-weight:700;
+      background:#fff; transition:filter .18s ease, transform .08s ease;
+    }
+    .tab.active{ color:#fff; background:linear-gradient(90deg,var(--brand),var(--brand2)); border-color:transparent; box-shadow:0 6px 18px rgba(255,151,112,.35) }
+    @media (prefers-color-scheme: dark){ .tab{ background:rgba(255,255,255,.06) } }
+    .tab:active{ transform:translateY(1px) }
+
+    .pane{ display:none; border-top:1px solid var(--border) }
+    .pane.active{ display:block }
+
+    .info{ padding:18px 22px; font-size:15px; line-height:1.7; text-align:center }
+    .btn-row{ display:grid; grid-template-columns:1fr 1fr; gap:12px; padding:10px 22px 22px }
+    .btn{
+      display:flex; align-items:center; justify-content:center; gap:10px;
+      padding:14px 12px; border-radius:14px; text-decoration:none; font-weight:700;
+      color:#fff; background:linear-gradient(90deg,var(--brand),var(--brand2));
+      box-shadow:0 6px 18px rgba(255,151,112,.35); border:1px solid transparent;
+      transition:transform .08s ease, filter .18s ease;
+      text-align:center;
+    }
+    .btn:hover{ transform:translateY(-1px); filter:brightness(1.03) }
+
+    .footer{ padding:14px 22px 20px; display:flex; justify-content:flex-end; border-top:1px solid var(--border) }
+    .pill{ display:inline-flex; gap:8px; align-items:center; padding:8px 12px; border-radius:999px; border:1px solid var(--border); color:var(--text); text-decoration:none }
+    @media (prefers-color-scheme: dark){ .pill{ background:rgba(255,255,255,.06) } }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card">
+      <header>
+        <span class="dot"></span>
+        <h1>Hướng dẫn chỉ đường</h1>
+      </header>
+
+      <div class="tabs">
+        <button class="tab active" data-target="groom">💍 Nhà Trai</button>
+        <button class="tab" data-target="bride">🎀 Nhà Gái</button>
+      </div>
+
+      <section class="pane active" id="groom">
+        <div class="info"><strong>Điểm đến:</strong><br>Xóm 6, Xã Mai Sơn, Yên Mô, Ninh Bình</div>
+      </section>
+
+      <section class="pane" id="bride">
+        <div class="info"><strong>Điểm đến:</strong><br>Tổ dân phố Trà Tu 1, phường Yên Thắng, tỉnh Ninh Bình</div>
+      </section>
+
+      <div class="btn-row">
+        <a id="callBtn" class="btn" href="#">📞 …</a>
+        <a id="mapBtn" class="btn" href="#" target="_blank" rel="noopener noreferrer">🚗 …</a>
+      </div>
+
+      <div class="footer">
+        <a class="pill" href="https://chyen.love/" target="_blank" rel="noopener">💖 Trang đám cưới</a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const DATA = {
+      groom: {
+        callText: "N Chiến (cr): 033 276 0123",
+        tel: "tel:0332760123",
+        mapText: "Mở Google tới Nhà Trai",
+        mapUrl: "https://www.google.com/maps?q=20.186291,105.957747"
+      },
+      bride: {
+        callText: "Thu Yến (cd): 0777 66 77 35",
+        tel: "tel:0777667735",
+        mapText: "Mở Google tới Nhà Gái",
+        mapUrl: "https://www.google.com/maps?q=20.163861,105.960722"
+      }
+    };
+
+    const tabs  = document.querySelectorAll('.tab');
+    const panes = document.querySelectorAll('.pane');
+    const callBtn = document.getElementById('callBtn');
+    const mapBtn  = document.getElementById('mapBtn');
+
+    function applySide(side){
+      const d = DATA[side];
+      callBtn.textContent = "📞 " + d.callText;
+      callBtn.href = d.tel;
+      mapBtn.textContent  = "🚗 " + d.mapText;
+      mapBtn.href = d.mapUrl;
+    }
+    applySide('groom');
+
+    tabs.forEach(t => {
+      t.addEventListener('click', () => {
+        tabs.forEach(x => x.classList.remove('active'));
+        panes.forEach(p => p.classList.remove('active'));
+        t.classList.add('active');
+        document.getElementById(t.dataset.target).classList.add('active');
+        applySide(t.dataset.target);
+      });
+    });
+  </script>
+</body>
+</html>
